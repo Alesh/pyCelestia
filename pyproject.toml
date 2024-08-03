@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyCelestia"
+description = "Python client for working with the Celestia DA network."
+readme = "README.md"
+license = { text = "MIT License" }
+requires-python = ">= 3.12"
+dynamic = ["version", "dependencies", "optional-dependencies"]
+
+[tool.setuptools.packages.find]
+include = ["celestia*"]
+namespaces = true
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+optional-dependencies.dev = { file = ["tests/requirements.txt"] }
+
+[tool.setuptools_scm]
