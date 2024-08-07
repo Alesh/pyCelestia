@@ -19,3 +19,8 @@ dependencies = { file = ["requirements.txt"] }
 optional-dependencies.dev = { file = ["tests/requirements.txt"] }
 
 [tool.setuptools_scm]
+
+[project.scripts]
+start-node = "celestia.utils:command"
+stop-node = "celestia.utils:command"
+show-token = "celestia.utils:command"

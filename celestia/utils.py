@@ -7,7 +7,7 @@ from random import randint
 from time import sleep
 
 
-def first_container_id(network, node_type):
+def first_container_id(network='devnet', node_type='solo'):
     container_name = f'celestia-{node_type}-{network}'
     proc = subprocess.run(['docker', 'ps'], stdout=subprocess.PIPE)
     containers = dict((line.split()[-1], line.split()[0])
