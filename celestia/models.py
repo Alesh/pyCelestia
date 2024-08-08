@@ -1,8 +1,8 @@
 import typing as t
 from base64 import b64decode, b64encode
-from dataclasses import dataclass, asdict as _asdict
+from dataclasses import dataclass
 
-from celestia._celestia import make_commitment
+from ._types import make_commitment  # noqa
 
 
 class Base64(bytes):
@@ -10,6 +10,9 @@ class Base64(bytes):
     def __new__(cls, value: bytes | str) -> bytes | t.Self:
         value = b64decode(value) if isinstance(value, str) else value
         return super().__new__(cls, value)
+
+    def __str__(self) -> str:
+        return b64encode(self).decode('ascii')
 
 
 class Namespace(Base64):
@@ -24,17 +27,6 @@ class Namespace(Base64):
 class Commitment(Base64):
     """ Celestia commitment
     """
-
-
-def asdict(obj: t.Any) -> t.Dict[str, t.Any]:
-    """ Convert an object to a dict """
-
-    def conv(value):
-        if isinstance(value, Base64):
-            return b64encode(value).decode('ascii')
-        return value
-
-    return dict((key, conv(value)) for key, value in _asdict(obj).items())
 
 
 @dataclass(init=False)
@@ -61,11 +53,12 @@ class Blob:
     share_version: int = 0
     index: int = -1
 
-    def __init__(self, namespace: Namespace, data: Base64,
-                 commitment: Commitment = None, share_version: int = 0, index: int = -1):
+    def __init__(self, namespace: Namespace | bytes | str | int, data: Base64 | bytes,
+                 commitment: Commitment | bytes | str = None, share_version: int = 0, index: int = -1):
         self.namespace = Namespace(namespace)
         self.data = Base64(data)
-        self.commitment = Commitment(commitment if commitment else make_commitment(namespace, data, share_version))
+        self.commitment = Commitment(commitment if commitment
+                                     else make_commitment(self.namespace, self.data, share_version))
         self.share_version = share_version
         self.index = index
 

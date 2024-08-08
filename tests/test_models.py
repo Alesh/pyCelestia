@@ -1,5 +1,5 @@
 from celestia import BlobSubmitResult
-from celestia.models import asdict, Blob, Namespace
+from celestia.models import Blob, Namespace
 
 
 def test_BlobSubmitResult():
@@ -10,7 +10,6 @@ def test_BlobSubmitResult():
     bsr = BlobSubmitResult(**raw)
     assert bsr.height == 252607
     assert isinstance(bsr.commitment, bytes)
-    assert asdict(bsr) == raw
 
 
 def test_Blob():
@@ -25,5 +24,9 @@ def test_Blob():
     assert blob.namespace == Namespace(0x01020304050607080910)
     assert blob.data == b'This is an example of some blob data'
     assert isinstance(blob.commitment, bytes)
-    assert asdict(blob) == raw
 
+
+def test_big_Blob():
+    data = b'0123456789ABCDEF' * 0xFFFF
+    blob = Blob(0x01020304050607080910, data)
+    assert isinstance(blob.commitment, bytes)

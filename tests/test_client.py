@@ -1,10 +1,11 @@
 import asyncio
+import typing as t
 
 import pytest
 import pytest_asyncio
 
 from celestia import Client, rpc
-from celestia.models import Balance
+from celestia.models import Balance, Blob, Namespace
 from celestia.utils import show_token, stop_node, start_node, first_container_id
 
 
@@ -73,6 +74,58 @@ async def test_send_blob(auth_token):
     async with Client(auth_token) as client:
         balance = await client.account_balance()
         assert balance.value
-        bsr = await client.blob_submit(0x100500, b'Hello, Celestia!')
+        bsr = await client.submit_blob(0x100500, b'Hello, Celestia!')
         assert bsr.height
         assert isinstance(bsr.commitment, bytes)
+
+    async with Client(auth_token) as client:
+        blob = await client.get_blob(bsr.height, 0x100500, bsr.commitment)
+        assert blob.commitment == bsr.commitment
+        assert blob.data == b'Hello, Celestia!'
+
+    async with Client(auth_token) as client:
+        blobs = await client.get_blobs(bsr.height, 0x100500)
+        assert len(blobs) == 1
+        assert blobs[0].commitment == bsr.commitment
+        assert blobs[0].data == b'Hello, Celestia!'
+
+
+@pytest.mark.asyncio
+async def test_send_blobs_api(auth_token):
+    assert auth_token
+    default_gas_price = -1.0
+    blobs = [
+        Blob(0x100500, b'Hello, Celestia!'),
+        Blob(0x100500, b'Hello, Alesh!'),
+        Blob(0x100501, b'Hello, Word!'),
+    ]
+    async with Client(auth_token) as client:
+        height = await client.api.blob.Submit(blobs, default_gas_price)
+
+    async with Client(auth_token) as client:
+        result = await client.get_blobs(height, 0x100500, 0x100501)
+        assert len(result) == 3
+        assert tuple(sorted(blob.data for blob in result)) == (b'Hello, Alesh!', b'Hello, Celestia!', b'Hello, Word!')
+
+    async with Client(auth_token) as client:
+        result = await client.api.blob.GetProof(height, Namespace(0x100500), result[0].commitment)
+        assert result
+
+
+@pytest.mark.asyncio
+async def test_get_blob_empty(auth_token):
+    assert auth_token
+    async with Client(auth_token) as client:
+        blob = await client.get_blob(1, 0x100500, b'XXX')
+        assert blob is None
+    async with Client(auth_token) as client:
+        blobs = await client.get_blobs(1, 0x100500)
+        assert isinstance(blobs, t.Iterable) and len(blobs) == 0
+
+
+@pytest.mark.asyncio
+async def test_other(auth_token):
+    assert auth_token
+    async with Client(auth_token) as client:
+        result = await client.api.p2p.Info()
+        assert result

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "setuptools_scm"]
+requires = ["setuptools", "setuptools-scm", "setuptools-rust"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -12,11 +12,16 @@ dynamic = ["version", "dependencies", "optional-dependencies"]
 
 [tool.setuptools.packages.find]
 include = ["celestia*"]
-namespaces = true
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
 optional-dependencies.dev = { file = ["tests/requirements.txt"] }
+
+[[tool.setuptools-rust.ext-modules]]
+target = "celestia._types"
+path = "Cargo.toml"
+binding = "PyO3"
+debug = false
 
 [tool.setuptools_scm]
 

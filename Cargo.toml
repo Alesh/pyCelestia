@@ -1,0 +1,13 @@
+[package]
+name = "_types"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "_types"
+crate-type = ["cdylib"]
+path = "rust/lib.rs"
+
+[dependencies]
+pyo3 = "0.22.0"
+celestia-types = "0.2.0"
