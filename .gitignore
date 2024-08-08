@@ -71,3 +71,6 @@ docs/_build/
 
 # setuptools-rust
 target/
+
+
+celestia/__version__.py

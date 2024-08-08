@@ -7,7 +7,7 @@ from ._types import make_commitment  # noqa
 
 class Base64(bytes):
 
-    def __new__(cls, value: bytes | str) -> bytes | t.Self:
+    def __new__(cls, value: bytes | str) -> t.Union[bytes, 'Base64']:
         value = b64decode(value) if isinstance(value, str) else value
         return super().__new__(cls, value)
 
@@ -19,7 +19,7 @@ class Namespace(Base64):
     """ Celestia commitment
     """
 
-    def __new__(cls, value: int | bytes | str) -> bytes | t.Self:
+    def __new__(cls, value: int | bytes | str) -> t.Union[bytes, 'Namespace']:
         value = bytes.fromhex('{:058x}'.format(value)) if isinstance(value, int) else value
         return super().__new__(cls, value)
 

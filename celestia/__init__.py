@@ -4,6 +4,11 @@ from contextlib import AbstractAsyncContextManager
 from . import rpc
 from .models import Balance, BlobSubmitResult, Namespace, Blob, Commitment, Base64
 
+try:
+    from .__version__ import version as __version__
+except ImportError:
+    pass
+
 
 class Client(AbstractAsyncContextManager):
     """ Python client for working with the Celestia DA network.
@@ -13,7 +18,7 @@ class Client(AbstractAsyncContextManager):
         self._client_factory = lambda: rpc.Client(auth_token, **httpx_opts)
         self.__api = self._rpc_client = None
 
-    async def __aenter__(self) -> t.Self:
+    async def __aenter__(self) -> 'Client':
         self._rpc_client = self._client_factory()
         self.__api = await self._rpc_client.__aenter__()
         return self
@@ -54,7 +59,7 @@ class Client(AbstractAsyncContextManager):
         return BlobSubmitResult(height, blob.commitment)
 
     async def get_blob(self, height: int, namespace: Namespace | bytes | str | int,
-                       commitment: Commitment | bytes | str ) -> Blob | None:
+                       commitment: Commitment | bytes | str) -> Blob | None:
         """ Retrieves the blob by commitment under the given namespace and height. """
         namespace = Namespace(namespace)
         commitment = Commitment(commitment)

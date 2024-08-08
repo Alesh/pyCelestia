@@ -6,7 +6,7 @@ import pytest_asyncio
 
 from celestia import Client, rpc
 from celestia.models import Balance, Blob, Namespace
-from celestia.utils import show_token, stop_node, start_node, first_container_id
+from celestia.utils.scripts import show_token, stop_node, start_node, first_container_id
 
 
 @pytest.fixture(scope='session')
