@@ -68,7 +68,9 @@ class Client:
                 params = resp.json()
                 assert params.pop('jsonrpc') == '2.0'
             except Exception as exc:
-                raise Error(500, str(exc))
+                code = 500 if resp.status_code < 400 else resp.status_code
+                msg = str(exc) if resp.status_code < 400 else f'{resp.status_code} {resp.reason_phrase}'
+                raise Error(code, msg)
             if resp.status_code >= 400 or 'error' in params:
                 if 'error' in params:
                     rpc_error = JSONRPC20Error(**params['error'])

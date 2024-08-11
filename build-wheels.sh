@@ -17,6 +17,7 @@ for whl in /io/dist/*{310,311,312}*.whl; do
     auditwheel repair "$whl" -w /io/dist/
 done
 
+# cleanup
 for whl in /io/dist/*{310,311,312}-linux_x86_64.whl; do
   rm "$whl"
 done

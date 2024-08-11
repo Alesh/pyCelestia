@@ -5,12 +5,13 @@ import pytest
 import pytest_asyncio
 
 from celestia import Client, rpc
+from celestia.errors import WrongBlockHeight, InsufficientFee
 from celestia.models import Balance, Blob, Namespace
 from celestia.utils.scripts import show_token, stop_node, start_node, first_container_id
 
 
 @pytest.fixture(scope='session')
-def container_id():
+def dev_net():
     if not first_container_id():
         stop_node()
         start_node()
@@ -21,8 +22,8 @@ def container_id():
 
 
 @pytest_asyncio.fixture()
-async def auth_token(container_id):
-    assert container_id
+async def auth_token(dev_net):
+    assert dev_net
     cnt = 5
     auth_token = show_token()
     while cnt:
@@ -56,6 +57,8 @@ async def test_client(auth_token):
     assert address and len(address) == 47 and address.startswith('celestia')
     balance = await client.account_balance()
     assert balance.value
+    loading, last_height = await client.get_local_load()
+    assert loading and last_height > 0
 
 
 @pytest.mark.asyncio
@@ -66,6 +69,7 @@ async def test_cm_client(auth_token):
         assert address and len(address) == 47 and address.startswith('celestia')
         balance = await client.account_balance()
         assert balance.value
+        assert (await client.account_balance(address)) == balance
 
 
 @pytest.mark.asyncio
@@ -129,3 +133,29 @@ async def test_other(auth_token):
     async with Client(auth_token) as client:
         result = await client.api.p2p.Info()
         assert result
+
+
+@pytest.mark.asyncio
+async def test_fail_cases(auth_token):
+    with pytest.raises(ValueError):
+        async with Client(auth_token) as client:
+            blob = await client.account_balance('XXX')
+            assert blob is None
+
+    with pytest.raises(WrongBlockHeight):
+        async with Client(auth_token) as client:
+            blob = await client.get_blob(0, 0x100500, b'XXX')
+            assert blob is None
+    with pytest.raises(WrongBlockHeight):
+        async with Client(auth_token) as client:
+            blob = await client.get_blob(100500, 0x100500, b'XXX')
+            assert blob is None
+
+    with pytest.raises(WrongBlockHeight):
+        async with Client(auth_token) as client:
+            blobs = await client.get_blobs(100500, 0x100500)
+            assert isinstance(blobs, t.Iterable) and len(blobs) == 0
+
+    with pytest.raises(InsufficientFee):
+        async with Client(auth_token) as client:
+            await client.submit_blob(0x100500, b'Hello, Celestia!', gas_price=0)
