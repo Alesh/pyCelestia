@@ -30,3 +30,13 @@ def test_big_Blob():
     data = b'0123456789ABCDEF' * 0xFFFF
     blob = Blob(0x01020304050607080910, data)
     assert isinstance(blob.commitment, bytes)
+
+
+def test_namespase():
+    byte_namespace = Namespace(b'H\xdd4\xedr')
+    string_namespace = Namespace('SN007XL=')
+    int_namespace = Namespace(0x100500)
+
+    assert len(byte_namespace) == 29
+    assert len(string_namespace) == 29
+    assert len(int_namespace) == 29

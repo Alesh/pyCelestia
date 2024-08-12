@@ -21,6 +21,8 @@ class Namespace(Base64):
 
     def __new__(cls, value: int | bytes | str) -> t.Union[bytes, 'Namespace']:
         value = bytes.fromhex('{:058x}'.format(value)) if isinstance(value, int) else value
+        value = b64decode(value) if isinstance(value, str) else value
+        value = value.rjust(29, b'\x00')
         return super().__new__(cls, value)
 
 
