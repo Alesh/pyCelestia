@@ -35,8 +35,9 @@ def test_big_Blob():
 def test_namespase():
     byte_namespace = Namespace(b'H\xdd4\xedr')
     string_namespace = Namespace('SN007XL=')
-    int_namespace = Namespace(0x100500)
+    int_namespace = Namespace(0x48DD34ED72)
 
     assert len(byte_namespace) == 29
     assert len(string_namespace) == 29
     assert len(int_namespace) == 29
+    assert byte_namespace == string_namespace == int_namespace
