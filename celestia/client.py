@@ -61,8 +61,9 @@ class Client(AbstractAsyncContextManager):
     async def submit_blob(self, namespace: Namespace, blob: Base64, gas_price: float = -1.0) -> BlobSubmitResult:
         """ Sends a Blob and reports the block height at which it was included on and its commitment.
         """
+        namespace = m.Namespace(namespace)
+        blob = Blob(namespace, blob)
         try:
-            blob = Blob(namespace, blob)
             if self.api is None:
                 async with self._client_factory() as api:
                     height = await api.blob.Submit([blob], gas_price)
