@@ -50,19 +50,6 @@ class Proof:
         self.end = end
         self.is_max_namespace_ignored = is_max_namespace_ignored
 
-    @staticmethod
-    def deserializer(result) -> list['Proof']:
-        """ Deserializes a list of proof entries from a given result.
-
-        Args:
-            result (list[dict]): The serialized response data.
-
-        Returns:
-            list[Proof]: A list of deserialized Proof objects.
-        """
-        if result is not None:
-            return [Proof(**kwargs) for kwargs in result]
-
 
 @dataclass
 class RowProofEntry:

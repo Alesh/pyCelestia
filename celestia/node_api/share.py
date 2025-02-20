@@ -1,6 +1,6 @@
 from typing import Callable
 
-from celestia.types import Namespace, Base64
+from celestia.types import Namespace
 from celestia.types.header import ExtendedHeader
 from celestia.types.share import ExtendedDataSquare, NamespaceData, SampleCoords, GetRangeResult
 from ._RPC import Wrapper
@@ -35,12 +35,14 @@ class ShareClient(Wrapper):
             deserializer (Callable | None): Custom deserializer. Defaults to None.
 
         Returns:
-            list[NamespaceData]: A list of NamespaceData objects.
+            list[NamespaceData]: A list of NamespaceData objects or [] if not found.
         """
 
         def deserializer_(result):
             if result is not None:
                 return [NamespaceData(**data) for data in result]
+            else:
+                return []
 
         deserializer = deserializer if deserializer is not None else deserializer_
 
@@ -64,7 +66,7 @@ class ShareClient(Wrapper):
 
         return await self._rpc.call("share.GetRange", (height, start, end), deserializer)
 
-    async def get_samples(self, header: ExtendedHeader, indices: list[SampleCoords]) -> list[Base64]:
+    async def get_samples(self, header: ExtendedHeader, indices: list[SampleCoords]) -> list[str]:
         """ Gets sample for given indices.
 
         Args:
@@ -72,11 +74,11 @@ class ShareClient(Wrapper):
             indices (list[SampleCoords]): A list of sample coordinates.
 
         Returns:
-            list[Base64]: A list of retrieved samples.
+            list[str]: A list of retrieved samples or [] if not found.
         """
-        return await self._rpc.call("share.GetSamples", (header, indices,))
+        return await self._rpc.call("share.GetSamples", (header, indices,), lambda result: result if result is not None else [])
 
-    async def get_share(self, height: int, row: int, col: int) -> Base64:
+    async def get_share(self, height: int, row: int, col: int) -> str:
         """ Gets a Share by coordinates in EDS.
 
         Args:
@@ -85,7 +87,7 @@ class ShareClient(Wrapper):
             col (int): The column index.
 
         Returns:
-            Base64: The retrieved share.
+            str: The retrieved share.
         """
         return await self._rpc.call("share.GetShare", (height, row, col,))
 

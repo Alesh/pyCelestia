@@ -63,12 +63,14 @@ class BlobClient(Wrapper):
             deserializer (Callable | None): Custom deserializer. Defaults to None.
 
         Returns:
-            list[Blob] | None: The list, of blobs or None if not found.
+            list[Blob]: The list of blobs or [] if not found.
         """
 
-        def deserializer_(result):
+        def deserializer_(result) -> list['Blob']:
             if result is not None:
                 return [Blob(**kwargs) for kwargs in result]
+            else:
+                return []
 
         deserializer = deserializer if deserializer is not None else deserializer_
         namespaces = tuple(Namespace(namespace) for namespace in (namespace, *namespaces))
@@ -119,7 +121,6 @@ class BlobClient(Wrapper):
         return await self._rpc.call("blob.GetCommitmentProof", (height, Namespace(namespace), Commitment(commitment)),
                                     deserializer)
 
-    @handle_blob_error
     async def get_proof(self, height: int, namespace: Namespace, commitment: Commitment,
                         deserializer: Callable | None = None) -> list[Proof] | None:
         """ Retrieves proofs in the given namespaces at the given height by commitment.
@@ -128,16 +129,25 @@ class BlobClient(Wrapper):
             height (int): The block height.
             namespace (Namespace): The namespace of the proof.
             commitment (Commitment): The commitment to generate the proof for.
-            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.blob.Proof.deserializer`.
+            deserializer (Callable | None): Custom deserializer. Defaults to None.
 
         Returns:
-            list[Proof] | None: A list of proofs, or None if not found.
+            list[Proof]: A list of proofs or [] if not found.
         """
 
-        deserializer = deserializer if deserializer is not None else Proof.deserializer
+        def deserializer_(result) -> list['Proof']:
+            if result is not None:
+                return [Proof(**kwargs) for kwargs in result]
 
-        return await self._rpc.call("blob.GetProof", (height, Namespace(namespace), Commitment(commitment)),
-                                    deserializer)
+        deserializer = deserializer if deserializer is not None else deserializer_
+        try:
+            return await self._rpc.call("blob.GetProof", (height, Namespace(namespace), Commitment(commitment)),
+                                        deserializer)
+        except ConnectionError as e:
+            if 'blob: not found' in e.args[1].body['message'].lower():
+                return []
+            raise
+
 
     async def included(self, height: int, namespace: Namespace, proof: Proof, commitment: Commitment) -> bool:
         """ Checks whether a blob's given commitment(Merkle subtree root) is

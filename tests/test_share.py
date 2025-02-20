@@ -17,6 +17,8 @@ async def test_share(node_provider):
         )
 
         eds = await api.share.get_eds(result.height)
+        empty_gnd = await api.share.get_namespace_data(result.height, b'abcd')
+        assert empty_gnd == []
         gnd = await api.share.get_namespace_data(result.height, b'abc')
         range_data = await api.share.get_range(result.height, 1, 2)
         samples = await api.share.get_samples((await api.header.get_by_height(result.height)),

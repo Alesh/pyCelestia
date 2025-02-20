@@ -12,7 +12,7 @@ async def test_send_blobs(node_provider):
     client = Client(port=bridge.port['26658/tcp'])
     async with client.connect(auth_token) as api:
         blobs = await api.blob.get_all(1, b'abc')
-        assert blobs is None
+        assert blobs == []
 
         result = await api.blob.submit(
             Blob(b'abc', b'0123456789'),
@@ -43,10 +43,10 @@ async def test_send_blobs(node_provider):
         assert blob.data == b'QWERTYUIOP'
 
         proof = await api.blob.get_proof(1, b'abc', b'ASDFGHJKL')
-        assert proof is None
+        assert proof == []
 
         proof = await api.blob.get_proof(result.height, b'abc', result.commitments[1])
-        assert proof is not None
+        assert proof
 
         included = await api.blob.included(result.height, b'xyz', proof, result.commitments[1])
         assert not included
