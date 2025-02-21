@@ -25,7 +25,7 @@ class HeaderClient(Wrapper):
     """ Client for interacting with Celestia's Header API."""
 
     @handle_header_error
-    async def get_by_hash(self, header_hash: str, deserializer: Callable | None = None) -> ExtendedHeader | None:
+    async def get_by_hash(self, header_hash: str, *, deserializer: Callable | None = None) -> ExtendedHeader | None:
         """ Returns the header of the given hash from the node's header store.
 
         Args:
@@ -40,7 +40,7 @@ class HeaderClient(Wrapper):
 
         return await self._rpc.call("header.GetByHash", (header_hash,), deserializer)
 
-    async def get_by_height(self, height: int, deserializer: Callable | None = None) -> ExtendedHeader:
+    async def get_by_height(self, height: int, *, deserializer: Callable | None = None) -> ExtendedHeader:
         """ Returns the ExtendedHeader at the given height if it is currently available.
 
         Args:
@@ -55,7 +55,7 @@ class HeaderClient(Wrapper):
 
         return await self._rpc.call("header.GetByHeight", (int(height),), deserializer)
 
-    async def get_range_by_height(self, range_from: ExtendedHeader, range_to: int,
+    async def get_range_by_height(self, range_from: ExtendedHeader, range_to: int, *,
                                   deserializer: Callable | None = None) -> list[ExtendedHeader]:
         """ Returns the given range (from:to) of ExtendedHeaders from the node's header store
         and verifies that the returned headers are adjacent to each other.
@@ -77,7 +77,7 @@ class HeaderClient(Wrapper):
 
         return await self._rpc.call("header.GetRangeByHeight", (range_from, int(range_to)), deserializer)
 
-    async def local_head(self, deserializer: Callable | None = None) -> ExtendedHeader:
+    async def local_head(self, *, deserializer: Callable | None = None) -> ExtendedHeader:
         """ Returns the ExtendedHeader of the chain head.
 
         Args:
@@ -91,7 +91,7 @@ class HeaderClient(Wrapper):
 
         return await self._rpc.call("header.LocalHead", (), deserializer)
 
-    async def network_head(self, deserializer: Callable | None = None) -> ExtendedHeader:
+    async def network_head(self, *, deserializer: Callable | None = None) -> ExtendedHeader:
         """ Provides the Syncer's view of the current network head.
 
         Args:
@@ -105,7 +105,7 @@ class HeaderClient(Wrapper):
 
         return await self._rpc.call("header.NetworkHead", (), deserializer)
 
-    async def subscribe(self, deserializer: Callable | None = None) -> AsyncIterator[ExtendedHeader | None]:
+    async def subscribe(self, *, deserializer: Callable | None = None) -> AsyncIterator[ExtendedHeader | None]:
         """ Subscribes to recent ExtendedHeaders from the network.
 
         Args:
@@ -121,7 +121,7 @@ class HeaderClient(Wrapper):
             if subs_header_result is not None:
                 yield subs_header_result
 
-    async def sync_state(self, deserializer: Callable | None = None) -> State:
+    async def sync_state(self, *, deserializer: Callable | None = None) -> State:
         """ Returns the current state of the header Syncer.
 
         Args:
@@ -143,7 +143,7 @@ class HeaderClient(Wrapper):
         """
         return await self._rpc.call("header.SyncWait")
 
-    async def wait_for_height(self, height: int, deserializer: Callable | None = None) -> ExtendedHeader:
+    async def wait_for_height(self, height: int, *, deserializer: Callable | None = None) -> ExtendedHeader:
         """ Blocks until the header at the given height has been processed
         by the store or context deadline is exceeded.
 

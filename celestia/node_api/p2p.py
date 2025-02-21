@@ -7,7 +7,7 @@ from ._RPC import Wrapper
 class P2PClient(Wrapper):
     """ Client for interacting with Celestia's P2P API."""
 
-    async def bandwidth_for_peer(self, peer_id: str, deserializer: Callable | None = None) -> BandwidthStats:
+    async def bandwidth_for_peer(self, peer_id: str, *, deserializer: Callable | None = None) -> BandwidthStats:
         """ Returns a Stats struct with bandwidth metrics associated with the given peer.ID.
         The metrics returned include all traffic sent / received for the peer, regardless of protocol.
 
@@ -23,7 +23,7 @@ class P2PClient(Wrapper):
 
         return await self._rpc.call("p2p.BandwidthForPeer", (peer_id,), deserializer)
 
-    async def bandwidth_for_protocol(self, protocol_id: str, deserializer: Callable | None = None) -> BandwidthStats:
+    async def bandwidth_for_protocol(self, protocol_id: str, *, deserializer: Callable | None = None) -> BandwidthStats:
         """ Returns a Stats struct with bandwidth metrics associated with the given protocol.ID.
 
         Args:
@@ -38,7 +38,7 @@ class P2PClient(Wrapper):
 
         return await self._rpc.call("p2p.BandwidthForProtocol", (protocol_id,), deserializer)
 
-    async def bandwidth_stats(self, deserializer: Callable | None = None) -> BandwidthStats:
+    async def bandwidth_stats(self, *, deserializer: Callable | None = None) -> BandwidthStats:
         """ Returns a Stats struct with bandwidth metrics for all data sent/received by the local peer,
         regardless of protocol or remote peer IDs.
 
@@ -88,7 +88,7 @@ class P2PClient(Wrapper):
         """
         return await self._rpc.call("p2p.Connectedness", (peer_id,))
 
-    async def info(self, deserializer: Callable | None = None) -> AddrInfo:
+    async def info(self, *, deserializer: Callable | None = None) -> AddrInfo:
         """ Returns address information about the host.
 
         Args:
@@ -130,7 +130,7 @@ class P2PClient(Wrapper):
         """
         return await self._rpc.call("p2p.NATStatus")
 
-    async def peer_info(self, peer_id: str, deserializer: Callable | None = None) -> AddrInfo:
+    async def peer_info(self, peer_id: str, *, deserializer: Callable | None = None) -> AddrInfo:
         """ Returns a small slice of information Peerstore has on the given peer.
 
         Args:
@@ -182,7 +182,7 @@ class P2PClient(Wrapper):
         """
         return await self._rpc.call("p2p.PubSubTopics")
 
-    async def resource_state(self, deserializer: Callable | None = None) -> ResourceManagerStat:
+    async def resource_state(self, *, deserializer: Callable | None = None) -> ResourceManagerStat:
         """ Returns the state of the resource manager.
 
         Args:

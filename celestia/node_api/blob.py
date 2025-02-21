@@ -28,7 +28,7 @@ class BlobClient(Wrapper):
     """ Client for interacting with Celestia's Blob API."""
 
     @handle_blob_error
-    async def get(self, height: int, namespace: Namespace, commitment: Commitment,
+    async def get(self, height: int, namespace: Namespace, commitment: Commitment, *,
                   deserializer: Callable | None = None) -> Blob | None:
         """ Retrieves the blob by commitment under the given namespace and height.
 
@@ -102,7 +102,7 @@ class BlobClient(Wrapper):
         return await self._rpc.call("blob.Submit", (blobs, options), deserializer)
 
     @handle_blob_error
-    async def get_commitment_proof(self, height: int, namespace: Namespace, commitment: Commitment,
+    async def get_commitment_proof(self, height: int, namespace: Namespace, commitment: Commitment, *,
                                    deserializer: Callable | None = None) -> CommitmentProof | None:
         """ Generates a commitment proof for a share commitment.
 
@@ -121,7 +121,7 @@ class BlobClient(Wrapper):
         return await self._rpc.call("blob.GetCommitmentProof", (height, Namespace(namespace), Commitment(commitment)),
                                     deserializer)
 
-    async def get_proof(self, height: int, namespace: Namespace, commitment: Commitment,
+    async def get_proof(self, height: int, namespace: Namespace, commitment: Commitment, *,
                         deserializer: Callable | None = None) -> list[Proof] | None:
         """ Retrieves proofs in the given namespaces at the given height by commitment.
 
@@ -148,7 +148,6 @@ class BlobClient(Wrapper):
                 return []
             raise
 
-
     async def included(self, height: int, namespace: Namespace, proof: Proof, commitment: Commitment) -> bool:
         """ Checks whether a blob's given commitment(Merkle subtree root) is
         included at given height and under the namespace.
@@ -165,7 +164,7 @@ class BlobClient(Wrapper):
 
         return await self._rpc.call("blob.Included", (height, Namespace(namespace), proof, Commitment(commitment)))
 
-    async def subscribe(self, namespace: Namespace,
+    async def subscribe(self, namespace: Namespace, *,
                         deserializer: Callable | None = None) -> AsyncIterator[SubscriptionBlobResult | None]:
         """ Subscribe to published blobs from the given namespace as they are included.
 

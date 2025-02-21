@@ -19,7 +19,7 @@ class StateClient(Wrapper):
         """
         return await self._rpc.call("state.AccountAddress")
 
-    async def balance(self, deserializer: Callable | None = None) -> Balance:
+    async def balance(self, *, deserializer: Callable | None = None) -> Balance:
         """ Retrieves the Celestia coin balance for the node's account/signer
         and verifies it against the corresponding block's AppHash.
 
@@ -34,7 +34,7 @@ class StateClient(Wrapper):
 
         return await self._rpc.call("state.Balance", (), deserializer)
 
-    async def balance_for_address(self, address: str, deserializer: Callable | None = None) -> Balance:
+    async def balance_for_address(self, address: str, *, deserializer: Callable | None = None) -> Balance:
         """ Retrieves the Celestia coin balance for the given address and verifies the returned balance
         against the corresponding block's AppHash. NOTE: the balance returned is the balance reported
         by the block right before the node's current head (head-1). This is due to the fact that for
@@ -52,7 +52,7 @@ class StateClient(Wrapper):
 
         return await self._rpc.call("state.BalanceForAddress", (address,), deserializer)
 
-    async def begin_redelegate(self, src_val_addr: str, dst_val_addr: str, amount: int,
+    async def begin_redelegate(self, src_val_addr: str, dst_val_addr: str, amount: int, *,
                                deserializer: Callable | None = None, **config: Unpack[TxConfig]) -> TXResponse:
         """ Sends a user's delegated tokens to a new validator for redelegation.
 
@@ -72,7 +72,7 @@ class StateClient(Wrapper):
         return await self._rpc.call("state.BeginRedelegate", (src_val_addr, dst_val_addr, str(amount), config),
                                     deserializer)
 
-    async def cancel_unbonding_delegation(self, val_addr: str, amount: int, height: int,
+    async def cancel_unbonding_delegation(self, val_addr: str, amount: int, height: int, *,
                                           deserializer: Callable | None = None,
                                           **config: Unpack[TxConfig]) -> TXResponse:
         """ Cancels a user's pending undelegation from a validator.
@@ -93,7 +93,7 @@ class StateClient(Wrapper):
         return await self._rpc.call("state.CancelUnbondingDelegation", (val_addr, str(amount), str(height), config),
                                     deserializer)
 
-    async def delegate(self, del_addr: str, amount: int, deserializer: Callable | None = None,
+    async def delegate(self, del_addr: str, amount: int, *, deserializer: Callable | None = None,
                        **config: Unpack[TxConfig]) -> TXResponse:
         """ Sends a user's liquid tokens to a validator for delegation.
 
@@ -111,7 +111,7 @@ class StateClient(Wrapper):
 
         return await self._rpc.call("state.Delegate", (del_addr, str(amount), config), deserializer)
 
-    async def grant_fee(self, grantee: str, amount: int, deserializer: Callable | None = None,
+    async def grant_fee(self, grantee: str, amount: int, *, deserializer: Callable | None = None,
                         **config: Unpack[TxConfig]) -> TXResponse:
         """ Grants a fee allowance to the specified grantee.
 
@@ -129,7 +129,7 @@ class StateClient(Wrapper):
 
         return await self._rpc.call("state.GrantFee", (grantee, str(amount), config), deserializer)
 
-    async def query_delegation(self, val_addr: str, deserializer: Callable | None = None) -> QueryDelegationResponse:
+    async def query_delegation(self, val_addr: str, *, deserializer: Callable | None = None) -> QueryDelegationResponse:
         """ Retrieves the delegation information between a delegator and a validator.
 
         Args:
@@ -144,7 +144,7 @@ class StateClient(Wrapper):
 
         return await self._rpc.call("state.QueryDelegation", (val_addr,), deserializer)
 
-    async def query_redelegations(self, src_val_addr: str, dst_val_addr: str,
+    async def query_redelegations(self, src_val_addr: str, dst_val_addr: str, *,
                                   deserializer: Callable | None = None) -> QueryRedelegationResponse:
         """ Retrieves the status of the redelegations between a delegator and a validator.
 
@@ -161,7 +161,7 @@ class StateClient(Wrapper):
 
         return await self._rpc.call("state.QueryRedelegations", (src_val_addr, dst_val_addr), deserializer)
 
-    async def query_unbonding(self, val_addr: str,
+    async def query_unbonding(self, val_addr: str, *,
                               deserializer: Callable | None = None) -> QueryUnbondingDelegationResponse:
         """ Retrieves the unbonding status between a delegator and a validator.
 
@@ -177,7 +177,7 @@ class StateClient(Wrapper):
 
         return await self._rpc.call("state.QueryUnbonding", (val_addr,), deserializer)
 
-    async def revoke_grant_fee(self, grantee: str, deserializer: Callable | None = None,
+    async def revoke_grant_fee(self, grantee: str, *, deserializer: Callable | None = None,
                                **config: Unpack[TxConfig]) -> TXResponse:
         """ Revokes a previously granted fee allowance.
 
@@ -208,7 +208,7 @@ class StateClient(Wrapper):
         blobs = tuple(types.normalize_blob(blob) if blob.commitment is None else blob for blob in (blob, *blobs))
         return await self._rpc.call("state.SubmitPayForBlob", (blobs, config))
 
-    async def transfer(self, to: str, amount: int, deserializer: Callable | None = None,
+    async def transfer(self, to: str, amount: int, *, deserializer: Callable | None = None,
                        **config: Unpack[TxConfig]) -> TXResponse:
         """ Sends the given amount of coins from default wallet of the node to the given account address.
 
@@ -226,7 +226,7 @@ class StateClient(Wrapper):
 
         return await self._rpc.call("state.Transfer", (to, str(amount), config), deserializer)
 
-    async def undelegate(self, del_addr: str, amount: int, deserializer: Callable | None = None,
+    async def undelegate(self, del_addr: str, amount: int, *, deserializer: Callable | None = None,
                          **config: Unpack[TxConfig]) -> TXResponse:
         """ Undelegates a user's delegated tokens, unbonding them from the current validator.
 

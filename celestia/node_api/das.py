@@ -7,7 +7,7 @@ from ._RPC import Wrapper
 class DasClient(Wrapper):
     """ Client for interacting with Celestia's Das API."""
 
-    async def sampling_stats(self, deserializer: Callable | None = None) -> SamplingStats:
+    async def sampling_stats(self, *, deserializer: Callable | None = None) -> SamplingStats:
         """ Returns the current statistics over the DA sampling process.
 
         Args:

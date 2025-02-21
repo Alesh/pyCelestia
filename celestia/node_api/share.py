@@ -9,7 +9,7 @@ from ._RPC import Wrapper
 class ShareClient(Wrapper):
     """ Client for interacting with Celestia's Share API."""
 
-    async def get_eds(self, height: int, deserializer: Callable | None = None) -> ExtendedDataSquare:
+    async def get_eds(self, height: int, *, deserializer: Callable | None = None) -> ExtendedDataSquare:
         """ Gets the full EDS identified by the given extended header.
 
         Args:
@@ -24,7 +24,7 @@ class ShareClient(Wrapper):
 
         return await self._rpc.call("share.GetEDS", (height,), deserializer)
 
-    async def get_namespace_data(self, height: int, namespace: Namespace,
+    async def get_namespace_data(self, height: int, namespace: Namespace, *,
                                  deserializer: Callable | None = None) -> list[NamespaceData]:
         """ Gets all shares from an EDS within the given namespace. Shares are returned
         in a row-by-row order if the namespace spans multiple rows.
@@ -48,7 +48,7 @@ class ShareClient(Wrapper):
 
         return await self._rpc.call("share.GetNamespaceData", (height, Namespace(namespace)), deserializer)
 
-    async def get_range(self, height: int, start: int, end: int,
+    async def get_range(self, height: int, start: int, end: int, *,
                         deserializer: Callable | None = None) -> GetRangeResult:
         """ Gets a list of shares and their corresponding proof.
 
@@ -76,7 +76,8 @@ class ShareClient(Wrapper):
         Returns:
             list[str]: A list of retrieved samples or [] if not found.
         """
-        return await self._rpc.call("share.GetSamples", (header, indices,), lambda result: result if result is not None else [])
+        return await self._rpc.call("share.GetSamples", (header, indices,),
+                                    lambda result: result if result is not None else [])
 
     async def get_share(self, height: int, row: int, col: int) -> str:
         """ Gets a Share by coordinates in EDS.
