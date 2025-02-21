@@ -109,8 +109,9 @@ async def test_undelegate(node_provider, validator_addresses):
         if 'too many unbonding delegation entries for' in e.args[0]:
             print(""" The unbound pool is full. To test the functions undelegate, query_unbonding,
                   cancel_unbonding_delegation the network needs to be recreated
-                  """
-                  )
+                  """)
+        else:
+            raise e
 
 
 @pytest.mark.asyncio
@@ -137,14 +138,14 @@ async def test_delegating(node_provider, validator_addresses):
             assert (await api.state.query_delegation(
                 validator1)).delegation_response.balance.amount == amount_validator1_before_delegation + 10000
 
-            await api.state.begin_redelegate(validator1, validator2, 10000)
+            await api.state.begin_redelegate(validator1, validator2, 9999)
+            await asyncio.sleep(5)
             assert (await api.state.query_delegation(
-                validator1)).delegation_response.balance.amount == amount_validator1_before_delegation
+                validator1)).delegation_response.balance.amount == amount_validator1_before_delegation + 1
             assert (await api.state.query_delegation(
-                validator2)).delegation_response.balance.amount == amount_validator2_before_delegation + 10000
-
+                validator2)).delegation_response.balance.amount == amount_validator2_before_delegation + 9999
             querry = await api.state.query_redelegations(validator1, validator2)
-            assert querry.redelegation_responses[0].entries[-1].balance == 10000
+            assert querry.redelegation_responses[0].entries[-1].balance == 9999
 
             with pytest.raises(ValueError):
                 await api.state.begin_redelegate(validator1, validator1, 3000)
@@ -152,10 +153,10 @@ async def test_delegating(node_provider, validator_addresses):
                 await api.state.query_redelegations(validator1, validator1)
             with pytest.raises(ValueError):
                 await api.state.query_redelegations(validator2, validator1)
-
     except ValueError as e:
         if 'too many redelegation entries for (delegator, src-validator, dst-validator)' in e.args[0]:
             print(""" The redelegation entries is full. To test the functions query_delegation, delegate,
                   begin_redelegate the network needs to be recreated
-                  """
-                  )
+                  """)
+        else:
+            raise e

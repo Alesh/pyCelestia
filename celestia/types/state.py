@@ -170,7 +170,7 @@ class Redelegation:
         self.delegator_address = delegator_address
         self.validator_src_address = validator_src_address
         self.validator_dst_address = validator_dst_address
-        self.entries = tuple(RedelegationEntry(**entry) for entry in entries)
+        self.entries = tuple(RedelegationEntry(**entry) for entry in entries) if entries is not None else []
 
 
 @dataclass
