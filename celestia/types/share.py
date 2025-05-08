@@ -45,6 +45,26 @@ class ShareProof:
 
 
 @dataclass
+class Share:
+    """ ToDo: need documented
+    """
+    data: Base64
+    is_parity: bool = False
+
+
+@dataclass
+class RawSample:
+    """ ToDo: need documented
+    """
+    share: Share
+    proof: Proof
+
+    def __init__(self, share: Share | dict, proof: Proof | dict):
+        self.share = share if isinstance(share, Share) else Share(**share)
+        self.proof = proof if isinstance(proof, Proof) else Proof(**proof)
+
+
+@dataclass
 class GetRangeResult:
     """
     A class representing the result of a range retrieval, including shares and proof.

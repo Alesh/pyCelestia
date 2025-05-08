@@ -2,7 +2,7 @@ from typing import Callable
 
 from celestia.types import Namespace
 from celestia.types.header import ExtendedHeader
-from celestia.types.share import ExtendedDataSquare, NamespaceData, SampleCoords, GetRangeResult
+from celestia.types.share import ExtendedDataSquare, NamespaceData, SampleCoords, GetRangeResult, RawSample
 from celestia.node_api.rpc.abc import Wrapper
 
 
@@ -66,7 +66,8 @@ class ShareClient(Wrapper):
 
         return await self._rpc.call("share.GetRange", (height, start, end), deserializer)
 
-    async def get_samples(self, header: ExtendedHeader, indices: list[SampleCoords]) -> list[str]:
+    async def get_samples(self, header: ExtendedHeader, indices: list[SampleCoords], *,
+                          deserializer: Callable | None = None) -> list[str] | list[RawSample]:
         """ Gets sample for given indices.
 
         Args:
@@ -76,8 +77,18 @@ class ShareClient(Wrapper):
         Returns:
             list[str]: A list of retrieved samples or [] if not found.
         """
+
+        def default_deserializer(value: list[str | dict] | None):
+            if value is None:
+                return []
+            return [
+                RawSample(**item)  # is the structure in version > 0.20.4
+                if isinstance(item, dict)
+                else item for item in value
+            ]
+
         return await self._rpc.call("share.GetSamples", (header, indices,),
-                                    lambda result: result if result is not None else [])
+                                    deserializer=(deserializer or default_deserializer))
 
     async def get_share(self, height: int, row: int, col: int) -> str:
         """ Gets a Share by coordinates in EDS.

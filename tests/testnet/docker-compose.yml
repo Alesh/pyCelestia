@@ -5,6 +5,8 @@ services:
     platform: "linux/amd64"
     build:
       dockerfile: Dockerfile.validator
+      args:
+        CELESTIA_APP_VERSION: ${CELESTIA_APP_VERSION:-v3.4.2-mocha}
     environment:
       # provide amount of bridge nodes to provision (default: 2)
       - BRIDGE_COUNT=3
@@ -22,6 +24,8 @@ services:
     platform: "linux/amd64"
     build:
       dockerfile: Dockerfile.validator
+      args:
+        CELESTIA_APP_VERSION: ${CELESTIA_APP_VERSION:-v3.4.2-mocha}
     environment:
       - NODE_ID=1
     ports:
@@ -35,6 +39,8 @@ services:
     platform: "linux/amd64"
     build:
       dockerfile: Dockerfile.validator
+      args:
+        CELESTIA_APP_VERSION: ${CELESTIA_APP_VERSION:-v3.4.2-mocha}
     environment:
       - NODE_ID=2
     ports:
@@ -48,6 +54,8 @@ services:
     platform: "linux/amd64"
     build:
       dockerfile: Dockerfile.bridge
+      args:
+        CELESTIA_NODE_VERSION: ${CELESTIA_NODE_VERSION:-v0.21.9}
     environment:
       - NODE_ID=0
       - SKIP_AUTH=true
@@ -64,6 +72,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.bridge
+      args:
+        CELESTIA_NODE_VERSION: ${CELESTIA_NODE_VERSION:-v0.21.9}
     environment:
       - NODE_ID=1
     ports:
@@ -78,6 +88,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.bridge
+      args:
+        CELESTIA_NODE_VERSION: ${CELESTIA_NODE_VERSION:-v0.21.9}
     environment:
       - NODE_ID=2
     ports:
@@ -92,6 +104,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.bridge
+      args:
+        CELESTIA_NODE_VERSION: ${CELESTIA_NODE_VERSION:-v0.21.9}
     environment:
       - NODE_ID=0
       - NODE_TYPE=light

@@ -1,8 +1,10 @@
+import asyncio
+
 import pytest
 
 from celestia.node_api import Client
 from celestia.types.common_types import Blob
-from celestia.types.share import SampleCoords
+from celestia.types.share import SampleCoords, RawSample
 
 
 @pytest.mark.asyncio
@@ -24,5 +26,8 @@ async def test_share(node_provider):
         samples = await api.share.get_samples((await api.header.get_by_height(result.height)),
                                               [SampleCoords(row=0, col=1)])
         coords_data = await api.share.get_share(result.height, 0, 1)
-        assert coords_data == samples[0] == range_data.proof.data[0] == eds.data_square[1] == gnd[0].shares[0]
+        if samples and isinstance(samples[0], RawSample):
+            assert coords_data == samples[0].share.data == range_data.proof.data[0] == eds.data_square[1] == gnd[0].shares[0]
+        else:
+            assert coords_data == samples[0] == range_data.proof.data[0] == eds.data_square[1] == gnd[0].shares[0]
         await api.share.get_available(result.height)
