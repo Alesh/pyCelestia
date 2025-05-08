@@ -32,7 +32,16 @@ RPC_VALUE_ERRORS = [
     'too many unbonding delegation entries for (delegator, validator) tuple',
     'redelegation not found for delegator address',
     'too many redelegation entries for (delegator, src-validator, dst-validator)',
-    'datastore: key not found'
+    'datastore: key not found',
+    'reserved namespace',
+    'invalid namespace length',
+    'invalid data size',
+    'blob size mismatch',
+    'unsupported share version',
+    'zero blob size',
+    'no blobs',
+    'invalid blob signer',
+    'invalid namespace type',
 ]
 
 
