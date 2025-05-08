@@ -2,7 +2,7 @@ from typing import Callable
 
 from celestia.types import Namespace
 from celestia.types.header import ExtendedHeader
-from celestia.types.share import ExtendedDataSquare, NamespaceData, SampleCoords, GetRangeResult, RawSample
+from celestia.types.rawshare import ExtendedDataSquare, NamespaceData, SampleCoords, GetRangeResult, RawSample
 from celestia.node_api.rpc.abc import Wrapper
 
 

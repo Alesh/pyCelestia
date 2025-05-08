@@ -1,7 +1,7 @@
 import pytest
 from dataclasses import asdict
 
-from celestia.types import Blob
+from celestia.types.blob import Blob
 
 
 def test_create_blob():

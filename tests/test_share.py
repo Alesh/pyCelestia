@@ -3,8 +3,8 @@ import asyncio
 import pytest
 
 from celestia.node_api import Client
-from celestia.types.common_types import Blob
-from celestia.types.share import SampleCoords, RawSample
+from celestia.types.blob import Blob
+from celestia.types.rawshare import SampleCoords, RawSample
 
 
 @pytest.mark.asyncio

@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from celestia._celestia import types as ext  # noqa
 
-from celestia.types.common_types import Base64
+from celestia.types.common import Base64
 
 
 @dataclass

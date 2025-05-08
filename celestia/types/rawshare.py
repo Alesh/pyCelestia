@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from celestia.types.blob import RowProof, Proof
-from celestia.types.common_types import Base64, Namespace
+from celestia.types.common import Base64, Namespace
 
 
 @dataclass
@@ -45,8 +45,8 @@ class ShareProof:
 
 
 @dataclass
-class Share:
-    """ ToDo: need documented
+class RawShare:
+    """ A class representing a raw share
     """
     data: Base64
     is_parity: bool = False
@@ -54,13 +54,13 @@ class Share:
 
 @dataclass
 class RawSample:
-    """ ToDo: need documented
+    """ A class representing a raw sample.
     """
-    share: Share
+    share: RawShare
     proof: Proof
 
-    def __init__(self, share: Share | dict, proof: Proof | dict):
-        self.share = share if isinstance(share, Share) else Share(**share)
+    def __init__(self, share: RawShare | dict, proof: Proof | dict):
+        self.share = share if isinstance(share, RawShare) else RawShare(**share)
         self.proof = proof if isinstance(proof, Proof) else Proof(**proof)
 
 

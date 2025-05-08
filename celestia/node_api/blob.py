@@ -4,8 +4,8 @@ from typing import Callable
 
 from celestia._celestia import types  # noqa
 
-from celestia.types import Blob, Namespace, TxConfig, Commitment, Unpack
-from celestia.types.blob import SubmitBlobResult, Proof, CommitmentProof, SubscriptionBlobResult
+from celestia.types import Namespace, TxConfig, Commitment, Unpack
+from celestia.types.blob import Blob, SubmitBlobResult, SubscriptionBlobResult, Proof, CommitmentProof
 from celestia.node_api.rpc.abc import Wrapper
 
 

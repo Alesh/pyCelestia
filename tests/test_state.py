@@ -3,7 +3,7 @@ import asyncio
 import pytest
 
 from celestia.node_api import Client
-from celestia.node_api.blob import Blob
+from celestia.types.blob import Blob
 
 
 @pytest.mark.asyncio

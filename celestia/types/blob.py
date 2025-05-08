@@ -1,8 +1,57 @@
 from dataclasses import dataclass
-
+from typing import Optional
 from celestia._celestia import types as ext  # noqa
 
-from celestia.types.common_types import Blob, Base64, Namespace, Commitment
+from celestia.types.common import Commitment, Namespace, Base64
+
+
+@dataclass
+class Blob:
+    """ Represents a Celestia blob.
+
+    A blob is a chunk of data stored on Celestia. Each blob is associated with
+    a namespace and a cryptographic commitment to ensure data integrity.
+
+    Attributes:
+        namespace (Namespace): The namespace under which the blob is stored.
+        data (Base64): The actual blob data.
+        commitment (Commitment): The cryptographic commitment for the blob.
+        share_version (int): The version of the share encoding used.
+        index (int | None): The index of the blob in the block (optional).
+    """
+    namespace: Namespace
+    data: Base64
+    commitment: Commitment
+    share_version: int
+    index: int | None = None
+
+    def __init__(self, namespace: Namespace | str | bytes, data: Base64 | str | bytes,
+                 commitment: Commitment | str | bytes | None = None, share_version: int | None = 0,
+                 index: int | None = None):
+        self.namespace = Namespace.ensure_type(namespace)
+        self.data = Base64.ensure_type(data)
+        if commitment is not None:
+            self.commitment = Commitment.ensure_type(commitment)
+            self.share_version = share_version or 0
+        else:
+            kwargs = ext.normalize_blob(self.namespace, self.data)
+            self.commitment = Commitment(kwargs['commitment'])
+            self.share_version = kwargs['share_version']
+        self.index = index
+
+    @staticmethod
+    def deserializer(result: dict) -> Optional['Blob']:
+        """ Deserializes a dictionary into a Blob object.
+
+        Args:
+            result: The dictionary representation of a Blob.
+
+        Returns:
+            A deserialized Blob object.
+        """
+        if result is not None:
+            return Blob(**result)
+        return None
 
 
 @dataclass
@@ -120,7 +169,7 @@ class CommitmentProof:
         self.subtree_roots = tuple(subtree_root for subtree_root in subtree_roots)
 
     @staticmethod
-    def deserializer(result: dict) -> 'CommitmentProof':
+    def deserializer(result: dict) -> Optional['CommitmentProof']:
         """ Deserializes a commitment proof from a given result.
 
         Args:
@@ -131,3 +180,4 @@ class CommitmentProof:
         """
         if result is not None:
             return CommitmentProof(**result)
+        return None
