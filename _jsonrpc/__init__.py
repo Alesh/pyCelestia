@@ -1,10 +1,13 @@
 import asyncio
+import typing as t
 from contextlib import asynccontextmanager, AbstractAsyncContextManager
+from json import JSONEncoder
 from urllib.parse import urlparse
 
+from websockets import Headers
 from websockets.asyncio.client import connect, ClientConnection
 
-from .abc import Transport as AbcTransport
+from .abc import Transport as AbcTransport, Wrapper
 from .executor import RPC
 
 
@@ -12,26 +15,19 @@ class Client:
     """ WS JSON-RPC Client
     """
 
-    def __init__(self, url: str = None, /, *, auth_token: str =None,
-                 host: str = 'localhost', port: int = 26658):
-        url = self._make_url(url, host=host, port=port)
-        self.options = dict(url=url, auth_token=auth_token)
-
-    def _make_url(self, url: str = None, /, *,
-                  host: str = 'localhost', port: int = 26658, protocol: str = 'ws') -> str:
-        if url is None:
-            url = f'{protocol}://{host}:{port}'
-        pr = urlparse(url or "ws://localhost:26658")
+    def __init__(self, url: str, **options: t.Any):
+        pr = urlparse(url)
         if pr.scheme not in ("ws", "wss"):
             raise ValueError("Unsupported URL scheme, must be ws or wss")
-        return f'{pr.scheme}://{pr.hostname}:{pr.port or port}'
+        self.options = dict(options, url=url)
 
-    def connect(self, auth_token: str = None, /, *,
+    def connect(self,
+                errors_map: dict[str, t.Type[Exception]] = None,
+                additional_headers: Headers | t.Mapping[str, str] | t.Iterable[tuple[str, str]] = None,
+                json_encoder: t.Type[JSONEncoder] | None = None,
                 response_timeout: float = 180) -> AbstractAsyncContextManager[RPC]:
-        headers = []
         url = self.options['url']
-        if auth_token := auth_token or self.options['auth_token']:
-            headers.append(('Authorization', f'Bearer {auth_token}'))
+        errors_map_ = errors_map or {}
 
         async def listener(connection: ClientConnection, handlers: AbcTransport):
             try:
@@ -46,14 +42,15 @@ class Client:
         async def connect_context():
             try:
                 listener_task = None
-                async with connect(url, additional_headers=headers) as connection:
+                async with connect(url, additional_headers=additional_headers) as connection:
                     class Transport(AbcTransport):
+                        errors_map = dict(**errors_map_)
 
                         async def send(self, message: str):
                             await connection.send(message)
 
                     transport = Transport()
-                    rpc = RPC(transport, response_timeout)
+                    rpc = RPC(transport, json_encoder, response_timeout)
                     listener_task = asyncio.create_task(listener(connection, transport))
                     yield rpc
             finally:

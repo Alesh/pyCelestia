@@ -1,7 +1,7 @@
 from typing import Callable
 
 from celestia.types.das import SamplingStats
-from celestia.node_api.rpc.abc import Wrapper
+from _jsonrpc import Wrapper
 
 
 class DasClient(Wrapper):

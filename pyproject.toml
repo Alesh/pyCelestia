@@ -21,7 +21,7 @@ Issues = "https://github.com/Alesh/pyCelestia"
 
 
 [tool.setuptools.packages.find]
-include = ["celestia*"]
+include = ["celestia*", "_jsonrpc*"]
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
