@@ -1,5 +1,4 @@
 mod types;
-
 use pyo3::prelude::*;
 
 #[pymodule]

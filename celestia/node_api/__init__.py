@@ -4,15 +4,15 @@ from dataclasses import is_dataclass, asdict
 from urllib.parse import urlparse
 
 import _jsonrpc
+from _jsonrpc import RPC
+from celestia.types import Base64
 from .blob import BlobClient
 from .das import DasClient
 from .fraud import FraudClient
 from .header import HeaderClient
 from .p2p import P2PClient
-from _jsonrpc import RPC
 from .share import ShareClient
 from .state import StateClient
-from celestia.types import Base64
 
 
 class NodeAPI:

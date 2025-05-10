@@ -1,6 +1,5 @@
 import typing as t
 from base64 import b64decode, b64encode
-from dataclasses import dataclass
 
 from celestia._celestia import types as ext  # noqa
 
@@ -36,7 +35,6 @@ class Base64(bytes):
             return value
         return cls(value)
 
-
 class Namespace(Base64):
     """ Represents a Celestia namespace.
 
@@ -69,9 +67,24 @@ class TxConfig(t.TypedDict):
         gas (int | None): The amount of gas to use.
         fee_granter_address (str | None): Address of the fee granter (if applicable).
     """
-    signer_address: str | None
+    signer_address: bool | str | None
     is_gas_price_set: bool | None
     key_name: str | None
     gas_price: float | None
     gas: int | None
     fee_granter_address: str | None
+
+
+class Address(Base64):
+    """ Represents a address that supports Base64 encoding and decoding.
+
+    This class ensures that the stored address is always in bytes and provides
+    Base64 encoding/decoding when converting to and from strings.
+    """
+
+    def __new__(cls, value: str | bytes):
+        if isinstance(value, str) and value.startswith('celestia'):
+            value = ext.address2bytes(value)
+        return super().__new__(cls, value)
+
+

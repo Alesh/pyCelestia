@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 from typing import Optional
+
 from celestia._celestia import types as ext  # noqa
 
-from celestia.types.common import Commitment, Namespace, Base64
+from celestia.types.common import Commitment, Namespace, Base64, Address
 
 
 @dataclass
@@ -18,25 +19,33 @@ class Blob:
         commitment (Commitment): The cryptographic commitment for the blob.
         share_version (int): The version of the share encoding used.
         index (int | None): The index of the blob in the block (optional).
+        signer (Base64 | None): The signer (author) of the blob (optional).
     """
     namespace: Namespace
     data: Base64
     commitment: Commitment
     share_version: int
     index: int | None = None
+    signer: Address | None = None
 
-    def __init__(self, namespace: Namespace | str | bytes, data: Base64 | str | bytes,
-                 commitment: Commitment | str | bytes | None = None, share_version: int | None = 0,
-                 index: int | None = None):
+    def __init__(self, namespace: Namespace | str | bytes, data: Base64 | str | bytes, *,
+                 commitment: Commitment | str | bytes | None = None, share_version: int | None = None,
+                 index: int | None = None, signer: Address | str | bytes | None = None) -> None:
+        share_version = (1 if signer is not None else 0) if share_version is None else share_version
         self.namespace = Namespace.ensure_type(namespace)
         self.data = Base64.ensure_type(data)
+        self.signer = Address.ensure_type(signer) if signer is not None else None
+        kwargs = ext.normalize_blob(self.namespace, self.data, self.signer)
         if commitment is not None:
-            self.commitment = Commitment.ensure_type(commitment)
-            self.share_version = share_version or 0
-        else:
-            kwargs = ext.normalize_blob(self.namespace, self.data)
-            self.commitment = Commitment(kwargs['commitment'])
-            self.share_version = kwargs['share_version']
+            commitment = Commitment.ensure_type(commitment)
+            if commitment != kwargs['commitment']:
+                raise ValueError("Wrong commitment")
+        self.commitment = Commitment.ensure_type(kwargs['commitment'])
+        if share_version is not None and share_version != kwargs['share_version']:
+            raise ValueError(f"Wrong share version; should be {kwargs['share_version']} ")
+        self.share_version = kwargs['share_version']
+        if index is not None and index < 0:
+            raise ValueError("Wrong index")
         self.index = index
 
     @staticmethod
