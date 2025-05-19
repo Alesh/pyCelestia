@@ -2,10 +2,11 @@ from typing import Callable
 
 from celestia._celestia import types  # noqa
 
-from celestia.types import TxConfig, Blob, Unpack
+from celestia.types import TxConfig, Unpack
+from celestia.types.blob import Blob
 from celestia.types.state import Balance, TXResponse, QueryUnbondingDelegationResponse, \
     QueryDelegationResponse, QueryRedelegationResponse
-from celestia.node_api.rpc.abc import Wrapper
+from _jsonrpc import Wrapper
 
 
 class StateClient(Wrapper):

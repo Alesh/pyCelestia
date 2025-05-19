@@ -21,7 +21,7 @@ Issues = "https://github.com/Alesh/pyCelestia"
 
 
 [tool.setuptools.packages.find]
-include = ["celestia*"]
+include = ["celestia*", "_jsonrpc*"]
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
@@ -34,6 +34,7 @@ binding = "PyO3"
 debug = false
 
 [tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "module"
 asyncio_mode = "auto"
 minversion = "6.0"
 addopts = "-ra -q"

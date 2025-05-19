@@ -5,6 +5,7 @@ from collections.abc import AsyncGenerator
 
 logger = logging.Logger('WS JSON-RPC')
 
+
 class Transport(ABC):
     on_message: t.Callable[[bytes | str], None]
     on_close: t.Callable[[Exception | None], None]
@@ -12,6 +13,12 @@ class Transport(ABC):
     @abstractmethod
     async def send(self, message: str) -> None:
         """ Send a message to the connection. """
+
+    @property
+    @abstractmethod
+    def errors_map(self) -> dict[str, t.Type[Exception]]:
+        """ Return a mapping of RPC error message (part of the message) to error classes to be raised.
+        """
 
 
 class RPCExecutor(ABC):

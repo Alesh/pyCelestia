@@ -1,12 +1,13 @@
 from collections.abc import AsyncIterator
+from dataclasses import asdict
 from functools import wraps
 from typing import Callable
 
 from celestia._celestia import types  # noqa
 
-from celestia.types import Blob, Namespace, TxConfig, Commitment, Unpack
-from celestia.types.blob import SubmitBlobResult, Proof, CommitmentProof, SubscriptionBlobResult
-from celestia.node_api.rpc.abc import Wrapper
+from _jsonrpc import Wrapper
+from celestia.types import Namespace, TxConfig, Commitment, Unpack
+from celestia.types.blob import Blob, SubmitBlobResult, SubscriptionBlobResult, Proof, CommitmentProof
 
 
 def handle_blob_error(func):
@@ -90,16 +91,34 @@ class BlobClient(Wrapper):
 
         Returns:
             SubmitBlobResult: The result of the submission, including the height.
+
+        Notes:
+            If there is a `signer_address` in the options and its value is `True` or matches your current address,
+            then your current address will be used for all blobs as the `signer`. Note that in this case, all blobs
+            will be changed to have `share_version`" equal to 1, and their `commitment` will also be changed.
         """
+        blobs_ = [blob, *blobs]
 
         def deserializer_(height):
             if height is not None:
-                return SubmitBlobResult(height, tuple(blob.commitment for blob in blobs))
+                return SubmitBlobResult(height, tuple(blob.commitment for blob in blobs_))
+            return None
 
         deserializer = deserializer if deserializer is not None else deserializer_
-        blobs = tuple(types.normalize_blob(blob) if blob.commitment is None else blob for blob in (blob, *blobs))
-
-        return await self._rpc.call("blob.Submit", (blobs, options), deserializer)
+        if signer_address := options.get("signer_address"):
+            signer_address_ = await self._rpc.call("state.AccountAddress")
+            if signer_address is True:
+                options['signer_address'] = signer_address_
+            elif signer_address != signer_address_:
+                raise ValueError(f"`signer_address` does not match the current account address")
+            blobs_.clear()
+            for blob in (blob, *blobs):
+                if blob.signer is not None and blob.signer != signer_address_:
+                    raise ValueError(f"`signer_address` of blob does not match the current account address")
+                else:
+                    blob = Blob(**dict(asdict(blob), signer=signer_address_, commitment=None, share_version=1))
+                blobs_.append(blob)
+        return await self._rpc.call("blob.Submit", (blobs_, options), deserializer)
 
     @handle_blob_error
     async def get_commitment_proof(self, height: int, namespace: Namespace, commitment: Commitment, *,

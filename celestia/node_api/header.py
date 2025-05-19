@@ -3,7 +3,7 @@ from functools import wraps
 from typing import Callable
 
 from celestia.types.header import ExtendedHeader, State
-from celestia.node_api.rpc.abc import Wrapper
+from _jsonrpc import Wrapper
 
 
 def handle_header_error(func):

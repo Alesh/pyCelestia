@@ -1,13 +1,18 @@
 # A dockerfile for the celestia bridge node in DA layer
 # Based on:
 # https://github.com/celestiaorg/celestia-node/blob/main/Dockerfile
-FROM docker.io/alpine:3.19.1
+ARG ALPINE_VERSION=3.19.1
+ARG CELESTIA_NODE_VERSION=v0.20.4
+
+FROM ghcr.io/celestiaorg/celestia-node:${CELESTIA_NODE_VERSION} AS celestia_node
+
+FROM docker.io/alpine:${ALPINE_VERSION}
 
 RUN apk update && apk add --no-cache bash jq dasel
 
 # Copy in the binary
-COPY --from=ghcr.io/celestiaorg/celestia-node:v0.20.4 /bin/celestia /bin/celestia
-COPY --from=ghcr.io/celestiaorg/celestia-node:v0.20.4 /bin/cel-key /bin/cel-key
+COPY --from=celestia_node /bin/celestia /bin/celestia
+COPY --from=celestia_node /bin/cel-key /bin/cel-key
 
 COPY ./run-bridge.sh /opt/entrypoint.sh
 

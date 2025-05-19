@@ -1,6 +1,6 @@
 import sys
 
-from .common_types import Blob, Commitment, TxConfig, Namespace, Base64
+from .common import Commitment, TxConfig, Namespace, Base64
 
 if sys.version_info >= (3, 11):
     from typing import Unpack

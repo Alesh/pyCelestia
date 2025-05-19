@@ -6,11 +6,10 @@ import uuid
 from asyncio import Future
 from collections import deque
 from collections.abc import AsyncGenerator
-from dataclasses import is_dataclass, asdict
+from json import JSONEncoder
 
 from ajsonrpc.core import JSONRPC20Response, JSONRPC20Request
 
-from celestia.types import Base64
 from .abc import RPCExecutor, Transport, logger
 
 if sys.version_info[:2] <= (3, 10):
@@ -18,44 +17,21 @@ if sys.version_info[:2] <= (3, 10):
 
     asyncio.timeout = asyncio_timeout
 
-RPC_VALUE_ERRORS = [
-    'unmarshaling params',
-    'equal to 0',
-    'given height is from the future',
-    'invalid range',
-    'height must be bigger than zero',
-    'dial to self attempted',
-    'gater disallows connection to peer',
-    'notfound desc = delegation with delegator',
-    'unknown desc = failed to execute message; message index: 0: invalid shares amount:',
-    'cannot redelegate to the same validator',
-    'too many unbonding delegation entries for (delegator, validator) tuple',
-    'redelegation not found for delegator address',
-    'too many redelegation entries for (delegator, src-validator, dst-validator)',
-    'datastore: key not found'
-]
-
-
-class JSONEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if is_dataclass(obj):
-            return asdict(obj)
-        if isinstance(obj, Base64):
-            return str(obj)
-        return super().default(obj)
-
 
 class RPC(RPCExecutor):
     """ RPC encoder / executor / decoder
     """
 
-    def __init__(self, transport: Transport, timeout: float = 180):
+    def __init__(self, transport: Transport,
+                 json_encoder: t.Type[JSONEncoder] | None = None,
+                 timeout: float = 180):
         self.timeout = timeout
         self.transport = transport
         self.transport.on_message = self.on_transport_response
         self.transport.on_close = self.on_transport_close
         self._pending = dict()  # type: dict[str, Future]
         self._subscriptions = dict()  # type: dict[str, deque[t.Any]]
+        self._json_encoder = json_encoder or JSONEncoder
 
     def on_transport_response(self, message: str):
         message = json.loads(message)
@@ -71,8 +47,9 @@ class RPC(RPCExecutor):
                 if response.error is not None:
                     error_body = getattr(response.error, "body", None)
                     error_message = error_body.get('message', None).lower() if error_body else None
-                    if any(keyword in error_message for keyword in RPC_VALUE_ERRORS):
-                        future.set_exception(ValueError(error_message))
+                    if found := [key for key in self.transport.errors_map.keys() if key in error_message]:
+                        exc_class = self.transport.errors_map[found[0]]
+                        future.set_exception(exc_class(error_message))
                     elif error_message is None or error_body is None:
                         future.set_exception(ConnectionError("RPC failed; undefined error"))
                     else:
@@ -104,7 +81,7 @@ class RPC(RPCExecutor):
         deserializer = deserializer or (lambda a: a)
         id = str(uuid.uuid4())
         request = JSONRPC20Request(method, params, id)
-        await self.transport.send(json.dumps(request.body, cls=JSONEncoder))
+        await self.transport.send(json.dumps(request.body, cls=self._json_encoder))
         future = self._pending[id] = Future()
         future.add_done_callback(lambda _: self._pending.pop(id, None))
         async with asyncio.timeout(self.timeout):

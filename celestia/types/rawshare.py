@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from celestia.types.blob import RowProof, Proof
-from celestia.types.common_types import Base64, Namespace
+from celestia.types.common import Base64, Namespace
 
 
 @dataclass
@@ -42,6 +42,26 @@ class ShareProof:
         self.row_proof = RowProof(**row_proof)
         self.data = tuple(data_unit for data_unit in data)
         self.share_proofs = tuple(Proof(**share_proof) for share_proof in share_proofs)
+
+
+@dataclass
+class RawShare:
+    """ A class representing a raw share
+    """
+    data: Base64
+    is_parity: bool = False
+
+
+@dataclass
+class RawSample:
+    """ A class representing a raw sample.
+    """
+    share: RawShare
+    proof: Proof
+
+    def __init__(self, share: RawShare | dict, proof: Proof | dict):
+        self.share = share if isinstance(share, RawShare) else RawShare(**share)
+        self.proof = proof if isinstance(proof, Proof) else Proof(**proof)
 
 
 @dataclass

@@ -1,7 +1,7 @@
 import pytest
 from celestia._celestia import types  # noqa
 
-from celestia.types.common_types import Namespace
+from celestia.types.common import Namespace
 
 
 @pytest.mark.asyncio
