@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>celestia.node_api.header &mdash; pyCelestia  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pyCelestia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Api Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../node_api.html">Celestia Node API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Types:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../types.html">Celestia types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyCelestia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">celestia.node_api.header</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for celestia.node_api.header</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncIterator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">_jsonrpc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Wrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">celestia.types.header</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExtendedHeader</span><span class="p">,</span> <span class="n">State</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_header_error</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator to handle blob-related errors.&quot;&quot;&quot;</span>
+
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="k">await</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ConnectionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;header: not found&quot;</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">body</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">raise</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<div class="viewcode-block" id="HeaderClient">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">HeaderClient</span><span class="p">(</span><span class="n">Wrapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Client for interacting with Celestia&#39;s Header API.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="HeaderClient.get_by_hash">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient.get_by_hash">[docs]</a>
+    <span class="nd">@handle_header_error</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_hash</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">header_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExtendedHeader</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the header of the given hash from the node&#39;s header store.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            header_hash (str): The hash of the header to retrieve.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.header.ExtendedHeader.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ExtendedHeader | None: The retrieved header if found, otherwise None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ExtendedHeader</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;header.GetByHash&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">header_hash</span><span class="p">,),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HeaderClient.get_by_height">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient.get_by_height">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_height</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExtendedHeader</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the ExtendedHeader at the given height if it is currently available.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            height (int): The height of the header.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.header.ExtendedHeader.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ExtendedHeader: The retrieved header.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ExtendedHeader</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;header.GetByHeight&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="p">),),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HeaderClient.get_range_by_height">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient.get_range_by_height">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_range_by_height</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">range_from</span><span class="p">:</span> <span class="n">ExtendedHeader</span><span class="p">,</span> <span class="n">range_to</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ExtendedHeader</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the given range (from:to) of ExtendedHeaders from the node&#39;s header store</span>
+<span class="sd">        and verifies that the returned headers are adjacent to each other.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            range_from (ExtendedHeader): The starting header.</span>
+<span class="sd">            range_to (int): The height of the last header in the range.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[ExtendedHeader]: A list of retrieved headers.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">deserializer_</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[</span><span class="n">ExtendedHeader</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">deserializer_</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+            <span class="s2">&quot;header.GetRangeByHeight&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">range_from</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">range_to</span><span class="p">)),</span> <span class="n">deserializer</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HeaderClient.local_head">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient.local_head">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">local_head</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExtendedHeader</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the ExtendedHeader of the chain head.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.header.ExtendedHeader.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ExtendedHeader: The latest known header of the local node.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ExtendedHeader</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;header.LocalHead&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HeaderClient.network_head">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient.network_head">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">network_head</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExtendedHeader</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provides the Syncer&#39;s view of the current network head.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.header.ExtendedHeader.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ExtendedHeader: The latest known header of the network.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ExtendedHeader</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;header.NetworkHead&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HeaderClient.subscribe">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient.subscribe">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">subscribe</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">ExtendedHeader</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Subscribes to recent ExtendedHeaders from the network.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.header.ExtendedHeader.deserializer`.</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">            ExtendedHeader | None: The latest headers as they become available.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ExtendedHeader</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">async</span> <span class="k">for</span> <span class="n">subs_header_result</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s2">&quot;header.Subscribe&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">deserializer</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">subs_header_result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">subs_header_result</span></div>
+
+
+<div class="viewcode-block" id="HeaderClient.sync_state">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient.sync_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the current state of the header Syncer.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.header.State.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">           State: The current synchronization state.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">State</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;header.SyncState&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HeaderClient.sync_wait">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient.sync_wait">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sync_wait</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Blocks until the header Syncer is synced to network head.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;header.SyncWait&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HeaderClient.wait_for_height">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.header.HeaderClient.wait_for_height">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">wait_for_height</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExtendedHeader</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Blocks until the header at the given height has been processed</span>
+<span class="sd">        by the store or context deadline is exceeded.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            height (int): The height of the header to wait for.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.header.ExtendedHeader.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ExtendedHeader: The retrieved header once available.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ExtendedHeader</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;header.WaitForHeight&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">height</span><span class="p">,),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alesh, Tnmoxa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>celestia.types.header &mdash; pyCelestia  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pyCelestia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Api Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../node_api.html">Celestia Node API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Types:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../types.html">Celestia types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyCelestia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">celestia.types.header</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for celestia.types.header</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">celestia._celestia</span><span class="w"> </span><span class="kn">import</span> <span class="n">types</span> <span class="k">as</span> <span class="n">ext</span>  <span class="c1"># noqa</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">celestia.types.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">Base64</span>
+
+
+<div class="viewcode-block" id="ConsensusVersion">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.ConsensusVersion">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConsensusVersion</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents the version information for the consensus.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        block (str): The block version.</span>
+<span class="sd">        app (str): The application version.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">block</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">app</span><span class="p">:</span> <span class="nb">str</span></div>
+
+
+
+<div class="viewcode-block" id="Parts">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.Parts">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Parts</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents the parts of the block.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        total (int): The total number of parts.</span>
+<span class="sd">        hash (str): The hash of the parts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">total</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="nb">hash</span><span class="p">:</span> <span class="nb">str</span></div>
+
+
+
+<div class="viewcode-block" id="BlockId">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.BlockId">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BlockId</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a block identifier, which includes a hash and parts.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        hash (str): The hash of the block.</span>
+<span class="sd">        parts (Parts): The parts information of the block.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">parts</span><span class="p">:</span> <span class="n">Parts</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">hash</span><span class="p">,</span> <span class="n">parts</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hash</span> <span class="o">=</span> <span class="nb">hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parts</span> <span class="o">=</span> <span class="n">Parts</span><span class="p">(</span><span class="o">**</span><span class="n">parts</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Header">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.Header">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Header</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents the header information for the block.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        version (ConsensusVersion): The consensus version.</span>
+<span class="sd">        chain_id (str): The chain identifier.</span>
+<span class="sd">        height (str): The height of the block.</span>
+<span class="sd">        time (str): The time the block was created.</span>
+<span class="sd">        last_block_id (BlockId): The identifier of the last block.</span>
+<span class="sd">        last_commit_hash (str): The hash of the last commit.</span>
+<span class="sd">        data_hash (str): The hash of the block data.</span>
+<span class="sd">        validators_hash (str): The hash of the validators.</span>
+<span class="sd">        next_validators_hash (str): The hash of the next validators.</span>
+<span class="sd">        consensus_hash (str): The consensus hash.</span>
+<span class="sd">        app_hash (str): The application hash.</span>
+<span class="sd">        last_results_hash (str): The hash of the last results.</span>
+<span class="sd">        evidence_hash (str): The hash of the evidence.</span>
+<span class="sd">        proposer_address (str): The address of the proposer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">version</span><span class="p">:</span> <span class="n">ConsensusVersion</span>
+    <span class="n">chain_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">height</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">time</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">last_block_id</span><span class="p">:</span> <span class="n">BlockId</span>
+    <span class="n">last_commit_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">data_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">validators_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">next_validators_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">consensus_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">app_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">last_results_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">evidence_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">proposer_address</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">version</span><span class="p">,</span>
+        <span class="n">chain_id</span><span class="p">,</span>
+        <span class="n">height</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">,</span>
+        <span class="n">last_block_id</span><span class="p">,</span>
+        <span class="n">last_commit_hash</span><span class="p">,</span>
+        <span class="n">data_hash</span><span class="p">,</span>
+        <span class="n">validators_hash</span><span class="p">,</span>
+        <span class="n">next_validators_hash</span><span class="p">,</span>
+        <span class="n">consensus_hash</span><span class="p">,</span>
+        <span class="n">app_hash</span><span class="p">,</span>
+        <span class="n">last_results_hash</span><span class="p">,</span>
+        <span class="n">evidence_hash</span><span class="p">,</span>
+        <span class="n">proposer_address</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="n">ConsensusVersion</span><span class="p">(</span><span class="o">**</span><span class="n">version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chain_id</span> <span class="o">=</span> <span class="n">chain_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="n">time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_block_id</span> <span class="o">=</span> <span class="n">BlockId</span><span class="p">(</span><span class="o">**</span><span class="n">last_block_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_commit_hash</span> <span class="o">=</span> <span class="n">last_commit_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_hash</span> <span class="o">=</span> <span class="n">data_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validators_hash</span> <span class="o">=</span> <span class="n">validators_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next_validators_hash</span> <span class="o">=</span> <span class="n">next_validators_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">consensus_hash</span> <span class="o">=</span> <span class="n">consensus_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">app_hash</span> <span class="o">=</span> <span class="n">app_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_results_hash</span> <span class="o">=</span> <span class="n">last_results_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evidence_hash</span> <span class="o">=</span> <span class="n">evidence_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proposer_address</span> <span class="o">=</span> <span class="n">proposer_address</span></div>
+
+
+
+<div class="viewcode-block" id="PubKey">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.PubKey">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PubKey</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a public key used for validating a transaction.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        type (str): The type of public key.</span>
+<span class="sd">        value (Base64): The base64 encoded public key.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">Base64</span></div>
+
+
+
+<div class="viewcode-block" id="Validator">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.Validator">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Validator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a validator in the consensus system.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        address (str): The address of the validator.</span>
+<span class="sd">        pub_key (PubKey): The public key of the validator.</span>
+<span class="sd">        voting_power (str): The voting power of the validator.</span>
+<span class="sd">        proposer_priority (str): The proposer priority of the validator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">address</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">pub_key</span><span class="p">:</span> <span class="n">PubKey</span>
+    <span class="n">voting_power</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">proposer_priority</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">pub_key</span><span class="p">,</span> <span class="n">voting_power</span><span class="p">,</span> <span class="n">proposer_priority</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">address</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pub_key</span> <span class="o">=</span> <span class="n">PubKey</span><span class="p">(</span><span class="o">**</span><span class="n">pub_key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voting_power</span> <span class="o">=</span> <span class="n">voting_power</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proposer_priority</span> <span class="o">=</span> <span class="n">proposer_priority</span></div>
+
+
+
+<div class="viewcode-block" id="ValidatorSet">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.ValidatorSet">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ValidatorSet</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a set of validators and the proposer.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        validators (tuple[Validator, ...]): The list of validators.</span>
+<span class="sd">        proposer (Validator): The proposer of the block.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">validators</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Validator</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="n">proposer</span><span class="p">:</span> <span class="n">Validator</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validators</span><span class="p">,</span> <span class="n">proposer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validators</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">Validator</span><span class="p">(</span><span class="o">**</span><span class="n">validator</span><span class="p">)</span> <span class="k">for</span> <span class="n">validator</span> <span class="ow">in</span> <span class="n">validators</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proposer</span> <span class="o">=</span> <span class="n">Validator</span><span class="p">(</span><span class="o">**</span><span class="n">proposer</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Signature">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.Signature">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Signature</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a signature for a commit block.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        block_id_flag (int): The block ID flag.</span>
+<span class="sd">        validator_address (str): The address of the validator signing the block.</span>
+<span class="sd">        timestamp (str): The timestamp of the signature.</span>
+<span class="sd">        signature (Base64): The base64 encoded signature.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">block_id_flag</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">validator_address</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">timestamp</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">signature</span><span class="p">:</span> <span class="n">Base64</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_id_flag</span><span class="p">,</span> <span class="n">validator_address</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">signature</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_id_flag</span> <span class="o">=</span> <span class="n">block_id_flag</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validator_address</span> <span class="o">=</span> <span class="n">validator_address</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signature</span> <span class="o">=</span> <span class="n">signature</span></div>
+
+
+
+<div class="viewcode-block" id="Commit">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.Commit">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Commit</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a commit for a block, including signatures.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        height (int): The block height.</span>
+<span class="sd">        round (int): The block round.</span>
+<span class="sd">        block_id (BlockId): The ID of the block.</span>
+<span class="sd">        signatures (tuple[Signature, ...]): The signatures of the validators.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">height</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="nb">round</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">block_id</span><span class="p">:</span> <span class="n">BlockId</span>
+    <span class="n">signatures</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Signature</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="nb">round</span><span class="p">,</span> <span class="n">block_id</span><span class="p">,</span> <span class="n">signatures</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">round</span> <span class="o">=</span> <span class="nb">round</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">block_id</span> <span class="o">=</span> <span class="n">BlockId</span><span class="p">(</span><span class="o">**</span><span class="n">block_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signatures</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">Signature</span><span class="p">(</span><span class="o">**</span><span class="n">signature</span><span class="p">)</span> <span class="k">for</span> <span class="n">signature</span> <span class="ow">in</span> <span class="n">signatures</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Dah">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.Dah">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Dah</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents the data availability header.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        row_roots (tuple[Base64, ...]): The row roots.</span>
+<span class="sd">        column_roots (tuple[Base64, ...]): The column roots.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">row_roots</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Base64</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="n">column_roots</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Base64</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row_roots</span><span class="p">,</span> <span class="n">column_roots</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">row_roots</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">row_root</span> <span class="k">for</span> <span class="n">row_root</span> <span class="ow">in</span> <span class="n">row_roots</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">column_roots</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">column_root</span> <span class="k">for</span> <span class="n">column_root</span> <span class="ow">in</span> <span class="n">column_roots</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ExtendedHeader">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.ExtendedHeader">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExtendedHeader</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents an extended header containing header, validator set, commit, and DAH.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        header (Header): The block header.</span>
+<span class="sd">        validator_set (ValidatorSet): The validator set.</span>
+<span class="sd">        commit (Commit): The commit information.</span>
+<span class="sd">        dah (Dah): The data availability header.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">header</span><span class="p">:</span> <span class="n">Header</span>
+    <span class="n">validator_set</span><span class="p">:</span> <span class="n">ValidatorSet</span>
+    <span class="n">commit</span><span class="p">:</span> <span class="n">Commit</span>
+    <span class="n">dah</span><span class="p">:</span> <span class="n">Dah</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">validator_set</span><span class="p">,</span> <span class="n">dah</span><span class="p">,</span> <span class="n">commit</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">header</span> <span class="o">=</span> <span class="n">Header</span><span class="p">(</span><span class="o">**</span><span class="n">header</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">validator_set</span> <span class="o">=</span> <span class="n">ValidatorSet</span><span class="p">(</span><span class="o">**</span><span class="n">validator_set</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">commit</span> <span class="o">=</span> <span class="n">Commit</span><span class="p">(</span><span class="o">**</span><span class="n">commit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dah</span> <span class="o">=</span> <span class="n">Dah</span><span class="p">(</span><span class="o">**</span><span class="n">dah</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ExtendedHeader.deserializer">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.ExtendedHeader.deserializer">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deserializer</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ExtendedHeader&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deserializes the provided result into a `ExtendedHeader` object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            result (dict): The dictionary representation of a ExtendedHeader.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ExtendedHeader: A deserialized ExtendedHeader object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ExtendedHeader</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="State">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.State">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a state for the block range.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (int): The ID of the state.</span>
+<span class="sd">        height (int): The height of the block.</span>
+<span class="sd">        from_height (int): The starting height for the range.</span>
+<span class="sd">        to_height (int): The ending height for the range.</span>
+<span class="sd">        from_hash (str): The hash at the start of the range.</span>
+<span class="sd">        to_hash (str): The hash at the end of the range.</span>
+<span class="sd">        start (str): The start time of the state.</span>
+<span class="sd">        end (str): The end time of the state.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">height</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">from_height</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">to_height</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">from_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">to_hash</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">start</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">end</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">from_height</span><span class="p">,</span> <span class="n">to_height</span><span class="p">,</span> <span class="n">from_hash</span><span class="p">,</span> <span class="n">to_hash</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">from_height</span> <span class="o">=</span> <span class="n">from_height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_height</span> <span class="o">=</span> <span class="n">to_height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">from_hash</span> <span class="o">=</span> <span class="n">from_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_hash</span> <span class="o">=</span> <span class="n">to_hash</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">end</span>
+
+<div class="viewcode-block" id="State.deserializer">
+<a class="viewcode-back" href="../../../types.html#celestia.types.header.State.deserializer">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deserializer</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;State&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deserializes the provided result into a `State` object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            result (dict): The dictionary representation of a State.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            State: A deserialized State object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">State</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alesh, Tnmoxa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

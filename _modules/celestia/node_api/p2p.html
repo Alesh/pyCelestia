@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>celestia.node_api.p2p &mdash; pyCelestia  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pyCelestia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Api Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../node_api.html">Celestia Node API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Types:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../types.html">Celestia types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyCelestia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">celestia.node_api.p2p</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for celestia.node_api.p2p</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">_jsonrpc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Wrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">celestia.types.p2p</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BandwidthStats</span><span class="p">,</span>
+    <span class="n">Connectedness</span><span class="p">,</span>
+    <span class="n">AddrInfo</span><span class="p">,</span>
+    <span class="n">Reachability</span><span class="p">,</span>
+    <span class="n">ResourceManagerStat</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="P2PClient">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">P2PClient</span><span class="p">(</span><span class="n">Wrapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Client for interacting with Celestia&#39;s P2P API.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="P2PClient.bandwidth_for_peer">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.bandwidth_for_peer">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">bandwidth_for_peer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">peer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BandwidthStats</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a Stats struct with bandwidth metrics associated with the given peer.ID.</span>
+<span class="sd">        The metrics returned include all traffic sent / received for the peer, regardless of protocol.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            peer_id (str): The ID of the peer.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.p2p.BandwidthStats.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            BandwidthStats: Bandwidth statistics for the given peer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">BandwidthStats</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.BandwidthForPeer&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">peer_id</span><span class="p">,),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.bandwidth_for_protocol">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.bandwidth_for_protocol">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">bandwidth_for_protocol</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">protocol_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BandwidthStats</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a Stats struct with bandwidth metrics associated with the given protocol.ID.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            protocol_id (str): The protocol ID.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.p2p.BandwidthStats.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            BandwidthStats: Bandwidth statistics for the given protocol.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">BandwidthStats</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.BandwidthForProtocol&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">protocol_id</span><span class="p">,),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.bandwidth_stats">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.bandwidth_stats">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">bandwidth_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BandwidthStats</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a Stats struct with bandwidth metrics for all data sent/received by the local peer,</span>
+<span class="sd">        regardless of protocol or remote peer IDs.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.p2p.BandwidthStats.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            BandwidthStats: Overall bandwidth statistics.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">BandwidthStats</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.BandwidthStats&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.block_peer">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.block_peer">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">block_peer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a peer to the set of blocked peers and closes any existing connection to that peer.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            peer_id (str): The ID of the peer to block.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.BlockPeer&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">peer_id</span><span class="p">,))</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.close_peer">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.close_peer">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close_peer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Closes the connection to a given peer.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            peer_id (str): The ID of the peer to disconnect from.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.ClosePeer&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">peer_id</span><span class="p">,))</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.connect">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.connect">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="n">AddrInfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensures there is a connection between this host and the peer with given peer.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            address (AddrInfo): Address information of the peer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.Connect&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">address</span><span class="p">,))</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.connectedness">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.connectedness">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">connectedness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Connectedness</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a state signaling connection capabilities.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            peer_id (str): The ID of the peer.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Connectedness: Connection status with the peer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.Connectedness&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">peer_id</span><span class="p">,))</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.info">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.info">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AddrInfo</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns address information about the host.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.p2p.AddrInfo.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            AddrInfo: Address information of the local peer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">AddrInfo</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.Info&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.is_protected">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.is_protected">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">is_protected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns whether the given peer is protected.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            peer_id (str): The ID of the peer.</span>
+<span class="sd">            tag (str): Protection tag.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if the peer is protected, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.IsProtected&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">peer_id</span><span class="p">,</span> <span class="n">tag</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.list_blocked_peers">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.list_blocked_peers">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">list_blocked_peers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of blocked peers.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[str]: A list of blocked peer IDs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.ListBlockedPeers&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.nat_status">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.nat_status">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">nat_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Reachability</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the current NAT status.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Reachability: NAT reachability status.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.NATStatus&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.peer_info">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.peer_info">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">peer_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AddrInfo</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a small slice of information Peerstore has on the given peer.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            peer_id (str): The ID of the peer.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.p2p.AddrInfo.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            AddrInfo: Address information of the peer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">AddrInfo</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.PeerInfo&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">peer_id</span><span class="p">,),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.peers">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.peers">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">peers</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns connected peers.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[str]: List of connected peer IDs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.Peers&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.protect">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.protect">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">protect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a peer to the list of peers who have a bidirectional peering agreement</span>
+<span class="sd">        that they are protected from being trimmed, dropped or negatively scored.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            peer_id (str): The ID of the peer.</span>
+<span class="sd">            tag (str): Protection tag.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.Protect&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">peer_id</span><span class="p">,</span> <span class="n">tag</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.pub_sub_peers">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.pub_sub_peers">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">pub_sub_peers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the peer IDs of the peers joined on the given topic.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            topic (str): The PubSub topic to query.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[str]: A list of peer IDs that are joined on the specified topic.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.PubSubPeers&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">topic</span><span class="p">,))</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.pub_sub_topics">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.pub_sub_topics">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">pub_sub_topics</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reports current PubSubTopics the node participates in.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[str] | None: A list of topic names if available, otherwise None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.PubSubTopics&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.resource_state">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.resource_state">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">resource_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ResourceManagerStat</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the state of the resource manager.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.p2p.ResourceManagerStat.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ResourceManagerStat: Resource manager state.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ResourceManagerStat</span><span class="o">.</span><span class="n">deserializer</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.ResourceState&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.unblock_peer">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.unblock_peer">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">unblock_peer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Removes a peer from the set of blocked peers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            peer_id (str): The ID of the peer to unblock.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.UnblockPeer&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">peer_id</span><span class="p">,))</span></div>
+
+
+<div class="viewcode-block" id="P2PClient.unprotect">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.p2p.P2PClient.unprotect">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">unprotect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">peer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Removes a peer from the list of peers who have a bidirectional peering agreement that</span>
+<span class="sd">        they are protected from being trimmed, dropped or negatively scored, returning a bool</span>
+<span class="sd">        representing whether the given peer is protected or not.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            peer_id (str): The ID of the peer.</span>
+<span class="sd">            tag (str): Protection tag.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if the peer remains protected, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;p2p.Unprotect&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">peer_id</span><span class="p">,</span> <span class="n">tag</span><span class="p">))</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alesh, Tnmoxa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

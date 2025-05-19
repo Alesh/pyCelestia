@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>celestia.node_api.state &mdash; pyCelestia  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pyCelestia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Api Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../node_api.html">Celestia Node API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Types:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../types.html">Celestia types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyCelestia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">celestia.node_api.state</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for celestia.node_api.state</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">celestia._celestia</span><span class="w"> </span><span class="kn">import</span> <span class="n">types</span>  <span class="c1"># noqa</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">_jsonrpc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Wrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">celestia.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">TxConfig</span><span class="p">,</span> <span class="n">Unpack</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">celestia.types.blob</span><span class="w"> </span><span class="kn">import</span> <span class="n">Blob</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">celestia.types.state</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Balance</span><span class="p">,</span>
+    <span class="n">TXResponse</span><span class="p">,</span>
+    <span class="n">QueryUnbondingDelegationResponse</span><span class="p">,</span>
+    <span class="n">QueryDelegationResponse</span><span class="p">,</span>
+    <span class="n">QueryRedelegationResponse</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="StateClient">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">StateClient</span><span class="p">(</span><span class="n">Wrapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Client for interacting with Celestia&#39;s State API.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StateClient.account_address">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.account_address">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">account_address</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the address of the node&#39;s account/signer</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The address of the node&#39;s account.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;state.AccountAddress&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.balance">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.balance">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">balance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Balance</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the Celestia coin balance for the node&#39;s account/signer</span>
+<span class="sd">        and verifies it against the corresponding block&#39;s AppHash.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.Balance.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Balance: The balance of the node&#39;s account.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Balance</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;state.Balance&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.balance_for_address">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.balance_for_address">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">balance_for_address</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Balance</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the Celestia coin balance for the given address and verifies the returned balance</span>
+<span class="sd">        against the corresponding block&#39;s AppHash. NOTE: the balance returned is the balance reported</span>
+<span class="sd">        by the block right before the node&#39;s current head (head-1). This is due to the fact that for</span>
+<span class="sd">        block N, the block&#39;s `AppHash` is the result of applying the previous block&#39;s transaction list.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            address (str): The address to query balance for.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.Balance.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Balance: The balance of the given address.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Balance</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;state.BalanceForAddress&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">address</span><span class="p">,),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.begin_redelegate">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.begin_redelegate">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">begin_redelegate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">src_val_addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">dst_val_addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">TxConfig</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TXResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sends a user&#39;s delegated tokens to a new validator for redelegation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            src_val_addr (str): Source validator address.</span>
+<span class="sd">            dst_val_addr (str): Destination validator address.</span>
+<span class="sd">            amount (int): Amount to redelegate.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.TXResponse.deserializer`.</span>
+<span class="sd">            **config(TxConfig): Additional transaction configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            TXResponse: Transaction response.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">TXResponse</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+            <span class="s2">&quot;state.BeginRedelegate&quot;</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">src_val_addr</span><span class="p">,</span> <span class="n">dst_val_addr</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="n">config</span><span class="p">),</span>
+            <span class="n">deserializer</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.cancel_unbonding_delegation">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.cancel_unbonding_delegation">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">cancel_unbonding_delegation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">val_addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">height</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">TxConfig</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TXResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cancels a user&#39;s pending undelegation from a validator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            val_addr (str): Validator address.</span>
+<span class="sd">            amount (int): Amount to cancel unbonding.</span>
+<span class="sd">            height (int): Block height at which unbonding was initiated.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.TXResponse.deserializer`.</span>
+<span class="sd">            **config(TxConfig): Additional transaction configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            TXResponse: Transaction response.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">TXResponse</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+            <span class="s2">&quot;state.CancelUnbondingDelegation&quot;</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">val_addr</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">height</span><span class="p">),</span> <span class="n">config</span><span class="p">),</span>
+            <span class="n">deserializer</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.delegate">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.delegate">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">delegate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">del_addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">TxConfig</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TXResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sends a user&#39;s liquid tokens to a validator for delegation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            del_addr (str): Delegator address.</span>
+<span class="sd">            amount (int): Amount to delegate.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.TXResponse.deserializer`.</span>
+<span class="sd">            **config(TxConfig): Additional transaction configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            TXResponse: Transaction response.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">TXResponse</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+            <span class="s2">&quot;state.Delegate&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">del_addr</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="n">config</span><span class="p">),</span> <span class="n">deserializer</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.grant_fee">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.grant_fee">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">grant_fee</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">grantee</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">TxConfig</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TXResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Grants a fee allowance to the specified grantee.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            grantee (str): Address of the grantee.</span>
+<span class="sd">            amount (int): Amount of fee allowance.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.TXResponse.deserializer`.</span>
+<span class="sd">            **config(TxConfig): Additional transaction configurations.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            TXResponse: Response of the grant fee transaction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">TXResponse</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;state.GrantFee&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">grantee</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="n">config</span><span class="p">),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.query_delegation">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.query_delegation">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">query_delegation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">val_addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryDelegationResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the delegation information between a delegator and a validator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            val_addr (str): Validator address.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.QueryDelegationResponse.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            QueryDelegationResponse: Delegation information.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">QueryDelegationResponse</span><span class="o">.</span><span class="n">deserializer</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;state.QueryDelegation&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">val_addr</span><span class="p">,),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.query_redelegations">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.query_redelegations">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">query_redelegations</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">src_val_addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dst_val_addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryRedelegationResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the status of the redelegations between a delegator and a validator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            src_val_addr (str): Source validator address.</span>
+<span class="sd">            dst_val_addr (str): Destination validator address.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.QueryRedelegationResponse.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            QueryRedelegationResponse: Redelegation details.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">QueryRedelegationResponse</span><span class="o">.</span><span class="n">deserializer</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+            <span class="s2">&quot;state.QueryRedelegations&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">src_val_addr</span><span class="p">,</span> <span class="n">dst_val_addr</span><span class="p">),</span> <span class="n">deserializer</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.query_unbonding">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.query_unbonding">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">query_unbonding</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">val_addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueryUnbondingDelegationResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieves the unbonding status between a delegator and a validator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            val_addr (str): Validator address.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.QueryUnbondingDelegationResponse.deserializer`.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">           QueryUnbondingDelegationResponse: Unbonding status.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">deserializer</span>
+            <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="n">QueryUnbondingDelegationResponse</span><span class="o">.</span><span class="n">deserializer</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;state.QueryUnbonding&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">val_addr</span><span class="p">,),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.revoke_grant_fee">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.revoke_grant_fee">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">revoke_grant_fee</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">grantee</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">TxConfig</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TXResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Revokes a previously granted fee allowance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            grantee (str): Address of the grantee whose allowance is being revoked.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.TXResponse.deserializer`.</span>
+<span class="sd">            **config(TxConfig): Additional transaction configurations.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            TXResponse: Response of the revoke grant fee transaction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">TXResponse</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;state.RevokeGrantFee&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">grantee</span><span class="p">,</span> <span class="n">config</span><span class="p">),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.submit_pay_for_blob">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.submit_pay_for_blob">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">submit_pay_for_blob</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">blob</span><span class="p">:</span> <span class="n">Blob</span><span class="p">,</span> <span class="o">*</span><span class="n">blobs</span><span class="p">:</span> <span class="n">Blob</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">TxConfig</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Builds, signs and submits a PayForBlob transaction.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            blob (Blob): The first blob to be included in the transaction.</span>
+<span class="sd">            *blobs (Blob): Additional blobs.</span>
+<span class="sd">            **config(TxConfig): Additional transaction configurations.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: Transaction ID of the submitted PayForBlob transaction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">blobs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="n">types</span><span class="o">.</span><span class="n">normalize_blob</span><span class="p">(</span><span class="n">blob</span><span class="p">)</span> <span class="k">if</span> <span class="n">blob</span><span class="o">.</span><span class="n">commitment</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">blob</span>
+            <span class="k">for</span> <span class="n">blob</span> <span class="ow">in</span> <span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="o">*</span><span class="n">blobs</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;state.SubmitPayForBlob&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">blobs</span><span class="p">,</span> <span class="n">config</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="StateClient.transfer">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.transfer">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">transfer</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">to</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">TxConfig</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TXResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sends the given amount of coins from default wallet of the node to the given account address.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            to (str): Recipient address.</span>
+<span class="sd">            amount (int): Amount to transfer.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.TXResponse.deserializer`.</span>
+<span class="sd">            **config(TxConfig): Additional transaction configuration.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            TXResponse: Transaction response.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">TXResponse</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;state.Transfer&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">to</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="n">config</span><span class="p">),</span> <span class="n">deserializer</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StateClient.undelegate">
+<a class="viewcode-back" href="../../../node_api.html#celestia.node_api.state.StateClient.undelegate">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">undelegate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">del_addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">deserializer</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">config</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">TxConfig</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TXResponse</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Undelegates a user&#39;s delegated tokens, unbonding them from the current validator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            del_addr (str): Delegator address.</span>
+<span class="sd">            amount (int): Amount to undelegate.</span>
+<span class="sd">            deserializer (Callable | None): Custom deserializer. Defaults to :meth:`~celestia.types.state.TXResponse.deserializer`.</span>
+<span class="sd">            **config(TxConfig): Additional transaction configurations.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            TXResponse: Response of the undelegation transaction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deserializer</span> <span class="o">=</span> <span class="n">deserializer</span> <span class="k">if</span> <span class="n">deserializer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">TXResponse</span><span class="o">.</span><span class="n">deserializer</span>
+
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rpc</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+            <span class="s2">&quot;state.Undelegate&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">del_addr</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="n">config</span><span class="p">),</span> <span class="n">deserializer</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alesh, Tnmoxa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

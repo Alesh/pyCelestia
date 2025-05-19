@@ -1,0 +1,1282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celestia Node API &mdash; pyCelestia  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Celestia types" href="types.html" />
+    <link rel="prev" title="pyCelestia documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pyCelestia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Api Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Celestia Node API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-celestia.node_api.blob">Blob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-celestia.node_api.das">Das</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-celestia.node_api.header">Header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-celestia.node_api.p2p">P2P</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-celestia.node_api.share">Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-celestia.node_api.state">State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-celestia.node_api.fraud">Fraud</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Types:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Celestia types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyCelestia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Celestia Node API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/node_api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="celestia-node-api">
+<h1>Celestia Node API<a class="headerlink" href="#celestia-node-api" title="Link to this heading"></a></h1>
+<section id="module-celestia.node_api.blob">
+<span id="blob"></span><h2>Blob<a class="headerlink" href="#module-celestia.node_api.blob" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.node_api.blob.BlobClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.node_api.blob.</span></span><span class="sig-name descname"><span class="pre">BlobClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rpc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/blob.html#BlobClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.blob.BlobClient" title="Link to this definition"></a></dt>
+<dd><p>Client for interacting with Celestia’s Blob API.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.blob.BlobClient.get">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commitment</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/blob.html#BlobClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.blob.BlobClient.get" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the blob by commitment under the given namespace and height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p></li>
+<li><p><strong>namespace</strong> (<em>Namespace</em>) – The namespace of the blob.</p></li>
+<li><p><strong>commitment</strong> (<em>Commitment</em>) – The commitment of the blob.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved blob, or None if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Blob | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.blob.BlobClient.get_all">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">namespaces</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/blob.html#BlobClient.get_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.blob.BlobClient.get_all" title="Link to this definition"></a></dt>
+<dd><p>Returns all blobs under the given namespaces at the given height. If all blobs were
+found without any errors, the user will receive a list of blobs. If the BlobService couldn’t
+find any blobs under the requested namespaces, the user will receive an empty list of blobs
+along with an empty error. If some of the requested namespaces were not found, the user will receive
+all the found blobs and an empty error. If there were internal errors during some of the requests, the
+user will receive all found blobs along with a combined error message. All blobs will preserve the order
+of the namespaces that were requested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p></li>
+<li><p><strong>namespace</strong> (<em>Namespace</em>) – The primary namespace of the blobs.</p></li>
+<li><p><strong>namespaces</strong> (<em>Namespace</em>) – Additional namespaces to query for blobs.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of blobs or [] if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[Blob]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.blob.BlobClient.get_commitment_proof">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_commitment_proof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commitment</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/blob.html#BlobClient.get_commitment_proof"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.blob.BlobClient.get_commitment_proof" title="Link to this definition"></a></dt>
+<dd><p>Generates a commitment proof for a share commitment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p></li>
+<li><p><strong>namespace</strong> (<em>Namespace</em>) – The namespace of the commitment.</p></li>
+<li><p><strong>commitment</strong> (<em>Commitment</em>) – The commitment to generate proof for.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.blob.CommitmentProof.deserializer" title="celestia.types.blob.CommitmentProof.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The commitment proof, or None if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.blob.CommitmentProof" title="celestia.types.blob.CommitmentProof">CommitmentProof</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.blob.BlobClient.get_proof">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_proof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commitment</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/blob.html#BlobClient.get_proof"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.blob.BlobClient.get_proof" title="Link to this definition"></a></dt>
+<dd><p>Retrieves proofs in the given namespaces at the given height by commitment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p></li>
+<li><p><strong>namespace</strong> (<em>Namespace</em>) – The namespace of the proof.</p></li>
+<li><p><strong>commitment</strong> (<em>Commitment</em>) – The commitment to generate the proof for.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of proofs or [] if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="types.html#celestia.types.blob.Proof" title="celestia.types.blob.Proof">Proof</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.blob.BlobClient.included">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">included</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commitment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/blob.html#BlobClient.included"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.blob.BlobClient.included" title="Link to this definition"></a></dt>
+<dd><p>Checks whether a blob’s given commitment(Merkle subtree root) is
+included at given height and under the namespace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p></li>
+<li><p><strong>namespace</strong> (<em>Namespace</em>) – The namespace of the blob.</p></li>
+<li><p><strong>proof</strong> (<a class="reference internal" href="types.html#celestia.types.blob.Proof" title="celestia.types.blob.Proof"><em>Proof</em></a>) – The proof to check.</p></li>
+<li><p><strong>commitment</strong> (<em>Commitment</em>) – The commitment to check inclusion for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if included, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.blob.BlobClient.submit">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">submit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blob</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">blobs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/blob.html#BlobClient.submit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.blob.BlobClient.submit" title="Link to this definition"></a></dt>
+<dd><p>Sends Blobs and reports the height in which they were included. Allows sending
+multiple Blobs atomically synchronously. Uses default wallet registered on the Node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blob</strong> (<em>Blob</em>) – The main blob to submit.</p></li>
+<li><p><strong>blobs</strong> (<em>Blob</em>) – Additional blobs to submit.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to None.</p></li>
+<li><p><strong>options</strong> (<em>TxConfig</em>) – Additional configuration options.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The result of the submission, including the height.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.blob.SubmitBlobResult" title="celestia.types.blob.SubmitBlobResult">SubmitBlobResult</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If there is a <cite>signer_address</cite> in the options and its value is <cite>True</cite> or matches your current address,
+then your current address will be used for all blobs as the <cite>signer</cite>. Note that in this case, all blobs
+will be changed to have <cite>share_version</cite>” equal to 1, and their <cite>commitment</cite> will also be changed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.blob.BlobClient.subscribe">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/blob.html#BlobClient.subscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.blob.BlobClient.subscribe" title="Link to this definition"></a></dt>
+<dd><p>Subscribe to published blobs from the given namespace as they are included.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>namespace</strong> (<em>Namespace</em>) – The namespace to subscribe to.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>SubscriptionBlobResult</em> – A result with the blob information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-celestia.node_api.das">
+<span id="das"></span><h2>Das<a class="headerlink" href="#module-celestia.node_api.das" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.node_api.das.DasClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.node_api.das.</span></span><span class="sig-name descname"><span class="pre">DasClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rpc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/das.html#DasClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.das.DasClient" title="Link to this definition"></a></dt>
+<dd><p>Client for interacting with Celestia’s Das API.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.das.DasClient.sampling_stats">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sampling_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/das.html#DasClient.sampling_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.das.DasClient.sampling_stats" title="Link to this definition"></a></dt>
+<dd><p>Returns the current statistics over the DA sampling process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The current sampling statistics.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.das.SamplingStats" title="celestia.types.das.SamplingStats">SamplingStats</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.das.DasClient.wait_catch_up">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">wait_catch_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/das.html#DasClient.wait_catch_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.das.DasClient.wait_catch_up" title="Link to this definition"></a></dt>
+<dd><p>Blocks until DASer finishes catching up to the network head.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-celestia.node_api.header">
+<span id="header"></span><h2>Header<a class="headerlink" href="#module-celestia.node_api.header" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.node_api.header.</span></span><span class="sig-name descname"><span class="pre">HeaderClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rpc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient" title="Link to this definition"></a></dt>
+<dd><p>Client for interacting with Celestia’s Header API.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient.get_by_hash">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_by_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header_hash</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient.get_by_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient.get_by_hash" title="Link to this definition"></a></dt>
+<dd><p>Returns the header of the given hash from the node’s header store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>header_hash</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The hash of the header to retrieve.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader.deserializer" title="celestia.types.header.ExtendedHeader.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved header if found, otherwise None.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader" title="celestia.types.header.ExtendedHeader">ExtendedHeader</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient.get_by_height">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_by_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient.get_by_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient.get_by_height" title="Link to this definition"></a></dt>
+<dd><p>Returns the ExtendedHeader at the given height if it is currently available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The height of the header.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader.deserializer" title="celestia.types.header.ExtendedHeader.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved header.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader" title="celestia.types.header.ExtendedHeader">ExtendedHeader</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient.get_range_by_height">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_range_by_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">range_from</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_to</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient.get_range_by_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient.get_range_by_height" title="Link to this definition"></a></dt>
+<dd><p>Returns the given range (from:to) of ExtendedHeaders from the node’s header store
+and verifies that the returned headers are adjacent to each other.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>range_from</strong> (<a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader" title="celestia.types.header.ExtendedHeader"><em>ExtendedHeader</em></a>) – The starting header.</p></li>
+<li><p><strong>range_to</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The height of the last header in the range.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of retrieved headers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader" title="celestia.types.header.ExtendedHeader">ExtendedHeader</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient.local_head">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">local_head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient.local_head"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient.local_head" title="Link to this definition"></a></dt>
+<dd><p>Returns the ExtendedHeader of the chain head.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader.deserializer" title="celestia.types.header.ExtendedHeader.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The latest known header of the local node.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader" title="celestia.types.header.ExtendedHeader">ExtendedHeader</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient.network_head">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">network_head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient.network_head"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient.network_head" title="Link to this definition"></a></dt>
+<dd><p>Provides the Syncer’s view of the current network head.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader.deserializer" title="celestia.types.header.ExtendedHeader.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The latest known header of the network.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader" title="celestia.types.header.ExtendedHeader">ExtendedHeader</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient.subscribe">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient.subscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient.subscribe" title="Link to this definition"></a></dt>
+<dd><p>Subscribes to recent ExtendedHeaders from the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader.deserializer" title="celestia.types.header.ExtendedHeader.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ExtendedHeader | None</em> – The latest headers as they become available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient.sync_state">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sync_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient.sync_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient.sync_state" title="Link to this definition"></a></dt>
+<dd><p>Returns the current state of the header Syncer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.header.State.deserializer" title="celestia.types.header.State.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The current synchronization state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.header.State" title="celestia.types.header.State">State</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient.sync_wait">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sync_wait</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient.sync_wait"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient.sync_wait" title="Link to this definition"></a></dt>
+<dd><p>Blocks until the header Syncer is synced to network head.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.header.HeaderClient.wait_for_height">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">wait_for_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/header.html#HeaderClient.wait_for_height"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.header.HeaderClient.wait_for_height" title="Link to this definition"></a></dt>
+<dd><p>Blocks until the header at the given height has been processed
+by the store or context deadline is exceeded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The height of the header to wait for.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader.deserializer" title="celestia.types.header.ExtendedHeader.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved header once available.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader" title="celestia.types.header.ExtendedHeader">ExtendedHeader</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-celestia.node_api.p2p">
+<span id="p2p"></span><h2>P2P<a class="headerlink" href="#module-celestia.node_api.p2p" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.node_api.p2p.</span></span><span class="sig-name descname"><span class="pre">P2PClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rpc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient" title="Link to this definition"></a></dt>
+<dd><p>Client for interacting with Celestia’s P2P API.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.bandwidth_for_peer">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bandwidth_for_peer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peer_id</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.bandwidth_for_peer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.bandwidth_for_peer" title="Link to this definition"></a></dt>
+<dd><p>Returns a Stats struct with bandwidth metrics associated with the given peer.ID.
+The metrics returned include all traffic sent / received for the peer, regardless of protocol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>peer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The ID of the peer.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.p2p.BandwidthStats.deserializer" title="celestia.types.p2p.BandwidthStats.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Bandwidth statistics for the given peer.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.p2p.BandwidthStats" title="celestia.types.p2p.BandwidthStats">BandwidthStats</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.bandwidth_for_protocol">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bandwidth_for_protocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol_id</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.bandwidth_for_protocol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.bandwidth_for_protocol" title="Link to this definition"></a></dt>
+<dd><p>Returns a Stats struct with bandwidth metrics associated with the given protocol.ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>protocol_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The protocol ID.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.p2p.BandwidthStats.deserializer" title="celestia.types.p2p.BandwidthStats.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Bandwidth statistics for the given protocol.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.p2p.BandwidthStats" title="celestia.types.p2p.BandwidthStats">BandwidthStats</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.bandwidth_stats">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bandwidth_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.bandwidth_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.bandwidth_stats" title="Link to this definition"></a></dt>
+<dd><p>Returns a Stats struct with bandwidth metrics for all data sent/received by the local peer,
+regardless of protocol or remote peer IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.p2p.BandwidthStats.deserializer" title="celestia.types.p2p.BandwidthStats.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Overall bandwidth statistics.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.p2p.BandwidthStats" title="celestia.types.p2p.BandwidthStats">BandwidthStats</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.block_peer">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">block_peer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peer_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.block_peer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.block_peer" title="Link to this definition"></a></dt>
+<dd><p>Adds a peer to the set of blocked peers and closes any existing connection to that peer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>peer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The ID of the peer to block.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.close_peer">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close_peer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peer_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.close_peer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.close_peer" title="Link to this definition"></a></dt>
+<dd><p>Closes the connection to a given peer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>peer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The ID of the peer to disconnect from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.connect">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.connect" title="Link to this definition"></a></dt>
+<dd><p>Ensures there is a connection between this host and the peer with given peer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<a class="reference internal" href="types.html#celestia.types.p2p.AddrInfo" title="celestia.types.p2p.AddrInfo"><em>AddrInfo</em></a>) – Address information of the peer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.connectedness">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connectedness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peer_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.connectedness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.connectedness" title="Link to this definition"></a></dt>
+<dd><p>Returns a state signaling connection capabilities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>peer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The ID of the peer.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Connection status with the peer.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.p2p.Connectedness" title="celestia.types.p2p.Connectedness">Connectedness</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.info">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.info" title="Link to this definition"></a></dt>
+<dd><p>Returns address information about the host.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.p2p.AddrInfo.deserializer" title="celestia.types.p2p.AddrInfo.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Address information of the local peer.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.p2p.AddrInfo" title="celestia.types.p2p.AddrInfo">AddrInfo</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.is_protected">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_protected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peer_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.is_protected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.is_protected" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the given peer is protected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>peer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The ID of the peer.</p></li>
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Protection tag.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the peer is protected, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.list_blocked_peers">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list_blocked_peers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.list_blocked_peers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.list_blocked_peers" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of blocked peers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of blocked peer IDs.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.nat_status">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nat_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.nat_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.nat_status" title="Link to this definition"></a></dt>
+<dd><p>Returns the current NAT status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>NAT reachability status.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="types.html#celestia.types.p2p.Reachability" title="celestia.types.p2p.Reachability">Reachability</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.peer_info">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">peer_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peer_id</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.peer_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.peer_info" title="Link to this definition"></a></dt>
+<dd><p>Returns a small slice of information Peerstore has on the given peer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>peer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The ID of the peer.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.p2p.AddrInfo.deserializer" title="celestia.types.p2p.AddrInfo.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Address information of the peer.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.p2p.AddrInfo" title="celestia.types.p2p.AddrInfo">AddrInfo</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.peers">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">peers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.peers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.peers" title="Link to this definition"></a></dt>
+<dd><p>Returns connected peers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of connected peer IDs.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.protect">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">protect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peer_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.protect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.protect" title="Link to this definition"></a></dt>
+<dd><p>Adds a peer to the list of peers who have a bidirectional peering agreement
+that they are protected from being trimmed, dropped or negatively scored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>peer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The ID of the peer.</p></li>
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Protection tag.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.pub_sub_peers">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pub_sub_peers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.pub_sub_peers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.pub_sub_peers" title="Link to this definition"></a></dt>
+<dd><p>Returns the peer IDs of the peers joined on the given topic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>topic</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The PubSub topic to query.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of peer IDs that are joined on the specified topic.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.pub_sub_topics">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pub_sub_topics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.pub_sub_topics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.pub_sub_topics" title="Link to this definition"></a></dt>
+<dd><p>Reports current PubSubTopics the node participates in.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of topic names if available, otherwise None.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.resource_state">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">resource_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.resource_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.resource_state" title="Link to this definition"></a></dt>
+<dd><p>Returns the state of the resource manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.p2p.ResourceManagerStat.deserializer" title="celestia.types.p2p.ResourceManagerStat.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Resource manager state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.p2p.ResourceManagerStat" title="celestia.types.p2p.ResourceManagerStat">ResourceManagerStat</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.unblock_peer">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unblock_peer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peer_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.unblock_peer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.unblock_peer" title="Link to this definition"></a></dt>
+<dd><p>Removes a peer from the set of blocked peers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>peer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The ID of the peer to unblock.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.p2p.P2PClient.unprotect">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unprotect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">peer_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/p2p.html#P2PClient.unprotect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.p2p.P2PClient.unprotect" title="Link to this definition"></a></dt>
+<dd><p>Removes a peer from the list of peers who have a bidirectional peering agreement that
+they are protected from being trimmed, dropped or negatively scored, returning a bool
+representing whether the given peer is protected or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>peer_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The ID of the peer.</p></li>
+<li><p><strong>tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Protection tag.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the peer remains protected, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-celestia.node_api.share">
+<span id="share"></span><h2>Share<a class="headerlink" href="#module-celestia.node_api.share" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.node_api.share.ShareClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.node_api.share.</span></span><span class="sig-name descname"><span class="pre">ShareClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rpc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/share.html#ShareClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.share.ShareClient" title="Link to this definition"></a></dt>
+<dd><p>Client for interacting with Celestia’s Share API.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.share.ShareClient.get_available">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_available</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/share.html#ShareClient.get_available"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.share.ShareClient.get_available" title="Link to this definition"></a></dt>
+<dd><p>Subjectively validates if Shares committed to the given ExtendedHeader are available on the Network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if shares are available, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.share.ShareClient.get_eds">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_eds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/share.html#ShareClient.get_eds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.share.ShareClient.get_eds" title="Link to this definition"></a></dt>
+<dd><p>Gets the full EDS identified by the given extended header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved EDS object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ExtendedDataSquare</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.share.ShareClient.get_namespace_data">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_namespace_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/share.html#ShareClient.get_namespace_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.share.ShareClient.get_namespace_data" title="Link to this definition"></a></dt>
+<dd><p>Gets all shares from an EDS within the given namespace. Shares are returned
+in a row-by-row order if the namespace spans multiple rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p></li>
+<li><p><strong>namespace</strong> (<em>Namespace</em>) – The namespace identifier.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of NamespaceData objects or [] if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[NamespaceData]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.share.ShareClient.get_range">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/share.html#ShareClient.get_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.share.ShareClient.get_range" title="Link to this definition"></a></dt>
+<dd><p>Gets a list of shares and their corresponding proof.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The starting index.</p></li>
+<li><p><strong>end</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The ending index.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved range result containing shares and proof.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GetRangeResult</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.share.ShareClient.get_samples">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/share.html#ShareClient.get_samples"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.share.ShareClient.get_samples" title="Link to this definition"></a></dt>
+<dd><p>Gets sample for given indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>header</strong> (<a class="reference internal" href="types.html#celestia.types.header.ExtendedHeader" title="celestia.types.header.ExtendedHeader"><em>ExtendedHeader</em></a>) – The extended header.</p></li>
+<li><p><strong>indices</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a><em>[</em><em>SampleCoords</em><em>]</em>) – A list of sample coordinates.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of retrieved samples or [] if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.share.ShareClient.get_share">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_share</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/share.html#ShareClient.get_share"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.share.ShareClient.get_share" title="Link to this definition"></a></dt>
+<dd><p>Gets a Share by coordinates in EDS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The block height.</p></li>
+<li><p><strong>row</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The row index.</p></li>
+<li><p><strong>col</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – The column index.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The retrieved share.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-celestia.node_api.state">
+<span id="state"></span><h2>State<a class="headerlink" href="#module-celestia.node_api.state" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.node_api.state.</span></span><span class="sig-name descname"><span class="pre">StateClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rpc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient" title="Link to this definition"></a></dt>
+<dd><p>Client for interacting with Celestia’s State API.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.account_address">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">account_address</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.account_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.account_address" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the address of the node’s account/signer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The address of the node’s account.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.balance">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.balance" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the Celestia coin balance for the node’s account/signer
+and verifies it against the corresponding block’s AppHash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.Balance.deserializer" title="celestia.types.state.Balance.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The balance of the node’s account.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.Balance" title="celestia.types.state.Balance">Balance</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.balance_for_address">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">balance_for_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.balance_for_address"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.balance_for_address" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the Celestia coin balance for the given address and verifies the returned balance
+against the corresponding block’s AppHash. NOTE: the balance returned is the balance reported
+by the block right before the node’s current head (head-1). This is due to the fact that for
+block N, the block’s <cite>AppHash</cite> is the result of applying the previous block’s transaction list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The address to query balance for.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.Balance.deserializer" title="celestia.types.state.Balance.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The balance of the given address.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.Balance" title="celestia.types.state.Balance">Balance</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.begin_redelegate">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">begin_redelegate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_val_addr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_val_addr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.begin_redelegate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.begin_redelegate" title="Link to this definition"></a></dt>
+<dd><p>Sends a user’s delegated tokens to a new validator for redelegation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src_val_addr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Source validator address.</p></li>
+<li><p><strong>dst_val_addr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Destination validator address.</p></li>
+<li><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Amount to redelegate.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.TXResponse.deserializer" title="celestia.types.state.TXResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+<li><p><strong>**config</strong> (<em>TxConfig</em>) – Additional transaction configuration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transaction response.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.TXResponse" title="celestia.types.state.TXResponse">TXResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.cancel_unbonding_delegation">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cancel_unbonding_delegation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val_addr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.cancel_unbonding_delegation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.cancel_unbonding_delegation" title="Link to this definition"></a></dt>
+<dd><p>Cancels a user’s pending undelegation from a validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>val_addr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Validator address.</p></li>
+<li><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Amount to cancel unbonding.</p></li>
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Block height at which unbonding was initiated.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.TXResponse.deserializer" title="celestia.types.state.TXResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+<li><p><strong>**config</strong> (<em>TxConfig</em>) – Additional transaction configuration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transaction response.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.TXResponse" title="celestia.types.state.TXResponse">TXResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.delegate">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delegate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">del_addr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.delegate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.delegate" title="Link to this definition"></a></dt>
+<dd><p>Sends a user’s liquid tokens to a validator for delegation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>del_addr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Delegator address.</p></li>
+<li><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Amount to delegate.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.TXResponse.deserializer" title="celestia.types.state.TXResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+<li><p><strong>**config</strong> (<em>TxConfig</em>) – Additional transaction configuration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transaction response.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.TXResponse" title="celestia.types.state.TXResponse">TXResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.grant_fee">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">grant_fee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grantee</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.grant_fee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.grant_fee" title="Link to this definition"></a></dt>
+<dd><p>Grants a fee allowance to the specified grantee.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grantee</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Address of the grantee.</p></li>
+<li><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Amount of fee allowance.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.TXResponse.deserializer" title="celestia.types.state.TXResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+<li><p><strong>**config</strong> (<em>TxConfig</em>) – Additional transaction configurations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Response of the grant fee transaction.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.TXResponse" title="celestia.types.state.TXResponse">TXResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.query_delegation">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_delegation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val_addr</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.query_delegation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.query_delegation" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the delegation information between a delegator and a validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>val_addr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Validator address.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.QueryDelegationResponse.deserializer" title="celestia.types.state.QueryDelegationResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Delegation information.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.QueryDelegationResponse" title="celestia.types.state.QueryDelegationResponse">QueryDelegationResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.query_redelegations">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_redelegations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_val_addr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_val_addr</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.query_redelegations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.query_redelegations" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the status of the redelegations between a delegator and a validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src_val_addr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Source validator address.</p></li>
+<li><p><strong>dst_val_addr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Destination validator address.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.QueryRedelegationResponse.deserializer" title="celestia.types.state.QueryRedelegationResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Redelegation details.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.QueryRedelegationResponse" title="celestia.types.state.QueryRedelegationResponse">QueryRedelegationResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.query_unbonding">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_unbonding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val_addr</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.query_unbonding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.query_unbonding" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the unbonding status between a delegator and a validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>val_addr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Validator address.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.QueryUnbondingDelegationResponse.deserializer" title="celestia.types.state.QueryUnbondingDelegationResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Unbonding status.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.QueryUnbondingDelegationResponse" title="celestia.types.state.QueryUnbondingDelegationResponse">QueryUnbondingDelegationResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.revoke_grant_fee">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">revoke_grant_fee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grantee</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.revoke_grant_fee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.revoke_grant_fee" title="Link to this definition"></a></dt>
+<dd><p>Revokes a previously granted fee allowance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grantee</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Address of the grantee whose allowance is being revoked.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.TXResponse.deserializer" title="celestia.types.state.TXResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+<li><p><strong>**config</strong> (<em>TxConfig</em>) – Additional transaction configurations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Response of the revoke grant fee transaction.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.TXResponse" title="celestia.types.state.TXResponse">TXResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.submit_pay_for_blob">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">submit_pay_for_blob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blob</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">blobs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.submit_pay_for_blob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.submit_pay_for_blob" title="Link to this definition"></a></dt>
+<dd><p>Builds, signs and submits a PayForBlob transaction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blob</strong> (<em>Blob</em>) – The first blob to be included in the transaction.</p></li>
+<li><p><strong>*blobs</strong> (<em>Blob</em>) – Additional blobs.</p></li>
+<li><p><strong>**config</strong> (<em>TxConfig</em>) – Additional transaction configurations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transaction ID of the submitted PayForBlob transaction.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.transfer">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">to</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.transfer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.transfer" title="Link to this definition"></a></dt>
+<dd><p>Sends the given amount of coins from default wallet of the node to the given account address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>to</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Recipient address.</p></li>
+<li><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Amount to transfer.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.TXResponse.deserializer" title="celestia.types.state.TXResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+<li><p><strong>**config</strong> (<em>TxConfig</em>) – Additional transaction configuration.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transaction response.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.TXResponse" title="celestia.types.state.TXResponse">TXResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.state.StateClient.undelegate">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">undelegate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">del_addr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deserializer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/state.html#StateClient.undelegate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.state.StateClient.undelegate" title="Link to this definition"></a></dt>
+<dd><p>Undelegates a user’s delegated tokens, unbonding them from the current validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>del_addr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Delegator address.</p></li>
+<li><p><strong>amount</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Amount to undelegate.</p></li>
+<li><p><strong>deserializer</strong> (<em>Callable</em><em> | </em><em>None</em>) – Custom deserializer. Defaults to <a class="reference internal" href="types.html#celestia.types.state.TXResponse.deserializer" title="celestia.types.state.TXResponse.deserializer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">deserializer()</span></code></a>.</p></li>
+<li><p><strong>**config</strong> (<em>TxConfig</em>) – Additional transaction configurations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Response of the undelegation transaction.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#celestia.types.state.TXResponse" title="celestia.types.state.TXResponse">TXResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-celestia.node_api.fraud">
+<span id="fraud"></span><h2>Fraud<a class="headerlink" href="#module-celestia.node_api.fraud" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.node_api.fraud.FraudClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.node_api.fraud.</span></span><span class="sig-name descname"><span class="pre">FraudClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rpc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/fraud.html#FraudClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.fraud.FraudClient" title="Link to this definition"></a></dt>
+<dd><p>Client for interacting with Celestia’s Fraud API.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.fraud.FraudClient.get">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proof_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/fraud.html#FraudClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.fraud.FraudClient.get" title="Link to this definition"></a></dt>
+<dd><p>Fetches fraud proofs from the disk by its type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proof_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The type of fraud proof to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of fraud proofs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.node_api.fraud.FraudClient.subscribe">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proof_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/node_api/fraud.html#FraudClient.subscribe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.node_api.fraud.FraudClient.subscribe" title="Link to this definition"></a></dt>
+<dd><p>Allows to subscribe on a Proof pub sub topic by its type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>proof_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – The type of fraud proof to subscribe to.</p>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>dict[str, str]</em> – A dictionary containing fraud proof data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="pyCelestia documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="types.html" class="btn btn-neutral float-right" title="Celestia types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alesh, Tnmoxa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

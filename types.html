@@ -1,0 +1,1889 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celestia types &mdash; pyCelestia  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Celestia Node API" href="node_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pyCelestia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Api Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="node_api.html">Celestia Node API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Types:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Celestia types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#common-types">Common types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#blob-types">Blob types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#das-types">Das types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#header-types">Header types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#p2p-types">P2P types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#share-types">Share types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#state-types">State types</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyCelestia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Celestia types</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/types.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="celestia-types">
+<h1>Celestia types<a class="headerlink" href="#celestia-types" title="Link to this heading"></a></h1>
+<section id="common-types">
+<h2>Common types<a class="headerlink" href="#common-types" title="Link to this heading"></a></h2>
+</section>
+<section id="blob-types">
+<h2>Blob types<a class="headerlink" href="#blob-types" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.blob.SubmitBlobResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.blob.</span></span><span class="sig-name descname"><span class="pre">SubmitBlobResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commitments</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/blob.html#SubmitBlobResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.blob.SubmitBlobResult" title="Link to this definition"></a></dt>
+<dd><p>Represents the result of submitting a blob to the Celestia network.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.SubmitBlobResult.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#celestia.types.blob.SubmitBlobResult.height" title="Link to this definition"></a></dt>
+<dd><p>The block height at which the blob was submitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.SubmitBlobResult.commitments">
+<span class="sig-name descname"><span class="pre">commitments</span></span><a class="headerlink" href="#celestia.types.blob.SubmitBlobResult.commitments" title="Link to this definition"></a></dt>
+<dd><p>Commitments associated with the submitted blob.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[Commitment, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.blob.SubscriptionBlobResult">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.blob.</span></span><span class="sig-name descname"><span class="pre">SubscriptionBlobResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blobs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/blob.html#SubscriptionBlobResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.blob.SubscriptionBlobResult" title="Link to this definition"></a></dt>
+<dd><p>Represents the result of a subscription to blobs in the Celestia network.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.SubscriptionBlobResult.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#celestia.types.blob.SubscriptionBlobResult.height" title="Link to this definition"></a></dt>
+<dd><p>The block height of the retrieved blobs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.SubscriptionBlobResult.blobs">
+<span class="sig-name descname"><span class="pre">blobs</span></span><a class="headerlink" href="#celestia.types.blob.SubscriptionBlobResult.blobs" title="Link to this definition"></a></dt>
+<dd><p>The list of blobs retrieved from the subscription.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[Blob, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.blob.Proof">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.blob.</span></span><span class="sig-name descname"><span class="pre">Proof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_max_namespace_ignored</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/blob.html#Proof"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.blob.Proof" title="Link to this definition"></a></dt>
+<dd><p>Represents a Merkle proof used for verifying data inclusion in Celestia.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.Proof.end">
+<span class="sig-name descname"><span class="pre">end</span></span><a class="headerlink" href="#celestia.types.blob.Proof.end" title="Link to this definition"></a></dt>
+<dd><p>The end index of the proof range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.Proof.nodes">
+<span class="sig-name descname"><span class="pre">nodes</span></span><a class="headerlink" href="#celestia.types.blob.Proof.nodes" title="Link to this definition"></a></dt>
+<dd><p>The nodes forming the Merkle proof.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[Base64, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.Proof.start">
+<span class="sig-name descname"><span class="pre">start</span></span><a class="headerlink" href="#celestia.types.blob.Proof.start" title="Link to this definition"></a></dt>
+<dd><p>The start index of the proof range (optional).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.Proof.is_max_namespace_ignored">
+<span class="sig-name descname"><span class="pre">is_max_namespace_ignored</span></span><a class="headerlink" href="#celestia.types.blob.Proof.is_max_namespace_ignored" title="Link to this definition"></a></dt>
+<dd><p>Flag indicating if max namespace check is ignored (optional).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProofEntry">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.blob.</span></span><span class="sig-name descname"><span class="pre">RowProofEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">leaf_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aunts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/blob.html#RowProofEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.blob.RowProofEntry" title="Link to this definition"></a></dt>
+<dd><p>Represents an entry in a row proof, used for verifying inclusion in a specific row of a Merkle tree.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProofEntry.index">
+<span class="sig-name descname"><span class="pre">index</span></span><a class="headerlink" href="#celestia.types.blob.RowProofEntry.index" title="Link to this definition"></a></dt>
+<dd><p>The index of the leaf in the row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProofEntry.total">
+<span class="sig-name descname"><span class="pre">total</span></span><a class="headerlink" href="#celestia.types.blob.RowProofEntry.total" title="Link to this definition"></a></dt>
+<dd><p>The total number of leaves in the row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProofEntry.leaf_hash">
+<span class="sig-name descname"><span class="pre">leaf_hash</span></span><a class="headerlink" href="#celestia.types.blob.RowProofEntry.leaf_hash" title="Link to this definition"></a></dt>
+<dd><p>The hash of the leaf.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Base64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProofEntry.aunts">
+<span class="sig-name descname"><span class="pre">aunts</span></span><a class="headerlink" href="#celestia.types.blob.RowProofEntry.aunts" title="Link to this definition"></a></dt>
+<dd><p>The sibling hashes used in the proof.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[Base64, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProof">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.blob.</span></span><span class="sig-name descname"><span class="pre">RowProof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row_roots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proofs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/blob.html#RowProof"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.blob.RowProof" title="Link to this definition"></a></dt>
+<dd><p>Represents a proof for a row in a Merkle tree.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProof.start_row">
+<span class="sig-name descname"><span class="pre">start_row</span></span><a class="headerlink" href="#celestia.types.blob.RowProof.start_row" title="Link to this definition"></a></dt>
+<dd><p>The starting row index of the proof.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProof.end_row">
+<span class="sig-name descname"><span class="pre">end_row</span></span><a class="headerlink" href="#celestia.types.blob.RowProof.end_row" title="Link to this definition"></a></dt>
+<dd><p>The ending row index of the proof.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProof.row_roots">
+<span class="sig-name descname"><span class="pre">row_roots</span></span><a class="headerlink" href="#celestia.types.blob.RowProof.row_roots" title="Link to this definition"></a></dt>
+<dd><p>The root hashes of the rows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[Base64, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.RowProof.proofs">
+<span class="sig-name descname"><span class="pre">proofs</span></span><a class="headerlink" href="#celestia.types.blob.RowProof.proofs" title="Link to this definition"></a></dt>
+<dd><p>The proof entries for the row.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference internal" href="#celestia.types.blob.RowProofEntry" title="celestia.types.blob.RowProofEntry">RowProofEntry</a>, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.blob.CommitmentProof">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.blob.</span></span><span class="sig-name descname"><span class="pre">CommitmentProof</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namespace_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row_proof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtree_root_proofs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtree_roots</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/blob.html#CommitmentProof"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.blob.CommitmentProof" title="Link to this definition"></a></dt>
+<dd><p>Represents a proof of commitment in Celestia, verifying that a namespace is correctly included.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.CommitmentProof.namespace_id">
+<span class="sig-name descname"><span class="pre">namespace_id</span></span><a class="headerlink" href="#celestia.types.blob.CommitmentProof.namespace_id" title="Link to this definition"></a></dt>
+<dd><p>The namespace identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Namespace</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.CommitmentProof.namespace_version">
+<span class="sig-name descname"><span class="pre">namespace_version</span></span><a class="headerlink" href="#celestia.types.blob.CommitmentProof.namespace_version" title="Link to this definition"></a></dt>
+<dd><p>The version of the namespace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.CommitmentProof.row_proof">
+<span class="sig-name descname"><span class="pre">row_proof</span></span><a class="headerlink" href="#celestia.types.blob.CommitmentProof.row_proof" title="Link to this definition"></a></dt>
+<dd><p>The proof for the rows containing the namespace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.blob.RowProof" title="celestia.types.blob.RowProof">RowProof</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.CommitmentProof.subtree_root_proofs">
+<span class="sig-name descname"><span class="pre">subtree_root_proofs</span></span><a class="headerlink" href="#celestia.types.blob.CommitmentProof.subtree_root_proofs" title="Link to this definition"></a></dt>
+<dd><p>Proofs for verifying subtree roots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference internal" href="#celestia.types.blob.Proof" title="celestia.types.blob.Proof">Proof</a>, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.blob.CommitmentProof.subtree_roots">
+<span class="sig-name descname"><span class="pre">subtree_roots</span></span><a class="headerlink" href="#celestia.types.blob.CommitmentProof.subtree_roots" title="Link to this definition"></a></dt>
+<dd><p>The roots of the subtrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[Base64, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.blob.CommitmentProof.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/blob.html#CommitmentProof.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.blob.CommitmentProof.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserializes a commitment proof from a given result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a CommitmentProof.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A deserialized CommitmentProof object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="das-types">
+<h2>Das types<a class="headerlink" href="#das-types" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.das.Worker">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.das.</span></span><span class="sig-name descname"><span class="pre">Worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/das.html#Worker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.das.Worker" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.das.SamplingStats">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.das.</span></span><span class="sig-name descname"><span class="pre">SamplingStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">head_of_sampled_chain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">head_of_catchup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_head_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">concurrency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catch_up_done</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_running</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/das.html#SamplingStats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.das.SamplingStats" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="header-types">
+<h2>Header types<a class="headerlink" href="#header-types" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.ConsensusVersion">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">ConsensusVersion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#ConsensusVersion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.ConsensusVersion" title="Link to this definition"></a></dt>
+<dd><p>Represents the version information for the consensus.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.ConsensusVersion.block">
+<span class="sig-name descname"><span class="pre">block</span></span><a class="headerlink" href="#celestia.types.header.ConsensusVersion.block" title="Link to this definition"></a></dt>
+<dd><p>The block version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.ConsensusVersion.app">
+<span class="sig-name descname"><span class="pre">app</span></span><a class="headerlink" href="#celestia.types.header.ConsensusVersion.app" title="Link to this definition"></a></dt>
+<dd><p>The application version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.Parts">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">Parts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">total</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hash</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#Parts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.Parts" title="Link to this definition"></a></dt>
+<dd><p>Represents the parts of the block.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Parts.total">
+<span class="sig-name descname"><span class="pre">total</span></span><a class="headerlink" href="#celestia.types.header.Parts.total" title="Link to this definition"></a></dt>
+<dd><p>The total number of parts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Parts.hash">
+<span class="sig-name descname"><span class="pre">hash</span></span><a class="headerlink" href="#celestia.types.header.Parts.hash" title="Link to this definition"></a></dt>
+<dd><p>The hash of the parts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.BlockId">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">BlockId</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#BlockId"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.BlockId" title="Link to this definition"></a></dt>
+<dd><p>Represents a block identifier, which includes a hash and parts.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.BlockId.hash">
+<span class="sig-name descname"><span class="pre">hash</span></span><a class="headerlink" href="#celestia.types.header.BlockId.hash" title="Link to this definition"></a></dt>
+<dd><p>The hash of the block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.BlockId.parts">
+<span class="sig-name descname"><span class="pre">parts</span></span><a class="headerlink" href="#celestia.types.header.BlockId.parts" title="Link to this definition"></a></dt>
+<dd><p>The parts information of the block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.Parts" title="celestia.types.header.Parts">Parts</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.Header">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">Header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chain_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_block_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_commit_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validators_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_validators_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consensus_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_results_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evidence_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proposer_address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#Header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.Header" title="Link to this definition"></a></dt>
+<dd><p>Represents the header information for the block.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.version">
+<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#celestia.types.header.Header.version" title="Link to this definition"></a></dt>
+<dd><p>The consensus version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.ConsensusVersion" title="celestia.types.header.ConsensusVersion">ConsensusVersion</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.chain_id">
+<span class="sig-name descname"><span class="pre">chain_id</span></span><a class="headerlink" href="#celestia.types.header.Header.chain_id" title="Link to this definition"></a></dt>
+<dd><p>The chain identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#celestia.types.header.Header.height" title="Link to this definition"></a></dt>
+<dd><p>The height of the block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.time">
+<span class="sig-name descname"><span class="pre">time</span></span><a class="headerlink" href="#celestia.types.header.Header.time" title="Link to this definition"></a></dt>
+<dd><p>The time the block was created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.last_block_id">
+<span class="sig-name descname"><span class="pre">last_block_id</span></span><a class="headerlink" href="#celestia.types.header.Header.last_block_id" title="Link to this definition"></a></dt>
+<dd><p>The identifier of the last block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.BlockId" title="celestia.types.header.BlockId">BlockId</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.last_commit_hash">
+<span class="sig-name descname"><span class="pre">last_commit_hash</span></span><a class="headerlink" href="#celestia.types.header.Header.last_commit_hash" title="Link to this definition"></a></dt>
+<dd><p>The hash of the last commit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.data_hash">
+<span class="sig-name descname"><span class="pre">data_hash</span></span><a class="headerlink" href="#celestia.types.header.Header.data_hash" title="Link to this definition"></a></dt>
+<dd><p>The hash of the block data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.validators_hash">
+<span class="sig-name descname"><span class="pre">validators_hash</span></span><a class="headerlink" href="#celestia.types.header.Header.validators_hash" title="Link to this definition"></a></dt>
+<dd><p>The hash of the validators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.next_validators_hash">
+<span class="sig-name descname"><span class="pre">next_validators_hash</span></span><a class="headerlink" href="#celestia.types.header.Header.next_validators_hash" title="Link to this definition"></a></dt>
+<dd><p>The hash of the next validators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.consensus_hash">
+<span class="sig-name descname"><span class="pre">consensus_hash</span></span><a class="headerlink" href="#celestia.types.header.Header.consensus_hash" title="Link to this definition"></a></dt>
+<dd><p>The consensus hash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.app_hash">
+<span class="sig-name descname"><span class="pre">app_hash</span></span><a class="headerlink" href="#celestia.types.header.Header.app_hash" title="Link to this definition"></a></dt>
+<dd><p>The application hash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.last_results_hash">
+<span class="sig-name descname"><span class="pre">last_results_hash</span></span><a class="headerlink" href="#celestia.types.header.Header.last_results_hash" title="Link to this definition"></a></dt>
+<dd><p>The hash of the last results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.evidence_hash">
+<span class="sig-name descname"><span class="pre">evidence_hash</span></span><a class="headerlink" href="#celestia.types.header.Header.evidence_hash" title="Link to this definition"></a></dt>
+<dd><p>The hash of the evidence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Header.proposer_address">
+<span class="sig-name descname"><span class="pre">proposer_address</span></span><a class="headerlink" href="#celestia.types.header.Header.proposer_address" title="Link to this definition"></a></dt>
+<dd><p>The address of the proposer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.PubKey">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">PubKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#PubKey"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.PubKey" title="Link to this definition"></a></dt>
+<dd><p>Represents a public key used for validating a transaction.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.PubKey.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#celestia.types.header.PubKey.type" title="Link to this definition"></a></dt>
+<dd><p>The type of public key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.PubKey.value">
+<span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#celestia.types.header.PubKey.value" title="Link to this definition"></a></dt>
+<dd><p>The base64 encoded public key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Base64</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.Validator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">Validator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pub_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voting_power</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proposer_priority</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#Validator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.Validator" title="Link to this definition"></a></dt>
+<dd><p>Represents a validator in the consensus system.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Validator.address">
+<span class="sig-name descname"><span class="pre">address</span></span><a class="headerlink" href="#celestia.types.header.Validator.address" title="Link to this definition"></a></dt>
+<dd><p>The address of the validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Validator.pub_key">
+<span class="sig-name descname"><span class="pre">pub_key</span></span><a class="headerlink" href="#celestia.types.header.Validator.pub_key" title="Link to this definition"></a></dt>
+<dd><p>The public key of the validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.PubKey" title="celestia.types.header.PubKey">PubKey</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Validator.voting_power">
+<span class="sig-name descname"><span class="pre">voting_power</span></span><a class="headerlink" href="#celestia.types.header.Validator.voting_power" title="Link to this definition"></a></dt>
+<dd><p>The voting power of the validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Validator.proposer_priority">
+<span class="sig-name descname"><span class="pre">proposer_priority</span></span><a class="headerlink" href="#celestia.types.header.Validator.proposer_priority" title="Link to this definition"></a></dt>
+<dd><p>The proposer priority of the validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.ValidatorSet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">ValidatorSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">validators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proposer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#ValidatorSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.ValidatorSet" title="Link to this definition"></a></dt>
+<dd><p>Represents a set of validators and the proposer.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.ValidatorSet.validators">
+<span class="sig-name descname"><span class="pre">validators</span></span><a class="headerlink" href="#celestia.types.header.ValidatorSet.validators" title="Link to this definition"></a></dt>
+<dd><p>The list of validators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference internal" href="#celestia.types.header.Validator" title="celestia.types.header.Validator">Validator</a>, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.ValidatorSet.proposer">
+<span class="sig-name descname"><span class="pre">proposer</span></span><a class="headerlink" href="#celestia.types.header.ValidatorSet.proposer" title="Link to this definition"></a></dt>
+<dd><p>The proposer of the block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.Validator" title="celestia.types.header.Validator">Validator</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.Signature">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">Signature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block_id_flag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validator_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signature</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#Signature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.Signature" title="Link to this definition"></a></dt>
+<dd><p>Represents a signature for a commit block.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Signature.block_id_flag">
+<span class="sig-name descname"><span class="pre">block_id_flag</span></span><a class="headerlink" href="#celestia.types.header.Signature.block_id_flag" title="Link to this definition"></a></dt>
+<dd><p>The block ID flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Signature.validator_address">
+<span class="sig-name descname"><span class="pre">validator_address</span></span><a class="headerlink" href="#celestia.types.header.Signature.validator_address" title="Link to this definition"></a></dt>
+<dd><p>The address of the validator signing the block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Signature.timestamp">
+<span class="sig-name descname"><span class="pre">timestamp</span></span><a class="headerlink" href="#celestia.types.header.Signature.timestamp" title="Link to this definition"></a></dt>
+<dd><p>The timestamp of the signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Signature.signature">
+<span class="sig-name descname"><span class="pre">signature</span></span><a class="headerlink" href="#celestia.types.header.Signature.signature" title="Link to this definition"></a></dt>
+<dd><p>The base64 encoded signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Base64</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.Commit">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">Commit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signatures</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#Commit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.Commit" title="Link to this definition"></a></dt>
+<dd><p>Represents a commit for a block, including signatures.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Commit.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#celestia.types.header.Commit.height" title="Link to this definition"></a></dt>
+<dd><p>The block height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Commit.round">
+<span class="sig-name descname"><span class="pre">round</span></span><a class="headerlink" href="#celestia.types.header.Commit.round" title="Link to this definition"></a></dt>
+<dd><p>The block round.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Commit.block_id">
+<span class="sig-name descname"><span class="pre">block_id</span></span><a class="headerlink" href="#celestia.types.header.Commit.block_id" title="Link to this definition"></a></dt>
+<dd><p>The ID of the block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.BlockId" title="celestia.types.header.BlockId">BlockId</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Commit.signatures">
+<span class="sig-name descname"><span class="pre">signatures</span></span><a class="headerlink" href="#celestia.types.header.Commit.signatures" title="Link to this definition"></a></dt>
+<dd><p>The signatures of the validators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference internal" href="#celestia.types.header.Signature" title="celestia.types.header.Signature">Signature</a>, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.Dah">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">Dah</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row_roots</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column_roots</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#Dah"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.Dah" title="Link to this definition"></a></dt>
+<dd><p>Represents the data availability header.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Dah.row_roots">
+<span class="sig-name descname"><span class="pre">row_roots</span></span><a class="headerlink" href="#celestia.types.header.Dah.row_roots" title="Link to this definition"></a></dt>
+<dd><p>The row roots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[Base64, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.Dah.column_roots">
+<span class="sig-name descname"><span class="pre">column_roots</span></span><a class="headerlink" href="#celestia.types.header.Dah.column_roots" title="Link to this definition"></a></dt>
+<dd><p>The column roots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[Base64, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.ExtendedHeader">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">ExtendedHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validator_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dah</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#ExtendedHeader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.ExtendedHeader" title="Link to this definition"></a></dt>
+<dd><p>Represents an extended header containing header, validator set, commit, and DAH.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.ExtendedHeader.header">
+<span class="sig-name descname"><span class="pre">header</span></span><a class="headerlink" href="#celestia.types.header.ExtendedHeader.header" title="Link to this definition"></a></dt>
+<dd><p>The block header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.Header" title="celestia.types.header.Header">Header</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.ExtendedHeader.validator_set">
+<span class="sig-name descname"><span class="pre">validator_set</span></span><a class="headerlink" href="#celestia.types.header.ExtendedHeader.validator_set" title="Link to this definition"></a></dt>
+<dd><p>The validator set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.ValidatorSet" title="celestia.types.header.ValidatorSet">ValidatorSet</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.ExtendedHeader.commit">
+<span class="sig-name descname"><span class="pre">commit</span></span><a class="headerlink" href="#celestia.types.header.ExtendedHeader.commit" title="Link to this definition"></a></dt>
+<dd><p>The commit information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.Commit" title="celestia.types.header.Commit">Commit</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.ExtendedHeader.dah">
+<span class="sig-name descname"><span class="pre">dah</span></span><a class="headerlink" href="#celestia.types.header.ExtendedHeader.dah" title="Link to this definition"></a></dt>
+<dd><p>The data availability header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.Dah" title="celestia.types.header.Dah">Dah</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.header.ExtendedHeader.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#ExtendedHeader.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.ExtendedHeader.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserializes the provided result into a <cite>ExtendedHeader</cite> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a ExtendedHeader.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A deserialized ExtendedHeader object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.ExtendedHeader" title="celestia.types.header.ExtendedHeader">ExtendedHeader</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.header.State">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.header.</span></span><span class="sig-name descname"><span class="pre">State</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_hash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#State"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.State" title="Link to this definition"></a></dt>
+<dd><p>Represents a state for the block range.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.State.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#celestia.types.header.State.id" title="Link to this definition"></a></dt>
+<dd><p>The ID of the state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.State.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#celestia.types.header.State.height" title="Link to this definition"></a></dt>
+<dd><p>The height of the block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.State.from_height">
+<span class="sig-name descname"><span class="pre">from_height</span></span><a class="headerlink" href="#celestia.types.header.State.from_height" title="Link to this definition"></a></dt>
+<dd><p>The starting height for the range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.State.to_height">
+<span class="sig-name descname"><span class="pre">to_height</span></span><a class="headerlink" href="#celestia.types.header.State.to_height" title="Link to this definition"></a></dt>
+<dd><p>The ending height for the range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.State.from_hash">
+<span class="sig-name descname"><span class="pre">from_hash</span></span><a class="headerlink" href="#celestia.types.header.State.from_hash" title="Link to this definition"></a></dt>
+<dd><p>The hash at the start of the range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.State.to_hash">
+<span class="sig-name descname"><span class="pre">to_hash</span></span><a class="headerlink" href="#celestia.types.header.State.to_hash" title="Link to this definition"></a></dt>
+<dd><p>The hash at the end of the range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.State.start">
+<span class="sig-name descname"><span class="pre">start</span></span><a class="headerlink" href="#celestia.types.header.State.start" title="Link to this definition"></a></dt>
+<dd><p>The start time of the state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.header.State.end">
+<span class="sig-name descname"><span class="pre">end</span></span><a class="headerlink" href="#celestia.types.header.State.end" title="Link to this definition"></a></dt>
+<dd><p>The end time of the state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.header.State.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/header.html#State.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.header.State.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserializes the provided result into a <cite>State</cite> object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a State.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A deserialized State object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.header.State" title="celestia.types.header.State">State</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="p2p-types">
+<h2>P2P types<a class="headerlink" href="#p2p-types" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.p2p.ResourceManagerStat">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.p2p.</span></span><span class="sig-name descname"><span class="pre">ResourceManagerStat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">System</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Transient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Services</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Protocols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Peers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/p2p.html#ResourceManagerStat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.p2p.ResourceManagerStat" title="Link to this definition"></a></dt>
+<dd><p>Represents the statistics of a resource manager, including system, transient,
+services, protocols, and peers.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.ResourceManagerStat.system">
+<span class="sig-name descname"><span class="pre">system</span></span><a class="headerlink" href="#celestia.types.p2p.ResourceManagerStat.system" title="Link to this definition"></a></dt>
+<dd><p>System data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.ResourceManagerStat.transient">
+<span class="sig-name descname"><span class="pre">transient</span></span><a class="headerlink" href="#celestia.types.p2p.ResourceManagerStat.transient" title="Link to this definition"></a></dt>
+<dd><p>Transient data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.ResourceManagerStat.services">
+<span class="sig-name descname"><span class="pre">services</span></span><a class="headerlink" href="#celestia.types.p2p.ResourceManagerStat.services" title="Link to this definition"></a></dt>
+<dd><p>Service data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.ResourceManagerStat.protocols">
+<span class="sig-name descname"><span class="pre">protocols</span></span><a class="headerlink" href="#celestia.types.p2p.ResourceManagerStat.protocols" title="Link to this definition"></a></dt>
+<dd><p>Protocol data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.ResourceManagerStat.peers">
+<span class="sig-name descname"><span class="pre">peers</span></span><a class="headerlink" href="#celestia.types.p2p.ResourceManagerStat.peers" title="Link to this definition"></a></dt>
+<dd><p>Peer data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.p2p.ResourceManagerStat.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/p2p.html#ResourceManagerStat.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.p2p.ResourceManagerStat.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserialize a dictionary into a ResourceManagerStat instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a ResourceManagerStat.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A deserialized ResourceManagerStat object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.p2p.ResourceManagerStat" title="celestia.types.p2p.ResourceManagerStat">ResourceManagerStat</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.p2p.BandwidthStats">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.p2p.</span></span><span class="sig-name descname"><span class="pre">BandwidthStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">TotalIn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TotalOut</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RateIn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RateOut</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/p2p.html#BandwidthStats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.p2p.BandwidthStats" title="Link to this definition"></a></dt>
+<dd><p>Represents the statistics related to bandwidth, including total inbound/outbound
+traffic and rates for both directions.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.BandwidthStats.total_in">
+<span class="sig-name descname"><span class="pre">total_in</span></span><a class="headerlink" href="#celestia.types.p2p.BandwidthStats.total_in" title="Link to this definition"></a></dt>
+<dd><p>Total inbound bandwidth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.BandwidthStats.total_out">
+<span class="sig-name descname"><span class="pre">total_out</span></span><a class="headerlink" href="#celestia.types.p2p.BandwidthStats.total_out" title="Link to this definition"></a></dt>
+<dd><p>Total outbound bandwidth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.BandwidthStats.rate_in">
+<span class="sig-name descname"><span class="pre">rate_in</span></span><a class="headerlink" href="#celestia.types.p2p.BandwidthStats.rate_in" title="Link to this definition"></a></dt>
+<dd><p>Inbound traffic rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.BandwidthStats.rate_out">
+<span class="sig-name descname"><span class="pre">rate_out</span></span><a class="headerlink" href="#celestia.types.p2p.BandwidthStats.rate_out" title="Link to this definition"></a></dt>
+<dd><p>Outbound traffic rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.p2p.BandwidthStats.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/p2p.html#BandwidthStats.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.p2p.BandwidthStats.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserialize a dictionary into a BandwidthStats instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a BandwidthStats.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A deserialized BandwidthStats object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.p2p.BandwidthStats" title="celestia.types.p2p.BandwidthStats">BandwidthStats</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.p2p.AddrInfo">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.p2p.</span></span><span class="sig-name descname"><span class="pre">AddrInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Addrs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/p2p.html#AddrInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.p2p.AddrInfo" title="Link to this definition"></a></dt>
+<dd><p>Represents the address information with an identifier and associated addresses.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.AddrInfo.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#celestia.types.p2p.AddrInfo.id" title="Link to this definition"></a></dt>
+<dd><p>The unique identifier for the address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.AddrInfo.addrs">
+<span class="sig-name descname"><span class="pre">addrs</span></span><a class="headerlink" href="#celestia.types.p2p.AddrInfo.addrs" title="Link to this definition"></a></dt>
+<dd><p>A list of addresses associated with the identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.p2p.AddrInfo.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/p2p.html#AddrInfo.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.p2p.AddrInfo.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserialize a dictionary into an AddrInfo instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a AddrInfo.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A deserialized AddrInfo object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.p2p.AddrInfo" title="celestia.types.p2p.AddrInfo">AddrInfo</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.p2p.Connectedness">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.p2p.</span></span><span class="sig-name descname"><span class="pre">Connectedness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/p2p.html#Connectedness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.p2p.Connectedness" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<p>Enum representing the connection status.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.Connectedness.NOT_CONNECTED">
+<span class="sig-name descname"><span class="pre">NOT_CONNECTED</span></span><a class="headerlink" href="#celestia.types.p2p.Connectedness.NOT_CONNECTED" title="Link to this definition"></a></dt>
+<dd><p>Represents a disconnected state.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.Connectedness.CONNECTED">
+<span class="sig-name descname"><span class="pre">CONNECTED</span></span><a class="headerlink" href="#celestia.types.p2p.Connectedness.CONNECTED" title="Link to this definition"></a></dt>
+<dd><p>Represents a connected state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.p2p.Reachability">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.p2p.</span></span><span class="sig-name descname"><span class="pre">Reachability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/p2p.html#Reachability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.p2p.Reachability" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<p>Enum representing the reachability state of an address.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.Reachability.Unknown">
+<span class="sig-name descname"><span class="pre">Unknown</span></span><a class="headerlink" href="#celestia.types.p2p.Reachability.Unknown" title="Link to this definition"></a></dt>
+<dd><p>Unknown reachability state.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.Reachability.Public">
+<span class="sig-name descname"><span class="pre">Public</span></span><a class="headerlink" href="#celestia.types.p2p.Reachability.Public" title="Link to this definition"></a></dt>
+<dd><p>The address is publicly reachable.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.p2p.Reachability.Private">
+<span class="sig-name descname"><span class="pre">Private</span></span><a class="headerlink" href="#celestia.types.p2p.Reachability.Private" title="Link to this definition"></a></dt>
+<dd><p>The address is privately reachable.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="share-types">
+<h2>Share types<a class="headerlink" href="#share-types" title="Link to this heading"></a></h2>
+</section>
+<section id="state-types">
+<h2>State types<a class="headerlink" href="#state-types" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.Balance">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">Balance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denom</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#Balance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.Balance" title="Link to this definition"></a></dt>
+<dd><p>Represents the balance of a particular denomination.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Balance.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><a class="headerlink" href="#celestia.types.state.Balance.amount" title="Link to this definition"></a></dt>
+<dd><p>The amount of the balance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Balance.denom">
+<span class="sig-name descname"><span class="pre">denom</span></span><a class="headerlink" href="#celestia.types.state.Balance.denom" title="Link to this definition"></a></dt>
+<dd><p>The denomination of the balance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.state.Balance.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#Balance.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.Balance.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserialize a result dictionary into a Balance object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a Balance.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The deserialized Balance object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.Balance" title="celestia.types.state.Balance">Balance</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.TXResponse">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">TXResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">txhash</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#TXResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.TXResponse" title="Link to this definition"></a></dt>
+<dd><p>Represents the response for a transaction.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.TXResponse.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#celestia.types.state.TXResponse.height" title="Link to this definition"></a></dt>
+<dd><p>The block height of the transaction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.TXResponse.txhash">
+<span class="sig-name descname"><span class="pre">txhash</span></span><a class="headerlink" href="#celestia.types.state.TXResponse.txhash" title="Link to this definition"></a></dt>
+<dd><p>The transaction hash.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.TXResponse.logs">
+<span class="sig-name descname"><span class="pre">logs</span></span><a class="headerlink" href="#celestia.types.state.TXResponse.logs" title="Link to this definition"></a></dt>
+<dd><p>Logs associated with the transaction, if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[t.Any] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.TXResponse.events">
+<span class="sig-name descname"><span class="pre">events</span></span><a class="headerlink" href="#celestia.types.state.TXResponse.events" title="Link to this definition"></a></dt>
+<dd><p>Events triggered by the transaction, if any.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[t.Any, …] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.state.TXResponse.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#TXResponse.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.TXResponse.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserialize a result dictionary into a TXResponse object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a TXResponse.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The deserialized TXResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.TXResponse" title="celestia.types.state.TXResponse">TXResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.Delegation">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">Delegation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delegator_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validator_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shares</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#Delegation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.Delegation" title="Link to this definition"></a></dt>
+<dd><p>Represents a delegation of tokens to a validator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Delegation.delegator_address">
+<span class="sig-name descname"><span class="pre">delegator_address</span></span><a class="headerlink" href="#celestia.types.state.Delegation.delegator_address" title="Link to this definition"></a></dt>
+<dd><p>The address of the delegator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Delegation.validator_address">
+<span class="sig-name descname"><span class="pre">validator_address</span></span><a class="headerlink" href="#celestia.types.state.Delegation.validator_address" title="Link to this definition"></a></dt>
+<dd><p>The address of the validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Delegation.shares">
+<span class="sig-name descname"><span class="pre">shares</span></span><a class="headerlink" href="#celestia.types.state.Delegation.shares" title="Link to this definition"></a></dt>
+<dd><p>The amount of shares in the delegation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.DelegationResponse">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">DelegationResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delegation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#DelegationResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.DelegationResponse" title="Link to this definition"></a></dt>
+<dd><p>Represents the response for a delegation query.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.DelegationResponse.delegation">
+<span class="sig-name descname"><span class="pre">delegation</span></span><a class="headerlink" href="#celestia.types.state.DelegationResponse.delegation" title="Link to this definition"></a></dt>
+<dd><p>The delegation details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.Delegation" title="celestia.types.state.Delegation">Delegation</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.DelegationResponse.balance">
+<span class="sig-name descname"><span class="pre">balance</span></span><a class="headerlink" href="#celestia.types.state.DelegationResponse.balance" title="Link to this definition"></a></dt>
+<dd><p>The balance associated with the delegation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.Balance" title="celestia.types.state.Balance">Balance</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.QueryDelegationResponse">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">QueryDelegationResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delegation_response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#QueryDelegationResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.QueryDelegationResponse" title="Link to this definition"></a></dt>
+<dd><p>Represents the response for a delegation query.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.QueryDelegationResponse.delegation_response">
+<span class="sig-name descname"><span class="pre">delegation_response</span></span><a class="headerlink" href="#celestia.types.state.QueryDelegationResponse.delegation_response" title="Link to this definition"></a></dt>
+<dd><p>The delegation response details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.DelegationResponse" title="celestia.types.state.DelegationResponse">DelegationResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.state.QueryDelegationResponse.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#QueryDelegationResponse.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.QueryDelegationResponse.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserialize a result dictionary into a QueryDelegationResponse object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a QueryDelegationResponse.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The deserialized QueryDelegationResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.QueryDelegationResponse" title="celestia.types.state.QueryDelegationResponse">QueryDelegationResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationEntry">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">RedelegationEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">creation_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">completion_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_balance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shares_dst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#RedelegationEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.RedelegationEntry" title="Link to this definition"></a></dt>
+<dd><p>Represents a redelegation entry.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationEntry.creation_height">
+<span class="sig-name descname"><span class="pre">creation_height</span></span><a class="headerlink" href="#celestia.types.state.RedelegationEntry.creation_height" title="Link to this definition"></a></dt>
+<dd><p>The block height when the redelegation was created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationEntry.completion_time">
+<span class="sig-name descname"><span class="pre">completion_time</span></span><a class="headerlink" href="#celestia.types.state.RedelegationEntry.completion_time" title="Link to this definition"></a></dt>
+<dd><p>The completion time of the redelegation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationEntry.initial_balance">
+<span class="sig-name descname"><span class="pre">initial_balance</span></span><a class="headerlink" href="#celestia.types.state.RedelegationEntry.initial_balance" title="Link to this definition"></a></dt>
+<dd><p>The initial balance of the redelegation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationEntry.shares_dst">
+<span class="sig-name descname"><span class="pre">shares_dst</span></span><a class="headerlink" href="#celestia.types.state.RedelegationEntry.shares_dst" title="Link to this definition"></a></dt>
+<dd><p>The amount of shares transferred to the destination validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.Redelegation">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">Redelegation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delegator_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validator_src_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validator_dst_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entries</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#Redelegation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.Redelegation" title="Link to this definition"></a></dt>
+<dd><p>Represents a redelegation of tokens from one validator to another.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Redelegation.delegator_address">
+<span class="sig-name descname"><span class="pre">delegator_address</span></span><a class="headerlink" href="#celestia.types.state.Redelegation.delegator_address" title="Link to this definition"></a></dt>
+<dd><p>The address of the delegator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Redelegation.validator_src_address">
+<span class="sig-name descname"><span class="pre">validator_src_address</span></span><a class="headerlink" href="#celestia.types.state.Redelegation.validator_src_address" title="Link to this definition"></a></dt>
+<dd><p>The address of the source validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Redelegation.validator_dst_address">
+<span class="sig-name descname"><span class="pre">validator_dst_address</span></span><a class="headerlink" href="#celestia.types.state.Redelegation.validator_dst_address" title="Link to this definition"></a></dt>
+<dd><p>The address of the destination validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Redelegation.entries">
+<span class="sig-name descname"><span class="pre">entries</span></span><a class="headerlink" href="#celestia.types.state.Redelegation.entries" title="Link to this definition"></a></dt>
+<dd><p>A list of redelegation entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference internal" href="#celestia.types.state.RedelegationEntry" title="celestia.types.state.RedelegationEntry">RedelegationEntry</a>, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationResponseEntry">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">RedelegationResponseEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">redelegation_entry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#RedelegationResponseEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.RedelegationResponseEntry" title="Link to this definition"></a></dt>
+<dd><p>Represents a redelegation response entry.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationResponseEntry.redelegation_entry">
+<span class="sig-name descname"><span class="pre">redelegation_entry</span></span><a class="headerlink" href="#celestia.types.state.RedelegationResponseEntry.redelegation_entry" title="Link to this definition"></a></dt>
+<dd><p>The redelegation entry details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.RedelegationEntry" title="celestia.types.state.RedelegationEntry">RedelegationEntry</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationResponseEntry.balance">
+<span class="sig-name descname"><span class="pre">balance</span></span><a class="headerlink" href="#celestia.types.state.RedelegationResponseEntry.balance" title="Link to this definition"></a></dt>
+<dd><p>The balance of the redelegation entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationResponse">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">RedelegationResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">redelegation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entries</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#RedelegationResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.RedelegationResponse" title="Link to this definition"></a></dt>
+<dd><p>Represents the response for a redelegation query.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationResponse.redelegation">
+<span class="sig-name descname"><span class="pre">redelegation</span></span><a class="headerlink" href="#celestia.types.state.RedelegationResponse.redelegation" title="Link to this definition"></a></dt>
+<dd><p>The redelegation details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.Redelegation" title="celestia.types.state.Redelegation">Redelegation</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.RedelegationResponse.entries">
+<span class="sig-name descname"><span class="pre">entries</span></span><a class="headerlink" href="#celestia.types.state.RedelegationResponse.entries" title="Link to this definition"></a></dt>
+<dd><p>A list of redelegation response entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference internal" href="#celestia.types.state.RedelegationResponseEntry" title="celestia.types.state.RedelegationResponseEntry">RedelegationResponseEntry</a>, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.Pagination">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">Pagination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">next_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#Pagination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.Pagination" title="Link to this definition"></a></dt>
+<dd><p>Represents pagination information.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Pagination.next_key">
+<span class="sig-name descname"><span class="pre">next_key</span></span><a class="headerlink" href="#celestia.types.state.Pagination.next_key" title="Link to this definition"></a></dt>
+<dd><p>The key for the next page of results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Pagination.total">
+<span class="sig-name descname"><span class="pre">total</span></span><a class="headerlink" href="#celestia.types.state.Pagination.total" title="Link to this definition"></a></dt>
+<dd><p>The total number of results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.QueryRedelegationResponse">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">QueryRedelegationResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">redelegation_responses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pagination</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#QueryRedelegationResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.QueryRedelegationResponse" title="Link to this definition"></a></dt>
+<dd><p>Represents the response for a query to retrieve redelegations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.QueryRedelegationResponse.redelegation_responses">
+<span class="sig-name descname"><span class="pre">redelegation_responses</span></span><a class="headerlink" href="#celestia.types.state.QueryRedelegationResponse.redelegation_responses" title="Link to this definition"></a></dt>
+<dd><p>A list of redelegation responses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference internal" href="#celestia.types.state.RedelegationResponse" title="celestia.types.state.RedelegationResponse">RedelegationResponse</a>, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.QueryRedelegationResponse.pagination">
+<span class="sig-name descname"><span class="pre">pagination</span></span><a class="headerlink" href="#celestia.types.state.QueryRedelegationResponse.pagination" title="Link to this definition"></a></dt>
+<dd><p>Pagination information for the query results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.Pagination" title="celestia.types.state.Pagination">Pagination</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.state.QueryRedelegationResponse.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#QueryRedelegationResponse.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.QueryRedelegationResponse.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserialize a result dictionary into a QueryRedelegationResponse object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a QueryRedelegationResponse.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The deserialized QueryRedelegationResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.QueryRedelegationResponse" title="celestia.types.state.QueryRedelegationResponse">QueryRedelegationResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.UnbondEntry">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">UnbondEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">creation_height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">completion_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_balance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">balance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#UnbondEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.UnbondEntry" title="Link to this definition"></a></dt>
+<dd><p>Represents an unbonding entry for a validator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.UnbondEntry.creation_height">
+<span class="sig-name descname"><span class="pre">creation_height</span></span><a class="headerlink" href="#celestia.types.state.UnbondEntry.creation_height" title="Link to this definition"></a></dt>
+<dd><p>The block height when the unbonding was created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.UnbondEntry.completion_time">
+<span class="sig-name descname"><span class="pre">completion_time</span></span><a class="headerlink" href="#celestia.types.state.UnbondEntry.completion_time" title="Link to this definition"></a></dt>
+<dd><p>The completion time of the unbonding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.UnbondEntry.initial_balance">
+<span class="sig-name descname"><span class="pre">initial_balance</span></span><a class="headerlink" href="#celestia.types.state.UnbondEntry.initial_balance" title="Link to this definition"></a></dt>
+<dd><p>The initial balance of the unbonding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.UnbondEntry.balance">
+<span class="sig-name descname"><span class="pre">balance</span></span><a class="headerlink" href="#celestia.types.state.UnbondEntry.balance" title="Link to this definition"></a></dt>
+<dd><p>The current balance after unbonding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.Unbond">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">Unbond</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delegator_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validator_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entries</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#Unbond"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.Unbond" title="Link to this definition"></a></dt>
+<dd><p>Represents an unbonding of tokens from a validator.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Unbond.delegator_address">
+<span class="sig-name descname"><span class="pre">delegator_address</span></span><a class="headerlink" href="#celestia.types.state.Unbond.delegator_address" title="Link to this definition"></a></dt>
+<dd><p>The address of the delegator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Unbond.validator_address">
+<span class="sig-name descname"><span class="pre">validator_address</span></span><a class="headerlink" href="#celestia.types.state.Unbond.validator_address" title="Link to this definition"></a></dt>
+<dd><p>The address of the validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.Unbond.entries">
+<span class="sig-name descname"><span class="pre">entries</span></span><a class="headerlink" href="#celestia.types.state.Unbond.entries" title="Link to this definition"></a></dt>
+<dd><p>A list of unbonding entries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)">tuple</a>[<a class="reference internal" href="#celestia.types.state.UnbondEntry" title="celestia.types.state.UnbondEntry">UnbondEntry</a>, …]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="celestia.types.state.QueryUnbondingDelegationResponse">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">celestia.types.state.</span></span><span class="sig-name descname"><span class="pre">QueryUnbondingDelegationResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unbond</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#QueryUnbondingDelegationResponse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.QueryUnbondingDelegationResponse" title="Link to this definition"></a></dt>
+<dd><p>Represents the response for a query to retrieve unbonding delegations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="celestia.types.state.QueryUnbondingDelegationResponse.unbond">
+<span class="sig-name descname"><span class="pre">unbond</span></span><a class="headerlink" href="#celestia.types.state.QueryUnbondingDelegationResponse.unbond" title="Link to this definition"></a></dt>
+<dd><p>The unbonding details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.Unbond" title="celestia.types.state.Unbond">Unbond</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="celestia.types.state.QueryUnbondingDelegationResponse.deserializer">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">deserializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/celestia/types/state.html#QueryUnbondingDelegationResponse.deserializer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#celestia.types.state.QueryUnbondingDelegationResponse.deserializer" title="Link to this definition"></a></dt>
+<dd><p>Deserialize a result dictionary into a QueryUnbondingDelegationResponse object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – The dictionary representation of a QueryUnbondingDelegationResponse.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The deserialized QueryUnbondingDelegationResponse object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#celestia.types.state.QueryUnbondingDelegationResponse" title="celestia.types.state.QueryUnbondingDelegationResponse">QueryUnbondingDelegationResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="node_api.html" class="btn btn-neutral float-left" title="Celestia Node API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alesh, Tnmoxa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

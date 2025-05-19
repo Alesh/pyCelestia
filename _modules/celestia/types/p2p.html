@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>celestia.types.p2p &mdash; pyCelestia  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            pyCelestia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Api Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../node_api.html">Celestia Node API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Types:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../types.html">Celestia types</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">pyCelestia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">celestia.types.p2p</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for celestia.types.p2p</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+
+
+<div class="viewcode-block" id="ResourceManagerStat">
+<a class="viewcode-back" href="../../../types.html#celestia.types.p2p.ResourceManagerStat">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ResourceManagerStat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents the statistics of a resource manager, including system, transient,</span>
+<span class="sd">    services, protocols, and peers.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        system (dict): System data.</span>
+<span class="sd">        transient (dict): Transient data.</span>
+<span class="sd">        services (dict): Service data.</span>
+<span class="sd">        protocols (dict): Protocol data.</span>
+<span class="sd">        peers (dict): Peer data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">system</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="n">transient</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="n">services</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="n">protocols</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="n">peers</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">System</span><span class="p">,</span> <span class="n">Transient</span><span class="p">,</span> <span class="n">Services</span><span class="p">,</span> <span class="n">Protocols</span><span class="p">,</span> <span class="n">Peers</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system</span> <span class="o">=</span> <span class="n">System</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transient</span> <span class="o">=</span> <span class="n">Transient</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">services</span> <span class="o">=</span> <span class="n">Services</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protocols</span> <span class="o">=</span> <span class="n">Protocols</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">peers</span> <span class="o">=</span> <span class="n">Peers</span>
+
+<div class="viewcode-block" id="ResourceManagerStat.deserializer">
+<a class="viewcode-back" href="../../../types.html#celestia.types.p2p.ResourceManagerStat.deserializer">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deserializer</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ResourceManagerStat&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deserialize a dictionary into a ResourceManagerStat instance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            result (dict): The dictionary representation of a ResourceManagerStat.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            ResourceManagerStat: A deserialized ResourceManagerStat object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ResourceManagerStat</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="BandwidthStats">
+<a class="viewcode-back" href="../../../types.html#celestia.types.p2p.BandwidthStats">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BandwidthStats</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents the statistics related to bandwidth, including total inbound/outbound</span>
+<span class="sd">    traffic and rates for both directions.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        total_in (int): Total inbound bandwidth.</span>
+<span class="sd">        total_out (int): Total outbound bandwidth.</span>
+<span class="sd">        rate_in (float): Inbound traffic rate.</span>
+<span class="sd">        rate_out (float): Outbound traffic rate.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">total_in</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">total_out</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">rate_in</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">rate_out</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">TotalIn</span><span class="p">,</span> <span class="n">TotalOut</span><span class="p">,</span> <span class="n">RateIn</span><span class="p">,</span> <span class="n">RateOut</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_in</span> <span class="o">=</span> <span class="n">TotalIn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_out</span> <span class="o">=</span> <span class="n">TotalOut</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate_in</span> <span class="o">=</span> <span class="n">RateIn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate_out</span> <span class="o">=</span> <span class="n">RateOut</span>
+
+<div class="viewcode-block" id="BandwidthStats.deserializer">
+<a class="viewcode-back" href="../../../types.html#celestia.types.p2p.BandwidthStats.deserializer">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deserializer</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;BandwidthStats&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deserialize a dictionary into a BandwidthStats instance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            result (dict):  The dictionary representation of a BandwidthStats.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            BandwidthStats: A deserialized BandwidthStats object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">BandwidthStats</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="AddrInfo">
+<a class="viewcode-back" href="../../../types.html#celestia.types.p2p.AddrInfo">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AddrInfo</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents the address information with an identifier and associated addresses.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (str): The unique identifier for the address.</span>
+<span class="sd">        addrs (list): A list of addresses associated with the identifier.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">addrs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">Addrs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">ID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addrs</span> <span class="o">=</span> <span class="n">Addrs</span>
+
+<div class="viewcode-block" id="AddrInfo.deserializer">
+<a class="viewcode-back" href="../../../types.html#celestia.types.p2p.AddrInfo.deserializer">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deserializer</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AddrInfo&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deserialize a dictionary into an AddrInfo instance.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">           result (dict): The dictionary representation of a AddrInfo.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">           AddrInfo: A deserialized AddrInfo object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">AddrInfo</span><span class="p">(</span><span class="o">**</span><span class="n">result</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Connectedness">
+<a class="viewcode-back" href="../../../types.html#celestia.types.p2p.Connectedness">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Connectedness</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enum representing the connection status.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        NOT_CONNECTED: Represents a disconnected state.</span>
+<span class="sd">        CONNECTED: Represents a connected state.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NOT_CONNECTED</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">CONNECTED</span> <span class="o">=</span> <span class="mi">1</span></div>
+
+
+
+<div class="viewcode-block" id="Reachability">
+<a class="viewcode-back" href="../../../types.html#celestia.types.p2p.Reachability">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Reachability</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enum representing the reachability state of an address.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">       Unknown: Unknown reachability state.</span>
+<span class="sd">       Public: The address is publicly reachable.</span>
+<span class="sd">       Private: The address is privately reachable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">Unknown</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Public</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">Private</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Alesh, Tnmoxa.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
