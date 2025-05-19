@@ -7,36 +7,39 @@ from celestia.types.common import Base64
 
 @dataclass
 class ConsensusVersion:
-    """ Represents the version information for the consensus.
+    """Represents the version information for the consensus.
 
     Attributes:
         block (str): The block version.
         app (str): The application version.
     """
+
     block: str
     app: str
 
 
 @dataclass
 class Parts:
-    """ Represents the parts of the block.
+    """Represents the parts of the block.
 
     Attributes:
         total (int): The total number of parts.
         hash (str): The hash of the parts.
     """
+
     total: int
     hash: str
 
 
 @dataclass
 class BlockId:
-    """ Represents a block identifier, which includes a hash and parts.
+    """Represents a block identifier, which includes a hash and parts.
 
     Attributes:
         hash (str): The hash of the block.
         parts (Parts): The parts information of the block.
     """
+
     hash: str
     parts: Parts
 
@@ -47,7 +50,7 @@ class BlockId:
 
 @dataclass
 class Header:
-    """ Represents the header information for the block.
+    """Represents the header information for the block.
 
     Attributes:
         version (ConsensusVersion): The consensus version.
@@ -65,6 +68,7 @@ class Header:
         evidence_hash (str): The hash of the evidence.
         proposer_address (str): The address of the proposer.
     """
+
     version: ConsensusVersion
     chain_id: str
     height: str
@@ -80,8 +84,23 @@ class Header:
     evidence_hash: str
     proposer_address: str
 
-    def __init__(self, version, chain_id, height, time, last_block_id, last_commit_hash, data_hash, validators_hash,
-                 next_validators_hash, consensus_hash, app_hash, last_results_hash, evidence_hash, proposer_address):
+    def __init__(
+        self,
+        version,
+        chain_id,
+        height,
+        time,
+        last_block_id,
+        last_commit_hash,
+        data_hash,
+        validators_hash,
+        next_validators_hash,
+        consensus_hash,
+        app_hash,
+        last_results_hash,
+        evidence_hash,
+        proposer_address,
+    ):
         self.version = ConsensusVersion(**version)
         self.chain_id = chain_id
         self.height = height
@@ -100,19 +119,20 @@ class Header:
 
 @dataclass
 class PubKey:
-    """ Represents a public key used for validating a transaction.
+    """Represents a public key used for validating a transaction.
 
     Attributes:
         type (str): The type of public key.
         value (Base64): The base64 encoded public key.
     """
+
     type: str
     value: Base64
 
 
 @dataclass
 class Validator:
-    """ Represents a validator in the consensus system.
+    """Represents a validator in the consensus system.
 
     Attributes:
         address (str): The address of the validator.
@@ -120,6 +140,7 @@ class Validator:
         voting_power (str): The voting power of the validator.
         proposer_priority (str): The proposer priority of the validator.
     """
+
     address: str
     pub_key: PubKey
     voting_power: str
@@ -134,12 +155,13 @@ class Validator:
 
 @dataclass
 class ValidatorSet:
-    """ Represents a set of validators and the proposer.
+    """Represents a set of validators and the proposer.
 
     Attributes:
         validators (tuple[Validator, ...]): The list of validators.
         proposer (Validator): The proposer of the block.
     """
+
     validators: tuple[Validator, ...]
     proposer: Validator
 
@@ -150,7 +172,7 @@ class ValidatorSet:
 
 @dataclass
 class Signature:
-    """ Represents a signature for a commit block.
+    """Represents a signature for a commit block.
 
     Attributes:
         block_id_flag (int): The block ID flag.
@@ -158,6 +180,7 @@ class Signature:
         timestamp (str): The timestamp of the signature.
         signature (Base64): The base64 encoded signature.
     """
+
     block_id_flag: int
     validator_address: str
     timestamp: str
@@ -172,7 +195,7 @@ class Signature:
 
 @dataclass
 class Commit:
-    """ Represents a commit for a block, including signatures.
+    """Represents a commit for a block, including signatures.
 
     Attributes:
         height (int): The block height.
@@ -180,6 +203,7 @@ class Commit:
         block_id (BlockId): The ID of the block.
         signatures (tuple[Signature, ...]): The signatures of the validators.
     """
+
     height: int
     round: int
     block_id: BlockId
@@ -194,12 +218,13 @@ class Commit:
 
 @dataclass
 class Dah:
-    """ Represents the data availability header.
+    """Represents the data availability header.
 
     Attributes:
         row_roots (tuple[Base64, ...]): The row roots.
         column_roots (tuple[Base64, ...]): The column roots.
     """
+
     row_roots: tuple[Base64, ...]
     column_roots: tuple[Base64, ...]
 
@@ -210,7 +235,7 @@ class Dah:
 
 @dataclass
 class ExtendedHeader:
-    """ Represents an extended header containing header, validator set, commit, and DAH.
+    """Represents an extended header containing header, validator set, commit, and DAH.
 
     Attributes:
         header (Header): The block header.
@@ -218,6 +243,7 @@ class ExtendedHeader:
         commit (Commit): The commit information.
         dah (Dah): The data availability header.
     """
+
     header: Header
     validator_set: ValidatorSet
     commit: Commit
@@ -230,8 +256,8 @@ class ExtendedHeader:
         self.dah = Dah(**dah)
 
     @staticmethod
-    def deserializer(result: dict) -> 'ExtendedHeader':
-        """ Deserializes the provided result into a `ExtendedHeader` object.
+    def deserializer(result: dict) -> "ExtendedHeader":
+        """Deserializes the provided result into a `ExtendedHeader` object.
 
         Args:
             result (dict): The dictionary representation of a ExtendedHeader.
@@ -245,7 +271,7 @@ class ExtendedHeader:
 
 @dataclass
 class State:
-    """ Represents a state for the block range.
+    """Represents a state for the block range.
 
     Attributes:
         id (int): The ID of the state.
@@ -257,6 +283,7 @@ class State:
         start (str): The start time of the state.
         end (str): The end time of the state.
     """
+
     id: int
     height: int
     from_height: int
@@ -277,8 +304,8 @@ class State:
         self.end = end
 
     @staticmethod
-    def deserializer(result: dict) -> 'State':
-        """ Deserializes the provided result into a `State` object.
+    def deserializer(result: dict) -> "State":
+        """Deserializes the provided result into a `State` object.
 
         Args:
             result (dict): The dictionary representation of a State.

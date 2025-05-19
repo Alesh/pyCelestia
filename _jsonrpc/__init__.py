@@ -12,8 +12,7 @@ from .executor import RPC
 
 
 class Client:
-    """ WS JSON-RPC Client
-    """
+    """WS JSON-RPC Client"""
 
     def __init__(self, url: str, **options: t.Any):
         pr = urlparse(url)
@@ -21,12 +20,14 @@ class Client:
             raise ValueError("Unsupported URL scheme, must be ws or wss")
         self.options = dict(options, url=url)
 
-    def connect(self,
-                errors_map: dict[str, t.Type[Exception]] = None,
-                additional_headers: Headers | t.Mapping[str, str] | t.Iterable[tuple[str, str]] = None,
-                json_encoder: t.Type[JSONEncoder] | None = None,
-                response_timeout: float = 180) -> AbstractAsyncContextManager[RPC]:
-        url = self.options['url']
+    def connect(
+        self,
+        errors_map: dict[str, t.Type[Exception]] = None,
+        additional_headers: Headers | t.Mapping[str, str] | t.Iterable[tuple[str, str]] = None,
+        json_encoder: t.Type[JSONEncoder] | None = None,
+        response_timeout: float = 180,
+    ) -> AbstractAsyncContextManager[RPC]:
+        url = self.options["url"]
         errors_map_ = errors_map or {}
 
         async def listener(connection: ClientConnection, handlers: AbcTransport):
@@ -43,6 +44,7 @@ class Client:
             try:
                 listener_task = None
                 async with connect(url, additional_headers=additional_headers) as connection:
+
                     class Transport(AbcTransport):
                         errors_map = dict(**errors_map_)
 

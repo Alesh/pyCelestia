@@ -43,6 +43,9 @@ testpaths = [
     "integration",
 ]
 
+[tool.black]
+line-length = 99
+target-version = ["py310"]
 
 [tool.setuptools_scm]
 

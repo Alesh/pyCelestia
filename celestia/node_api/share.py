@@ -1,16 +1,24 @@
 from typing import Callable
 
+from _jsonrpc import Wrapper
 from celestia.types import Namespace
 from celestia.types.header import ExtendedHeader
-from celestia.types.rawshare import ExtendedDataSquare, NamespaceData, SampleCoords, GetRangeResult, RawSample
-from _jsonrpc import Wrapper
+from celestia.types.rawshare import (
+    ExtendedDataSquare,
+    NamespaceData,
+    SampleCoords,
+    GetRangeResult,
+    RawSample,
+)
 
 
 class ShareClient(Wrapper):
-    """ Client for interacting with Celestia's Share API."""
+    """Client for interacting with Celestia's Share API."""
 
-    async def get_eds(self, height: int, *, deserializer: Callable | None = None) -> ExtendedDataSquare:
-        """ Gets the full EDS identified by the given extended header.
+    async def get_eds(
+        self, height: int, *, deserializer: Callable | None = None
+    ) -> ExtendedDataSquare:
+        """Gets the full EDS identified by the given extended header.
 
         Args:
             height (int): The block height.
@@ -20,13 +28,16 @@ class ShareClient(Wrapper):
             ExtendedDataSquare: The retrieved EDS object.
         """
 
-        deserializer = deserializer if deserializer is not None else ExtendedDataSquare.deserializer
+        deserializer = (
+            deserializer if deserializer is not None else ExtendedDataSquare.deserializer
+        )
 
         return await self._rpc.call("share.GetEDS", (height,), deserializer)
 
-    async def get_namespace_data(self, height: int, namespace: Namespace, *,
-                                 deserializer: Callable | None = None) -> list[NamespaceData]:
-        """ Gets all shares from an EDS within the given namespace. Shares are returned
+    async def get_namespace_data(
+        self, height: int, namespace: Namespace, *, deserializer: Callable | None = None
+    ) -> list[NamespaceData]:
+        """Gets all shares from an EDS within the given namespace. Shares are returned
         in a row-by-row order if the namespace spans multiple rows.
 
         Args:
@@ -46,11 +57,14 @@ class ShareClient(Wrapper):
 
         deserializer = deserializer if deserializer is not None else deserializer_
 
-        return await self._rpc.call("share.GetNamespaceData", (height, Namespace(namespace)), deserializer)
+        return await self._rpc.call(
+            "share.GetNamespaceData", (height, Namespace(namespace)), deserializer
+        )
 
-    async def get_range(self, height: int, start: int, end: int, *,
-                        deserializer: Callable | None = None) -> GetRangeResult:
-        """ Gets a list of shares and their corresponding proof.
+    async def get_range(
+        self, height: int, start: int, end: int, *, deserializer: Callable | None = None
+    ) -> GetRangeResult:
+        """Gets a list of shares and their corresponding proof.
 
         Args:
             height (int): The block height.
@@ -66,9 +80,14 @@ class ShareClient(Wrapper):
 
         return await self._rpc.call("share.GetRange", (height, start, end), deserializer)
 
-    async def get_samples(self, header: ExtendedHeader, indices: list[SampleCoords], *,
-                          deserializer: Callable | None = None) -> list[str] | list[RawSample]:
-        """ Gets sample for given indices.
+    async def get_samples(
+        self,
+        header: ExtendedHeader,
+        indices: list[SampleCoords],
+        *,
+        deserializer: Callable | None = None,
+    ) -> list[str] | list[RawSample]:
+        """Gets sample for given indices.
 
         Args:
             header (ExtendedHeader): The extended header.
@@ -82,16 +101,25 @@ class ShareClient(Wrapper):
             if value is None:
                 return []
             return [
-                RawSample(**item)  # is the structure in version > 0.20.4
-                if isinstance(item, dict)
-                else item for item in value
+                (
+                    RawSample(**item)  # is the structure in version > 0.20.4
+                    if isinstance(item, dict)
+                    else item
+                )
+                for item in value
             ]
 
-        return await self._rpc.call("share.GetSamples", (header, indices,),
-                                    deserializer=(deserializer or default_deserializer))
+        return await self._rpc.call(
+            "share.GetSamples",
+            (
+                header,
+                indices,
+            ),
+            deserializer=(deserializer or default_deserializer),
+        )
 
     async def get_share(self, height: int, row: int, col: int) -> str:
-        """ Gets a Share by coordinates in EDS.
+        """Gets a Share by coordinates in EDS.
 
         Args:
             height (int): The block height.
@@ -101,10 +129,17 @@ class ShareClient(Wrapper):
         Returns:
             str: The retrieved share.
         """
-        return await self._rpc.call("share.GetShare", (height, row, col,))
+        return await self._rpc.call(
+            "share.GetShare",
+            (
+                height,
+                row,
+                col,
+            ),
+        )
 
     async def get_available(self, height: int) -> bool:
-        """ Subjectively validates if Shares committed to the given ExtendedHeader are available on the Network.
+        """Subjectively validates if Shares committed to the given ExtendedHeader are available on the Network.
 
         Args:
             height (int): The block height.

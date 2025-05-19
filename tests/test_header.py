@@ -7,8 +7,8 @@ from celestia.node_api import Client
 
 @pytest.mark.asyncio
 async def test_header(node_provider):
-    bridge, auth_token = await node_provider('bridge-0')
-    client = Client(port=bridge.port['26658/tcp'])
+    bridge, auth_token = await node_provider("bridge-0")
+    client = Client(port=bridge.port["26658/tcp"])
 
     async with client.connect(auth_token) as api:
         local_head = await api.header.local_head()
@@ -17,7 +17,9 @@ async def test_header(node_provider):
         local_hash = local_head.commit.block_id.hash
         assert local_height <= network_head.header.height
 
-        head = await api.header.get_by_hash('4D3818BC5D3BE8E529C953C8654BD4243A2CD28BD1599DBF0ED4DD44C24F6D33')
+        head = await api.header.get_by_hash(
+            "4D3818BC5D3BE8E529C953C8654BD4243A2CD28BD1599DBF0ED4DD44C24F6D33"
+        )
         assert head is None
         head = await api.header.get_by_hash(local_hash)
         assert local_head == head
@@ -25,8 +27,9 @@ async def test_header(node_provider):
         head = await api.header.get_by_height(local_height)
         assert local_head == head
 
-        heads = await api.header.get_range_by_height(await api.header.get_by_height(int(local_height) - 5),
-                                                     local_height)
+        heads = await api.header.get_range_by_height(
+            await api.header.get_by_height(int(local_height) - 5), local_height
+        )
         assert len(heads) == 4
 
         state1 = await api.header.sync_state()
@@ -39,8 +42,8 @@ async def test_header(node_provider):
 
 @pytest.mark.asyncio
 async def test_header_exceptions(node_provider):
-    bridge, auth_token = await node_provider('bridge-0')
-    client = Client(port=bridge.port['26658/tcp'])
+    bridge, auth_token = await node_provider("bridge-0")
+    client = Client(port=bridge.port["26658/tcp"])
     async with client.connect(auth_token) as api:
         local_head = await api.header.local_head()
         local_height = local_head.header.height
@@ -53,7 +56,9 @@ async def test_header_exceptions(node_provider):
             await api.header.get_by_height(-1)
 
         with pytest.raises(ValueError):
-            await api.header.get_range_by_height(await api.header.get_by_height(local_height), int(local_height) - 5)
+            await api.header.get_range_by_height(
+                await api.header.get_by_height(local_height), int(local_height) - 5
+            )
 
         with pytest.raises(ValueError):
             await api.header.wait_for_height(0)
@@ -63,8 +68,8 @@ async def test_header_exceptions(node_provider):
 
 @pytest.mark.asyncio
 async def test_header_subscribe(node_provider):
-    bridge, auth_token = await node_provider('bridge-0')
-    client = Client(port=bridge.port['26658/tcp'])
+    bridge, auth_token = await node_provider("bridge-0")
+    client = Client(port=bridge.port["26658/tcp"])
     result = []
 
     async with client.connect(auth_token) as api:
