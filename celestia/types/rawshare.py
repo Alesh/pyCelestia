@@ -6,19 +6,20 @@ from celestia.types.common import Base64, Namespace
 
 @dataclass
 class SampleCoords:
-    """ A class representing coordinates for a sample, specifically the row and column.
+    """A class representing coordinates for a sample, specifically the row and column.
 
     Attributes:
         row (int): The row index of the sample.
         col (int): The column index of the sample.
     """
+
     row: int
     col: int
 
 
 @dataclass
 class ShareProof:
-    """ A class representing a share proof, which consists of a namespace ID,
+    """A class representing a share proof, which consists of a namespace ID,
     namespace version, row proof, data, and share proofs.
 
     Attributes:
@@ -28,15 +29,21 @@ class ShareProof:
         data (tuple[Base64, ...]): The data associated with the share proof.
         share_proofs (tuple[Proof, ...]): Additional share proofs.
     """
+
     namespace_id: Namespace
     namespace_version: int
     row_proof: RowProof
     data: tuple[Base64, ...]
     share_proofs: tuple[Proof, ...]
 
-    def __init__(self, namespace_id: Namespace, namespace_version: int,
-                 row_proof: dict, data: tuple[Base64, ...],
-                 share_proofs: list[dict]):
+    def __init__(
+        self,
+        namespace_id: Namespace,
+        namespace_version: int,
+        row_proof: dict,
+        data: tuple[Base64, ...],
+        share_proofs: list[dict],
+    ):
         self.namespace_id = Namespace.ensure_type(namespace_id)
         self.namespace_version = int(namespace_version)
         self.row_proof = RowProof(**row_proof)
@@ -46,16 +53,16 @@ class ShareProof:
 
 @dataclass
 class RawShare:
-    """ A class representing a raw share
-    """
+    """A class representing a raw share"""
+
     data: Base64
     is_parity: bool = False
 
 
 @dataclass
 class RawSample:
-    """ A class representing a raw sample.
-    """
+    """A class representing a raw sample."""
+
     share: RawShare
     proof: Proof
 
@@ -73,6 +80,7 @@ class GetRangeResult:
         shares (tuple[Base64, ...]): The shares related to the range.
         proof (ShareProof): The proof associated with the range retrieval.
     """
+
     shares: tuple[Base64, ...]
     proof: ShareProof
 
@@ -81,8 +89,8 @@ class GetRangeResult:
         self.proof = ShareProof(**Proof)
 
     @staticmethod
-    def deserializer(result: dict) -> 'GetRangeResult':
-        """ Deserialize a result dictionary into a GetRangeResult object.
+    def deserializer(result: dict) -> "GetRangeResult":
+        """Deserialize a result dictionary into a GetRangeResult object.
 
         Args:
             result (dict): The dictionary representation of a GetRangeResult.
@@ -96,18 +104,19 @@ class GetRangeResult:
 
 @dataclass
 class ExtendedDataSquare:
-    """ A class representing an extended data square, including the data square and codec.
+    """A class representing an extended data square, including the data square and codec.
 
     Attributes:
         data_square (tuple[Base64, ...]): The data square.
         codec (str): The codec used for the data.
     """
+
     data_square: tuple[Base64, ...]
     codec: str
 
     @staticmethod
-    def deserializer(result: dict) -> 'ExtendedDataSquare':
-        """ Deserialize a result dictionary into an ExtendedDataSquare object.
+    def deserializer(result: dict) -> "ExtendedDataSquare":
+        """Deserialize a result dictionary into an ExtendedDataSquare object.
 
         Args:
             result (dict): The dictionary representation of a ExtendedDataSquare.
@@ -121,12 +130,13 @@ class ExtendedDataSquare:
 
 @dataclass
 class NamespaceData:
-    """ A class representing namespace data, consisting of shares and proof.
+    """A class representing namespace data, consisting of shares and proof.
 
     Attributes:
         shares (tuple[Base64, ...]): The shares related to the namespace.
         proof (Proof): The proof associated with the namespace data.
     """
+
     shares: tuple[Base64, ...]
     proof: Proof
 
@@ -135,8 +145,8 @@ class NamespaceData:
         self.proof = Proof(**proof)
 
     @staticmethod
-    def deserializer(result: dict) -> 'NamespaceData':
-        """ Deserialize a result dictionary into a NamespaceData object.
+    def deserializer(result: dict) -> "NamespaceData":
+        """Deserialize a result dictionary into a NamespaceData object.
 
         Args:
             result (dict): The dictionary representation of a NamespaceData.

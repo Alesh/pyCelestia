@@ -12,7 +12,7 @@ from tests.utils import start_testnet, stop_testnet, get_auth_token
 def containers():
     cnt = 10
     need_shutdown = False
-    containers = Containers('testnet')
+    containers = Containers("testnet")
     while cnt:
         if containers:
             break
@@ -21,16 +21,18 @@ def containers():
             need_shutdown = True
         cnt -= 1
         sleep(10 - cnt)
-        containers = Containers('testnet')
+        containers = Containers("testnet")
     else:
         RuntimeError("Cannot start testnet")
     yield containers
     if need_shutdown:
         stop_testnet()
 
+
 @pytest.fixture(scope="session")
 def ready_nodes():
     yield dict()
+
 
 @pytest.fixture
 def node_provider(containers, ready_nodes):
@@ -44,7 +46,7 @@ def node_provider(containers, ready_nodes):
             while cnt:
                 cnt -= 1
                 try:
-                    async with Client(port=node.port['26658/tcp']).connect(auth_token) as api:
+                    async with Client(port=node.port["26658/tcp"]).connect(auth_token) as api:
                         balance = await api.state.balance()
                         if balance.amount:
                             ready_nodes[name] = node, auth_token
@@ -62,20 +64,24 @@ def node_provider(containers, ready_nodes):
     return lambda name: node_provider_(name)
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def light_address():
-    yield ('celestia1ll9pjlvy8cg7ux3pr98sc96nlpwgzt48j2mjwz',)
+    yield ("celestia1ll9pjlvy8cg7ux3pr98sc96nlpwgzt48j2mjwz",)
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def bridge_addresses():
-    yield ('celestia1t52q7uqgnjfzdh3wx5m5phvma3umrq8k6tq2p9',
-           'celestia16ws8cxx9ykl4598qgshvt36mejpkeyvzayndth',
-           'celestia10yeexpgcpx88qru4ca63frhw3jqua4qw8swxy0')
+    yield (
+        "celestia1t52q7uqgnjfzdh3wx5m5phvma3umrq8k6tq2p9",
+        "celestia16ws8cxx9ykl4598qgshvt36mejpkeyvzayndth",
+        "celestia10yeexpgcpx88qru4ca63frhw3jqua4qw8swxy0",
+    )
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def validator_addresses():
-    yield ('celestiavaloper1tzkpek429yxtvrshqh5yvqhvq4ydu3pjrshjhh',
-           'celestiavaloper1uqmt6u5zwzucxjkg7pd30qw8lc6l4c8xxv9288',
-           'celestiavaloper12crcjleegs25gp8wdx3nwn2m9kvfdmc34apd28')
+    yield (
+        "celestiavaloper1tzkpek429yxtvrshqh5yvqhvq4ydu3pjrshjhh",
+        "celestiavaloper1uqmt6u5zwzucxjkg7pd30qw8lc6l4c8xxv9288",
+        "celestiavaloper12crcjleegs25gp8wdx3nwn2m9kvfdmc34apd28",
+    )

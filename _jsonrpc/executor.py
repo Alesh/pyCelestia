@@ -19,12 +19,14 @@ if sys.version_info[:2] <= (3, 10):
 
 
 class RPC(RPCExecutor):
-    """ RPC encoder / executor / decoder
-    """
+    """RPC encoder / executor / decoder"""
 
-    def __init__(self, transport: Transport,
-                 json_encoder: t.Type[JSONEncoder] | None = None,
-                 timeout: float = 180):
+    def __init__(
+        self,
+        transport: Transport,
+        json_encoder: t.Type[JSONEncoder] | None = None,
+        timeout: float = 180,
+    ):
         self.timeout = timeout
         self.transport = transport
         self.transport.on_message = self.on_transport_response
@@ -35,8 +37,8 @@ class RPC(RPCExecutor):
 
     def on_transport_response(self, message: str):
         message = json.loads(message)
-        if 'method' in message:
-            subscription_id, item = message['params']
+        if "method" in message:
+            subscription_id, item = message["params"]
             subscription = self._subscriptions.get(subscription_id, None)
             if subscription is not None:
                 subscription.append(item)
@@ -46,14 +48,18 @@ class RPC(RPCExecutor):
             if future := self._pending.get(response.id):
                 if response.error is not None:
                     error_body = getattr(response.error, "body", None)
-                    error_message = error_body.get('message', None).lower() if error_body else None
-                    if found := [key for key in self.transport.errors_map.keys() if key in error_message]:
+                    error_message = error_body.get("message", None).lower() if error_body else None
+                    if found := [
+                        key for key in self.transport.errors_map.keys() if key in error_message
+                    ]:
                         exc_class = self.transport.errors_map[found[0]]
                         future.set_exception(exc_class(error_message))
                     elif error_message is None or error_body is None:
                         future.set_exception(ConnectionError("RPC failed; undefined error"))
                     else:
-                        future.set_exception(ConnectionError(f"RPC failed; {error_message}", response.error))
+                        future.set_exception(
+                            ConnectionError(f"RPC failed; {error_message}", response.error)
+                        )
                 else:
                     future.set_result(response.result)
             else:
@@ -75,8 +81,12 @@ class RPC(RPCExecutor):
             if exc:
                 subscription.append(exc)
 
-    async def call(self, method: str, params: tuple[t.Any, ...] = None,
-                   deserializer: t.Callable[[t.Any], t.Any] = None) -> t.Any | None:
+    async def call(
+        self,
+        method: str,
+        params: tuple[t.Any, ...] = None,
+        deserializer: t.Callable[[t.Any], t.Any] = None,
+    ) -> t.Any | None:
         params = params or ()
         deserializer = deserializer or (lambda a: a)
         id = str(uuid.uuid4())
@@ -88,8 +98,12 @@ class RPC(RPCExecutor):
             result = await future
             return deserializer(result)
 
-    async def iter(self, method: str, params: tuple[t.Any, ...] = None,
-                   deserializer: t.Callable[[t.Any], t.Any] = None) -> AsyncGenerator[t.Any]:
+    async def iter(
+        self,
+        method: str,
+        params: tuple[t.Any, ...] = None,
+        deserializer: t.Callable[[t.Any], t.Any] = None,
+    ) -> AsyncGenerator[t.Any]:
         deserializer = deserializer or (lambda a: a)
         subscription_id = await self.call(method, params)
         try:
